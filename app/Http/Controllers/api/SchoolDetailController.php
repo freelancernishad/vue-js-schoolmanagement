@@ -89,7 +89,7 @@ $data['slider'] = $slider;
 public function school_update(Request $request)
 {
 
-$id = $request->id;
+     $id = $request->id;
 $school_detail = school_detail::find($id);
 
 $data = [
@@ -125,7 +125,7 @@ $data = [
 
 
 
-
+// return $school_detail->slider;
 
     foreach (json_decode($school_detail->slider) as $value) {
 
@@ -134,12 +134,13 @@ $data = [
     }
     }
 
+    //  return $request->slider;
 
 
     $images = [];
     foreach ($request->slider as $key => $value) {
             $Image = $value['path'];
-            $image_url =  fileupload($Image,'backend/test/',1360,400);
+            $image_url =  fileupload($Image,'backend/slider/',1360,400);
             array_push($images,$image_url);
     }
  $slider =  json_encode($images);
@@ -157,7 +158,7 @@ $data = [
 $imgsize_arr = getimagesize($request->logo);
 $logo_width = $imgsize_arr[0];
 $logo_height = $imgsize_arr[1];
- $data['logo']= fileupload($request->logo,'backend/logo/',$logo_width,$logo_height);
+  $data['logo']= fileupload($request->logo,'backend/logo/',$logo_width,$logo_height);
 
 
  if(File::exists($school_detail->PRINCIPALS_IMGAGE)){
