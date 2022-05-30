@@ -123,7 +123,7 @@ CREATE TABLE `blogs` (
   `Images` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Tags` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Category` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` longtext COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Draft',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Draft',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -197,7 +197,7 @@ CREATE TABLE `events` (
   `Images` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Tags` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Category` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` longtext COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Draft',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Draft',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

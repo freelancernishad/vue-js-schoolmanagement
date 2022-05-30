@@ -7,7 +7,9 @@ import Vue from 'vue'
 
 // Vue.use(pagination);
 
-
+Vue.config.devtools = false;
+Vue.config.debug = false;
+Vue.config.silent = true;
 
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
