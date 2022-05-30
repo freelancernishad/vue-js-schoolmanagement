@@ -1,0 +1,22 @@
+/* 
+Name: Reset CSS
+Version: 1.0
+Developer: Shama
+Social link: https://www.facebook.com/A.S.Siddik0/
+ */
+
+ol, ul {
+  margin: 0;
+  padding: 0;
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }

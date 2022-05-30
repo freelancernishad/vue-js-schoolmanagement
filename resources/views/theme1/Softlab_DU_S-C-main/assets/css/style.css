@@ -1,0 +1,288 @@
+/* Base CSS */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+.theme_bg {
+  background-color: #002147 !important;
+}
+.theme_color {
+  color: #002147 !important;
+}
+.theme_color:hover {
+  color: #ffb606 !important;
+  transition: all .5s;
+}
+.theme_color2 {
+  color: #ffb606 !important;
+}
+
+#header_top {
+  border-bottom: 3px solid #ffb606;
+}
+
+.theme_border {
+  border: 2px solid #ffb606;
+}
+
+.theme_shadow {
+  box-shadow: 0px 0px 35px gray;
+}
+
+.theme_shadow:hover {
+  box-shadow: 0px 0px 10px #dad9d9;
+  transition: all 1.5s;
+  transform: scale(1.02);
+}
+
+.text_justify {
+  text-align: justify;
+}
+
+.title_border {
+  height: 3px;
+  width: 50px;
+  background-color: #ffb606;
+}
+
+ul {
+  margin: 0;
+  padding: 0%;
+  list-style: none;
+}
+li {
+  list-style: none !important;
+}
+a{
+  text-decoration: none;
+  color: #002147;
+}
+
+/* Navbar */
+.nav-item:hover {background: #79050b;border-radius: 5px;}
+
+li{
+    list-style: none;
+}
+#searchBox,
+#top-search-ico-close {
+  display: none;
+}
+
+#searchBox {
+  right: 160px;
+  top: 10px;
+}
+
+.search_icon{
+  color: #fff;
+}
+
+.sticky .search_icon{
+  color: #002147;
+}
+
+.sticky li a{
+  color: #000 !important;
+}
+
+.mainmenu {
+  background-color: #000000bf;
+}
+
+nav#myHeader {
+  position: absolute;
+  top: 73px;
+  width: 100%;
+  background: #00000080;
+  z-index: 999;
+}
+
+.sticky {
+  position: fixed !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  background: #ffffff !important;
+  width: 100% !important;
+}
+
+/* Banner */
+.slider_bg_color {
+  background-color: #000;
+}
+
+.overlay {
+  opacity: 0.5;
+  object-fit: cover;
+}
+
+.carousel-indicators .active{
+  background-color: #ffb606 !important;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  display: none;
+  background-color: #ffb606;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.carousel:hover .carousel-control-prev-icon, .carousel:hover .carousel-control-next-icon{
+  display: block;
+}
+/* CTA */
+.cta_bg {
+  background-image: url(https://www.du.ac.bd/fontView/assets/img/banner/30.jpg);
+}
+
+.cta_bg .fun_fact .info span {
+  display: block;
+}
+
+.cta_bg .fun_fact .info {
+  margin-top: 25px;
+  color: #ffffff;
+}
+
+.cta_bg .fun_fact .icon i {
+  display: inline-block;
+  font-size: 40px;
+  color: #ffb606;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.cta_bg .fun_fact .info .timer {
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: 0.6px;
+  font-weight: 700;
+}
+
+.cta_bg .fun_fact .info .medium {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: large;
+  letter-spacing: 0.6px;
+}
+
+.cta_bg .item:last-child {
+  border: none;
+}
+
+.bg-fixed {
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+}
+
+.default-padding {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.shadow {
+    position: relative;
+    z-index: 1;
+}
+
+.dark-hard::after {
+    background: #000000 none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+/* Events */
+
+.events .event .info li {
+  margin-bottom: 5px;
+}
+
+.events .event .info li:last-child {
+  margin-bottom: 0;
+}
+
+#events {
+  background-color: #eeeeee;
+}
+/* Campus */
+.campus_bg{
+  background-image: url(https://www.du.ac.bd/fontView/assets/img/details_info.jpg);
+}
+
+/* Featured */
+.feature .thumb {
+  width: 35%;
+}
+
+.feature .info {
+  width: 65%;
+}
+
+/* Footer */
+
+.bg-dark {
+  border-top: 2px solid #ffb606;
+}
+
+.footer-default-padding {
+  padding-top: 50px;
+}
+
+footer .f-items .f-item h4 {
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+footer .f-items .f-item.link li {
+  margin-bottom: 20px;
+}
+
+.text-light h1, .text-light h2, .text-light h3, .text-light h4, .text-light h5, .text-light h6, .text-light p, .text-light a {
+  color: #ffffff;
+}
+
+footer .f-items .f-item.link li i {
+  font-size: 10px;
+  margin-right: 2px;
+  color: #666666;
+}
+
+footer .f-items .f-item.link li a:hover,
+footer .f-items .f-item.link li a:hover i {
+  color: #ffb606;
+}
+
+#myBtn {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  scroll-behavior: smooth;
+  transform: rotate(270deg);
+}
+
+#myBtn:hover {
+  background-color: #002147;
+}

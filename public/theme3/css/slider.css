@@ -1,0 +1,84 @@
+/* .slider {
+	cursor: default; top: 0px; left: 0px; width: 600px; height: 210px; overflow: hidden;
+}
+.jssorb01 {
+  position: absolute;
+}
+.jssorb01 div, .jssorb01 div:hover, .jssorb01 .av {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  filter: alpha(opacity=70);
+  opacity: 1 !important;
+  overflow: hidden;
+  cursor: pointer;
+  border: #000 1px solid;
+}
+.jssorb01 div { background-color: gray; }
+.jssorb01 div:hover, .jssorb01 .av:hover { background-color: #d3d3d3; }
+.jssorb01 .av { background-color: #fff; }
+.jssorb01 .dn, .jssorb01 .dn:hover { background-color: #555555; }
+
+.jssora05l, .jssora05r {
+  display: block;
+  position: absolute;
+  top: 80px !important;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background: url('../media/ico/a17.png') no-repeat;
+  overflow: hidden;
+}
+.jssora05l { background-position: -10px -40px; top:0px;left:8px;width:40px;height:40px; }
+.jssora05r { background-position: -70px -40px; top:0px;right:8px;width:40px;height:40px;}
+.jssora05l:hover { background-position: -130px -40px; }
+.jssora05r:hover { background-position: -190px -40px; }
+.jssora05l.jssora05ldn { background-position: -250px -40px; }
+.jssora05r.jssora05rdn { background-position: -310px -40px; }
+
+.slider-content {padding: 7px;}
+.slider-content > div {
+	margin: auto;
+	top: 0px;
+	left: 0px; 
+	width: 600px;
+	height: 210px;
+	overflow: hidden;
+	visibility: hidden;
+}
+.slider-content > div > div:first-child {
+	position: absolute; top: 0px; left: 0px;
+}
+.slider-content > div > div:first-child > div:first-child {
+	filter: alpha(opacity=70);
+	opacity: 1;
+	position: absolute;
+	display: block;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+.slider-content > div > div:first-child > div:nth-child(2) {
+	position:absolute;
+	display:block;
+	background:url('../media/ico/loading.gif') no-repeat center center;
+	top:0px;
+	left:0px;
+	width:100%;
+}
+.slider-content > div > div:nth-child(2) div, .slider-content > div > div:nth-child(2) > a {
+	display: none;
+}
+.slider-content > div > div:nth-child(2) div > img {
+	height: 210px !important;
+}
+.slider-content > div > div.navigator {
+	bottom:16px; right:16px;
+}
+.navigator {
+	bottom: -200px !important;
+	right: 100px !important;
+}
+.navigator > div {
+	width:12px;height:12px;
+} */

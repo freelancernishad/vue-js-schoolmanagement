@@ -1,0 +1,230 @@
+<template>
+	<div>
+
+
+    <div class="breadcrumbs-area">
+        <h3>Routine</h3>
+        <ul>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>Routine</li>
+        </ul>
+    </div>
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                        <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
+                            GO BACK
+                        </router-link>
+                </div>
+                <div class="dropdown">
+
+
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="row">
+
+                    <div class="col-md-12 mb-5">
+                        <div id="success"></div>
+                        <form id="form" enctype="multipart/form-data" method="POST" v-on:submit.prevent="formsubmit" >
+
+                            <h5>
+                                <center v-if="this.$route.params.create=='edit'">EDIT CLASS {{ student_class }} ROUTION </center>
+                                <center v-else >ADD NEW CLASS {{ student_class }} ROUTION </center>
+
+                            </h5>
+                            <div class="table-responsive">
+                            <table  class="table text-nowrap"  >
+                                <thead>
+
+                                    <tr>
+                                        <th scope="col">Day</th>
+                                        <th scope="col">1st period</th>
+                                        <th scope="col">2nd period</th>
+                                        <th scope="col">3rd period</th>
+                                        <th scope="col">4th period</th>
+                                        <th scope="col">5th period</th>
+                                        <th scope="col">6th period</th>
+                                        <th scope="col">7th period</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr v-for="(day,index) in days[0]">
+                                        <td scope="col">
+                                            <input type="hidden" name="class" value="<?php echo $class; ?>" />
+                                            <input type="hidden" name="year" value="<?php echo date('Y'); ?>" />
+
+                                                <input type="hidden" name="week_name" :value="day">{{ day }}
+
+
+                                        </td>
+
+                                        <td scope="col" v-for="formsubjectsInput in formsubjectsInputs">
+
+                                            <select class="form-control" v-model="form[formsubjectsInput][day]" required>
+                                                <option value="">
+                                                    SELECT
+                                                </option>
+                                                <option v-for="subject in subjects[0]">{{ subject }}</option>
+                                            </select>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                            <input class="btn btn-success" type="submit" value="SUBMIT" id="save_btn" />
+                        </form>
+                    </div><!-- col-md-12 -->
+
+
+            </div> <!-- row -->
+
+
+
+
+</div>
+</div>
+
+
+
+	</div>
+</template>
+
+<script>
+export default {
+created(){
+if(this.$route.params.create=='edit'){
+    this.allroutine()
+}
+
+       this.school_id = getschoolid
+       this.form.school_id = getschoolid
+
+},
+
+	data () {
+		return {
+			routines: [],
+			classes: [],
+			days: [],
+			subjects: [],
+			school_id:"",
+			student_class:"",
+            form:{
+                school_id:null,
+                routne_id:null,
+                year:null,
+                class:null,
+                status:null,
+                first_period:{},
+                second_period:{},
+                thard_period:{},
+                fourth_period:{},
+                fith_period:{},
+                sixth_period:{},
+                seventh_period:{},
+            },
+            editform:[],
+            formsubjectsInputs:['first_period','second_period','thard_period','fourth_period','fith_period','sixth_period','seventh_period',],
+
+		}
+	},
+
+	methods: {
+
+
+
+            allroutine(){
+                    this.form.first_period = {}
+                    this.form.second_period = {}
+                    this.form.thard_period = {}
+                    this.form.fourth_period = {}
+                    this.form.fith_period = {}
+                    this.form.sixth_period = {}
+                    this.form.seventh_period = {}
+
+
+                axios.get(`/api/routines/get?filter[class]=${this.student_class}&filter[school_id]=${this.school_id}`)
+                .then(({data}) => {
+                    // this.editform = data;
+
+
+
+                data.forEach(element => {
+                    this.form.first_period[element.week_name] = element.first_period
+                    this.form.second_period[element.week_name] = element.second_period
+                    this.form.thard_period[element.week_name] = element.thard_period
+                    this.form.fourth_period[element.week_name] = element.fourth_period
+                    this.form.fith_period[element.week_name] = element.fith_period
+                    this.form.sixth_period[element.week_name] = element.sixth_period
+                    this.form.seventh_period[element.week_name] = element.seventh_period
+
+            });
+
+                })
+                .catch()
+            },
+
+
+
+        formsubmit(){
+                axios.post(`/api/routines/submit`,this.form)
+                                .then(({data}) => {
+                                    //  console.log(data)
+                                this.$router.push({name: 'routineslist',params:{classname:this.student_class,school_id:this.school_id}})
+                                Notification.success();
+                                })
+                                .catch(() => {
+                                    // this.$router.push({name: 'supplier'})
+                                })
+        }
+
+
+
+	},
+	mounted(){
+
+
+         this.student_class = this.$route.params.classname
+		this.classes =  User.classlist();
+		this.days =  User.days();
+		this.subjects =  User.subjects(this.student_class);
+
+
+
+
+
+
+this.form.school_id =  this.school_id;
+this.form.year =  User.dateformat()[5];
+this.form.class =  this.student_class;
+this.form.status =  'active';
+
+
+
+
+
+	}
+}
+</script>
+
+<style lang="css" scoped>
+#img_size{
+	width: 40px;
+}
+</style>
+
