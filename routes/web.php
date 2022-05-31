@@ -71,8 +71,11 @@ Route::group(['middleware'=>['api']],function(){
       Route::get('/result_sheet/pdf/{school_id}/{group}/{class}/{exam}/All/{date}',[resultController::class , 'resultViewpdf']);
 
       Route::get('/student_list/pdf/{year}/{class}/{student_id}',[studentsController::class ,'student_list_pdf']);
-      Route::get('/{vue_capture?}', function () {
+
+    });
+
+    Route::get('/{vue_capture?}', function () {
         return view('admin/layout.layout');
     })->where('vue_capture', '[\/\w\.-]*');
-    });
+
     });
