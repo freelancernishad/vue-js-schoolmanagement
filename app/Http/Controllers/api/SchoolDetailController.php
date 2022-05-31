@@ -47,7 +47,7 @@ $data = [
 "slider"=> $result->slider
 ];
 
-$data['logo']= base64(env('FILE_PATH').$result->logo);
+$data['logo']= base64($result->logo);
 $data['PRINCIPALS_IMGAGE']= base64($result->PRINCIPALS_IMGAGE);
 $data['PRINCIPALS_Signature']= base64($result->PRINCIPALS_Signature);
 $data['HISTORY_OF_THE_ORGANIZATION_IMAGE']= base64($result->HISTORY_OF_THE_ORGANIZATION_IMAGE);

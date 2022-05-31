@@ -542,9 +542,12 @@ function allList($type='',$class='',$group='')
 
 }
 
- function base64($Image)
-{
 
+
+
+function base64($Image)
+{
+//  return $Image;
 
     if(File::exists(env('FILE_PATH').$Image)){
 
@@ -554,7 +557,7 @@ function allList($type='',$class='',$group='')
 
     }
 
-
+// return $Image;
     return $b64image = 'data:image/png;base64,'.base64_encode(file_get_contents($Image));
 }
 
@@ -566,15 +569,20 @@ function allList($type='',$class='',$group='')
     $position = strpos($Image, ';');
     $sub = substr($Image, 0, $position);
     $ext = explode('/', $sub)[1];
-$random = rand(10000,99999);
+    $random = rand(10000,99999);
     $name = time().'____'.$random.'.'.$ext;
     $img = Image::make($Image)->resize($width, $height);
 
-    $upload_path = env('FILE_PATH').$path;
+    $upload_path = $path;
     $image_url = $upload_path.$name;
-     $img->save($image_url);
+     $img->save(env('FILE_PATH').$image_url);
      return $image_url;
 }
+
+
+
+
+
 
 
 

@@ -285,18 +285,15 @@ class studentsController extends Controller
             $data['rows'] = DB::table('students')->where($wds)->orderBy('StudentRoll', 'ASC')->get();
         }
         $data['types'] = 'pdf';
-        //in Controller
-        $paths = 'frontend/sing.png';
-        $types = pathinfo($paths, PATHINFO_EXTENSION);
-        $datais = file_get_contents($paths);
-        $logos = 'data:image/' . $types . ';base64,' . base64_encode($datais);
-        $data['sign'] = $logos;
-        //in Controller
-        $pathgovlogo = 'frontend/jss.PNG';
-        $typegovlogo = pathinfo($pathgovlogo, PATHINFO_EXTENSION);
-        $dataigovlogo = file_get_contents($pathgovlogo);
-        $govlogo = 'data:image/' . $typegovlogo . ';base64,' . base64_encode($dataigovlogo);
-        $data['card'] = $govlogo;
+
+
+        $data['sign'] = base64(sitedetails()->PRINCIPALS_Signature);
+
+
+        $data['card'] = base64('frontend/jss.PNG');
+
+
+
         $fileName = 'cards-' . date('Y-m-d H:m:s');
         $data['fileName'] = $fileName;
         $foldername = $data['rows'][0]->school_id;
