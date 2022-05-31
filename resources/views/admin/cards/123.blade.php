@@ -60,7 +60,7 @@ if($row->StudentPicture==''){
 // $typestudentimage = pathinfo($pathstudentimage, PATHINFO_EXTENSION);
 //     $dataistudentimage = file_get_contents($pathstudentimage);
 //     $studentimage = 'data:image/' . $typestudentimage . ';base64,' . base64_encode($dataistudentimage);
-    $studentimage = base64('214748347.jpg')
+    $studentimage = base64('214748347.jpg');
 
 
 
