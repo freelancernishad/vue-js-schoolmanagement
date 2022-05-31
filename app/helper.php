@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Visitor;
-
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 function sitedetails()
 {
@@ -541,9 +542,20 @@ function allList($type='',$class='',$group='')
 
 }
 
- function base64($id)
+ function base64($Image)
 {
-    return $b64image = 'data:image/png;base64,'.base64_encode(file_get_contents($id));
+
+
+    if(File::exists(env('FILE_PATH').$Image)){
+
+        $Image= env('FILE_PATH').$Image;
+    }else{
+        $Image= env('FILE_PATH').'backend/image.png';
+
+    }
+
+
+    return $b64image = 'data:image/png;base64,'.base64_encode(file_get_contents($Image));
 }
 
  function fileupload($Image,$path,$width,$height)
@@ -558,7 +570,7 @@ $random = rand(10000,99999);
     $name = time().'____'.$random.'.'.$ext;
     $img = Image::make($Image)->resize($width, $height);
 
-    $upload_path = $path;
+    $upload_path = env('FILE_PATH').$path;
     $image_url = $upload_path.$name;
      $img->save($image_url);
      return $image_url;

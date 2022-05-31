@@ -47,7 +47,7 @@ $data = [
 "slider"=> $result->slider
 ];
 
-$data['logo']= base64($result->logo);
+$data['logo']= base64(env('FILE_PATH').$result->logo);
 $data['PRINCIPALS_IMGAGE']= base64($result->PRINCIPALS_IMGAGE);
 $data['PRINCIPALS_Signature']= base64($result->PRINCIPALS_Signature);
 $data['HISTORY_OF_THE_ORGANIZATION_IMAGE']= base64($result->HISTORY_OF_THE_ORGANIZATION_IMAGE);
@@ -140,7 +140,9 @@ $data = [
     $images = [];
     foreach ($request->slider as $key => $value) {
             $Image = $value['path'];
+
             $image_url =  fileupload($Image,'backend/slider/',1360,400);
+
             array_push($images,$image_url);
     }
  $slider =  json_encode($images);
