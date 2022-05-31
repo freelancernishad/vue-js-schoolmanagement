@@ -242,7 +242,7 @@ this.action = 'Delete'
 						 .then(({data}) => {
                              this.galleryfun();
 
-                            Notification.customsucess(`Your data has been ${this.action}.`);
+                            Notification.customdelete(`Your data has been ${this.action}.`);
 
 						 })
 						 .catch(() => {

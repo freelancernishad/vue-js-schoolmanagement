@@ -1,6 +1,6 @@
 <template>
     <div>
-
+<loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
         <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
             <h3>Students</h3>
@@ -271,7 +271,7 @@ if(this.$route.params.classname && this.$route.params.status){
             searchtype: "",
             name: "",
             student_class: "",
-            status: "",
+            status: "Active",
             school_id: "",
             year: new Date().getFullYear(),
             timeout: null,
@@ -280,6 +280,7 @@ if(this.$route.params.classname && this.$route.params.status){
             sorttype: '',
             icon: '',
             looding: true,
+            preloader: true,
         }
     },
 
@@ -307,7 +308,8 @@ if(this.$route.params.classname && this.$route.params.status){
         },
 
         allstudents(page) {
-console.log(this.student_class);
+
+
             clearTimeout(this.timeout);
 
 
@@ -320,7 +322,7 @@ console.log(this.student_class);
                 sort = `sort=${this.sorttype}${this.field}`;
             }
             if (this.searchtype == '') {
-                url = `/api/students/list?page=${page}&${sort}&filter[school_id]=${this.school_id}`;
+                url = `/api/students/list?page=${page}&${sort}&filter[school_id]=${this.school_id}&filter[StudentStatus]=${this.status}`;
             } else if (this.searchtype == 'filterclass') {
 
                 if(this.student_class=='All'){
@@ -332,7 +334,7 @@ console.log(this.student_class);
                 url = `/api/students/list?page=${page}&filter[StudentStatus]=${this.status}&filter[StudentClass]=${classsearch}&filter[Year]=${this.year}&filter[school_id]=${this.school_id}&${sort}`;
 
             } else if (this.searchtype == 'filtername') {
-                url = `/api/students/list?page=${page}&filter[StudentName]=${this.name}&${sort}&filter[school_id]=${this.school_id}`;
+                url = `/api/students/list?page=${page}&filter[StudentName]=${this.name}&${sort}&filter[school_id]=${this.school_id}&filter[StudentStatus]=${this.status}`;
 
             }
 
@@ -351,6 +353,9 @@ console.log(this.student_class);
                         this.students = data
                         this.studentsall = data.data
                         this.looding = false
+
+                         this.preloader = false;
+
                     })
                     .catch()
             }, 300);
@@ -389,17 +394,22 @@ console.log(this.student_class);
                 if (result.isConfirmed) {
                     axios.post(`/api/student/${this.action}`, this.actioncheck)
                         .then(({ data }) => {
-                            this.allstudents();
+
+if(this.action=='Delete'){
+
+    Notification.customdelete(`Your data has been ${this.action}.`);
+}else{
+
+    Notification.customsucess(`Your data has been move to ${this.action}.`);
+}
+   this.allstudents();
+
                         })
                         .catch(() => {
                             // this.$router.push({name: 'supplier'})
                         })
 
-                    Swal.fire(
-                        `${this.action}!`,
-                        `Your data has been ${this.action}.`,
-                        'success'
-                    )
+
                 }
             })
         }

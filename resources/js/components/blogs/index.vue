@@ -82,7 +82,7 @@
                                 </td>
                                     <td>{{ blog.status }}</td>
                                 <td>
-                                    <img width="70px" :src="'/'+JSON.parse(blog.Images)[0]" alt="">
+                                    <img width="70px" :src="ASSETURL+JSON.parse(blog.Images)[0]" alt="">
 
                                 </td>
                                 <td>
@@ -103,6 +103,7 @@
 export default {
     created() {
     this.school_id = getschoolid
+    this.ASSETURL = ASSETURL
     },
     data() {
         return {
@@ -110,6 +111,7 @@ export default {
             school_id: '',
             searchtype:"",
             title:"",
+            ASSETURL: '',
             action:"",
             looding:true,
         }
@@ -153,7 +155,7 @@ this.action = 'Delete'
 						 .then(({data}) => {
                              this.blogfun();
 
-                            Notification.customsucess(`Your data has been ${this.action}.`);
+                            Notification.customdelete(`Your data has been ${this.action}.`);
 
 						 })
 						 .catch(() => {
@@ -167,7 +169,7 @@ this.action = 'Delete'
     },
     mounted() {
         this.category = this.$route.params.category;
- 
+
             this.blogfun();
 
 

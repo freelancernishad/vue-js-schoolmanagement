@@ -1,5 +1,7 @@
 <template>
 	<div>
+        <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
+
    <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
             <h3>Students</h3>
@@ -138,7 +140,8 @@ export default {
             form:{},
             classes:{},
             editid:'',
-            classdisable:false
+            classdisable:false,
+               preloader: true,
 		}
 	},
 
@@ -151,6 +154,7 @@ export default {
                                 .then(({data}) => {
                                     //  console.log(data)
                                     this.form = data[0]
+                                              this.preloader = false;
                                 })
                                 .catch(() => {
                                     // this.$router.push({name: 'supplier'})

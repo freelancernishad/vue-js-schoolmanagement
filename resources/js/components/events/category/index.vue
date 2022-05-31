@@ -237,7 +237,7 @@ this.action = 'Delete'
 						 .then(({data}) => {
                              this.blogfun();
 
-                            Notification.customsucess(`Your data has been ${this.action}.`);
+                            Notification.customdelete(`Your data has been ${this.action}.`);
 
 						 })
 						 .catch(() => {

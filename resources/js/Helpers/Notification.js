@@ -1,17 +1,17 @@
 class Notification{
 
     successSound(){
-        var data = {  soundurl : '/public/Single Audio.mp3'}
+        var data = {  soundurl : ASSETURL+'Single Audio.mp3'}
         var audio = new Audio(data.soundurl);
         audio.play();
     }
     deleteSound(){
-        var data = {  soundurl : '/public/Broke Glass.mp3'}
+        var data = {  soundurl : ASSETURL+'Broke Glass.mp3'}
         var audio = new Audio(data.soundurl);
         audio.play();
     }
     errorSound(){
-        var data = {  soundurl : '/public/Windows error.mp3'}
+        var data = {  soundurl : ASSETURL+'Windows error.mp3'}
         var audio = new Audio(data.soundurl);
         audio.play();
     }
@@ -110,6 +110,15 @@ class Notification{
 			type: 'error',
 			layout: 'topRight',
 			text: 'Product removed from cart!',
+			timeout: 2000,
+		}).show();
+        this.deleteSound();
+	}
+	customdelete(mess){
+		new Noty({
+			type: 'error',
+			layout: 'topRight',
+			text: mess,
 			timeout: 2000,
 		}).show();
         this.deleteSound();

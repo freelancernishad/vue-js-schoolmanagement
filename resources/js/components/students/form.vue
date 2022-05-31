@@ -1,5 +1,6 @@
 <template>
 	<div>
+        <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
    <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
             <h3>Students</h3>
@@ -333,7 +334,8 @@ export default {
             },
             classes:{},
             editid:'',
-            classdisable:false
+            classdisable:false,
+               preloader: true,
 		}
 	},
 
@@ -359,6 +361,7 @@ if(this.form.StudentClass!='Nine' || this.form.StudentClass!='Ten') this.form.St
                                 .then(({data}) => {
                                     //  console.log(data)
                                     this.form = data[0]
+                                              this.preloader = false;
                                 })
                                 .catch(() => {
                                     // this.$router.push({name: 'supplier'})
@@ -367,11 +370,13 @@ if(this.form.StudentClass!='Nine' || this.form.StudentClass!='Ten') this.form.St
 
 
         formsubmit(){
+                      this.preloader = true;
                 axios.post(`/api/students/form/submit`,this.form)
                 .then(({data}) => {
                     //  console.log(data)
                         this.$router.push({name: 'students'})
                         Notification.success();
+                                  this.preloader = false;
                 })
                 .catch(() => {
                     // this.$router.push({name: 'supplier'})
@@ -387,6 +392,10 @@ if(this.form.StudentClass!='Nine' || this.form.StudentClass!='Ten') this.form.St
        if(this.$route.params.id){
 
            this.editid = this.$route.params.id;
+
+       }else{
+       
+              this.preloader = false;
        }
        if(this.editid!=''){
 

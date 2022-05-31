@@ -79,7 +79,7 @@
                                 <td>
                                     <router-link  :to="{name:'galleryscategory', params:{category:gallery.category}}">{{ gallery.category }}</router-link>
                                 </td>
-                                <td><img width="70px" :src="'/'+JSON.parse(gallery.image)[0]" alt="">
+                                <td><img width="70px" :src="ASSETURL+JSON.parse(gallery.image)[0]" alt="">
 
                                 </td>
                                 <td>
@@ -100,11 +100,13 @@
 export default {
     created() {
        this.school_id = getschoolid
+       this.ASSETURL = ASSETURL
     },
     data() {
         return {
             gallerys: {},
             school_id: '',
+            ASSETURL: '',
             searchtype:"",
             title:"",
             action:"",
@@ -155,7 +157,7 @@ this.action = 'Delete'
 						 .then(({data}) => {
                              this.galleryfun();
 
-                            Notification.customsucess(`Your data has been ${this.action}.`);
+                            Notification.customdelete(`Your data has been ${this.action}.`);
 
 						 })
 						 .catch(() => {

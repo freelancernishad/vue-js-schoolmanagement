@@ -38,11 +38,14 @@ import User from './helpers/User';
 window.User = User
 
 window.RootUrl = window.location.origin;
+// window.ASSETURL = '/public/';
+window.ASSETURL = '/';
+// window.preloader = true;
 
 
-// import loader from "vue-ui-preloader";
+import loader from "vue-ui-preloader";
 
-// Vue.use(loader);
+Vue.use(loader);
 
 function schoolid(){
 

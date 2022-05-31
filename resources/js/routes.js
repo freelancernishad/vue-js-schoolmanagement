@@ -103,10 +103,10 @@ export const routes = [
 
   // students Routes
   { path: '/school/students', component: students, name:'students' },
-  { path: '/school/students/card', component: studentCard, name:'studentCard' },
-  { path: '/school/students/:classname/:status', component: students, name:'studentssearch' },
   { path: '/school/students/edit/:id', component: studentedit, name:'studentedit' },
   { path: '/school/students/view/:id', component: studentview, name:'studentview' },
+  { path: '/school/students/card', component: studentCard, name:'studentCard' },
+  { path: '/school/students/:classname/:status', component: students, name:'studentssearch' },
   { path: '/school/students/form', component: studentsform, name:'studentsform' },
   { path: '/school/students/attendance', component: studentsattendance, name:'studentsattendance' },
   { path: '/school/students/attendance/Daily/:classname/:date', component: students_attendance_daily, name:'students_attendance_daily' },
