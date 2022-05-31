@@ -38,6 +38,7 @@ import User from './helpers/User';
 window.User = User
 
 window.RootUrl = window.location.origin;
+window.asseturl = '/public/';
 
 // import loader from "vue-ui-preloader";
 
