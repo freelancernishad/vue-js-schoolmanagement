@@ -1,17 +1,17 @@
 class Notification{
 
     successSound(){
-        var data = {  soundurl : asseturl+'Single Audio.mp3'}
+        var data = {  soundurl : '/public/Single Audio.mp3'}
         var audio = new Audio(data.soundurl);
         audio.play();
     }
     deleteSound(){
-        var data = {  soundurl : asseturl+'Broke Glass.mp3'}
+        var data = {  soundurl : '/public/Broke Glass.mp3'}
         var audio = new Audio(data.soundurl);
         audio.play();
     }
     errorSound(){
-        var data = {  soundurl : asseturl+'Windows error.mp3'}
+        var data = {  soundurl : '/public/Windows error.mp3'}
         var audio = new Audio(data.soundurl);
         audio.play();
     }
