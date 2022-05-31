@@ -93,6 +93,25 @@ a.item.active {background: #ffac01;}
 }
 </style>
 
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+<script type="text/javascript">
+
+jQuery( window ).on( "swipeleft swiperight", function( event )
+  {
+
+  if(event.type=='swiperight'){
+    console.log(event.type)
+    document.getElementById('wrapper').classList.add('sidebar-collapsed-mobile')
+  } else if(event.type=='swipeleft'){
+    console.log(event.type)
+    document.getElementById('wrapper').classList.remove('sidebar-collapsed-mobile')
+  }
+  } );
+  </script>
+
 </head>
 
 <body>
@@ -187,7 +206,7 @@ a.item.active {background: #ffac01;}
         <!-- Page Area Start Here -->
         <div class="dashboard-page-one">
             <!-- Sidebar Area Start Here -->
-            <div class="sidebar-main sidebar-menu-one sidebar-expand-md sidebar-color" v-show="$route.path === '/login' || $route.path === '/register' || $route.path === 'forget' ? false : true " >
+            <div class="sidebar-main sidebar-menu-one sidebar-expand-md sidebar-color" v-show="$route.path === '/login' || $route.path === '/register' || $route.path === 'forget' ? false : true " id='leftnavbar'>
                <div class="mobile-sidebar-header d-md-none">
                     <div class="header-logo">
                         <router-link to="/school/"><img src="{{ asset('dashboard_asset/img/logo1.png') }}" alt="logo"></router-link>
