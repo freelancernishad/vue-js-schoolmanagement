@@ -91,6 +91,20 @@ a.item.active {background: #ffac01;}
 .image-container.position-relative.text-center {
     width: 100% !important;
 }
+
+
+    @media(max-width:767px){
+        .btn-fill-md, .btn-fill-lg, .fw-btn-fill, .btn-fill-lmd {
+    font-size: 13px;
+    padding: 8px 15px;
+}
+th, th label {
+    font-size: 13px !important;
+}td {
+    font-size: 12px;
+}
+    }
+
 </style>
 
 {{-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> --}}

@@ -18,13 +18,13 @@
 
             <div class="heading-layout1">
                 <div class="item-title">
-                    <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                    <router-link  class="btn-fill-md radius-4 text-light bg-orange-red"
                             v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
                             GO BACK
                         </router-link>
                 </div>
                 <div class="dropdown">
- <router-link class="btn fw-btn-fill btn-gradient-yellow addnewbtn" :to="{ name: 'staffsform' }">Add
+ <router-link class="btn-fill-lg font-normal text-light gradient-pastel-green float-right" :to="{ name: 'staffsform' }">Add
                         Staffs</router-link>
 
 

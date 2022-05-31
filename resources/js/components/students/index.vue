@@ -18,7 +18,7 @@
 
                 <div class="heading-layout1">
                     <div class="item-title">
-                        <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                        <router-link  class="btn-fill-md radius-4 text-light bg-orange-red"
                             v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
                             GO BACK
                         </router-link>
