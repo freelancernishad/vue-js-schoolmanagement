@@ -56,17 +56,18 @@
 if($row->StudentPicture==''){
 
 //in Controller
-$pathstudentimage = '214748347.jpg';
-$typestudentimage = pathinfo($pathstudentimage, PATHINFO_EXTENSION);
-    $dataistudentimage = file_get_contents($pathstudentimage);
-    $studentimage = 'data:image/' . $typestudentimage . ';base64,' . base64_encode($dataistudentimage);
+// $pathstudentimage = '214748347.jpg';
+// $typestudentimage = pathinfo($pathstudentimage, PATHINFO_EXTENSION);
+//     $dataistudentimage = file_get_contents($pathstudentimage);
+//     $studentimage = 'data:image/' . $typestudentimage . ';base64,' . base64_encode($dataistudentimage);
+    $studentimage = base64('214748347.jpg')
 
 
 
 }else{
 
 
-    $studentimage = 'images/'.$row->StudentPicture;
+    $studentimage = env('FILE_PATH').'images/'.$row->StudentPicture;
 // $pathstudentimage = env('FILE_PATH').'students/'.$row->StudentPicture;
 
 }
