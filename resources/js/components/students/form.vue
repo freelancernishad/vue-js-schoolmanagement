@@ -345,7 +345,7 @@ export default {
 if(this.form.StudentClass!='Nine' || this.form.StudentClass!='Ten') this.form.StudentGroup=''
 
 
-		axios.get(`/api/student/check?classvalue=${this.form.StudentClass}`)
+		axios.get(`/api/student/check?classvalue=${this.form.StudentClass}&school_id=${this.form.school_id}`)
 			.then(({data}) => {
                 this.form.AdmissionID = data.admition_ID;
                 this.form.StudentID = data.StudentID;

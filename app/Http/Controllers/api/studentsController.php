@@ -97,9 +97,9 @@ class studentsController extends Controller
         }
         return response()->json($data);
     }
-    public function StudentAdmissionId($admition_id)
+    public function StudentAdmissionId($admition_id,$school_id)
     {
-        $school_id = sitedetails()[0]->school_id;
+
         $mutiple = (rand(1, 9));
         $admition_ID = $school_id . $admition_id;
         return $admition_ID += $mutiple;
@@ -150,9 +150,9 @@ class studentsController extends Controller
         }
         return $result;
     }
-    public function StudentId($class, $roll)
+    public function StudentId($class, $roll,$school_id)
     {
-        $school_id = sitedetails()[0]->school_id;
+
         $classidd = $this->word_digit($class);
         $classid = str_pad($classidd, 2, '0', STR_PAD_LEFT);
         $yearid = date("y");
@@ -161,7 +161,8 @@ class studentsController extends Controller
     }
     public function student_check(Request $r)
     {
-        $school_id = sitedetails()[0]->school_id;
+
+        $school_id = $r->school_id;
         $class = $r->classvalue;
         if ($class == '') {
             $data = ['admition_ID' => '', 'StudentID' => '', 'StudentRoll' => ''];
@@ -178,15 +179,15 @@ class studentsController extends Controller
             $row = DB::table('students')->where($wheredata)->orderBy('StudentRoll', 'DESC')->get();
             $admition_id = $row[0]->AdmissionID;
             $roll = $row[0]->StudentRoll + 1;
-            $admition_ID = $this->StudentAdmissionId($admition_id);
-            $StudentID = $this->StudentId($class, $roll);
+            $admition_ID = $this->StudentAdmissionId($admition_id,$school_id);
+            $StudentID = $this->StudentId($class, $roll,$school_id);
             $data = ['admition_ID' => $admition_ID, 'StudentID' => $StudentID, 'StudentRoll' => $row[0]->StudentRoll + 1];
         } else {
             $one = "0001";
             $year = date("dmy");
             $admition_ID = $school_id . $year . $one;
             ////////////////////////////////
-            $StudentID = $this->StudentId($class, "1");
+            $StudentID = $this->StudentId($class, "1",$school_id);
             $data = ['admition_ID' => $admition_ID, 'StudentID' => $StudentID, 'StudentRoll' => '1'];
         }
         return response()->json($data);
