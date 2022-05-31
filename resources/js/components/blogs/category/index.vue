@@ -1,6 +1,6 @@
 <template>
     <div>
-
+    <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
         <h3>Blog Category</h3>
@@ -135,6 +135,7 @@ export default {
             title:"",
             action:"",
               slug:null,
+              preloader: true,
             form:{
                 id:'',
                 school_id:null,
@@ -163,6 +164,7 @@ export default {
                 .then(({ data }) => {
                     this.categorys = data;
    this.looding =false
+   this.preloader = false;
                 })
                 .catch()
                   }, 300);
@@ -187,10 +189,11 @@ export default {
 
 
         formsubmit() {
+            this.preloader = true;
             axios.post(`/api/blog_category/submit`, this.form)
                 .then(({ data }) => {
                     // console.log(data[0].message);
-
+this.preloader = false;
                     if(data[0].message=='validation error'){
                         this.errors = data[0].data
                         Object.values(this.errors).forEach(error => {

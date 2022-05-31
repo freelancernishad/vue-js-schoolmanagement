@@ -1,5 +1,6 @@
 <template>
 	<div>
+                        <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
   <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
         <h3>Students Attendence</h3>
@@ -15,11 +16,10 @@
 
     <div class="card height-auto">
         <div class="card-body">
- <router-link class="btn btn-danger my-5"
-    v-if="$routerHistory.hasPrevious()"
-    :to="{ path: $routerHistory.previous().path }">
-    GO BACK
-</router-link>
+                        <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
+                            GO BACK
+                        </router-link>
 
   <form  enctype="multipart/form-data" v-on:submit.prevent="formsubmit" >
 
@@ -191,6 +191,7 @@ export default {
             StudentClass:'',
             disabled:[],
             classes:[],
+            preloader: true,
 
 
 
@@ -201,6 +202,7 @@ export default {
 	methods: {
 
             filter(){
+                this.preloader = true;
                 if(this.$router.currentRoute.path===`/school/students/attendance/${this.veiwtype}/${this.dateormonth}`){
 
                 }else{
@@ -250,7 +252,7 @@ if(this.veiwtype=='Daily'){
                             });
                         }
 
-
+this.preloader = false;
 
 
                     })
@@ -259,8 +261,10 @@ if(this.veiwtype=='Daily'){
                     })
             },
             formsubmit(){
+                this.preloader = true;
                 axios.post(`/api/student/attendance/submit`,this.form)
                 .then(({data}) => {
+                    this.preloader = false;
                         // console.log(data)
                     this.getdata();
                     this.form.id = '';

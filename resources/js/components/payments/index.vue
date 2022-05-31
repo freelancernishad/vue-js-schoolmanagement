@@ -1,5 +1,6 @@
 <template>
 	<div>
+
  <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
         <h3>Accounts</h3>
@@ -16,7 +17,10 @@
         <div class="card-body">
             <div class="heading-layout1">
                 <div class="item-title">
-                    <h3>All Fees Collection</h3>
+                    <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
+                            GO BACK
+                        </router-link>
                 </div>
                 <div class="dropdown">
 

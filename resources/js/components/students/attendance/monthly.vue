@@ -1,5 +1,6 @@
 <template>
 	<div>
+    <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
   <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
         <h3>Students Attendence</h3>
@@ -15,14 +16,13 @@
 
     <div class="card height-auto">
         <div class="card-body">
-      <router-link class="btn btn-danger my-5"
-    v-if="$routerHistory.hasPrevious()"
-    :to="{ path: $routerHistory.previous().path }">
-    GO BACK
-</router-link>
+
             <div class="heading-layout1">
                 <div class="item-title">
-                    <h3>Students Attendence</h3>
+                                    <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
+                            GO BACK
+                        </router-link>
                 </div>
                 <div class="dropdown">
                  <a :href="'/school/attendence_sheet/pdf/'+school_id+'/'+StudentClass+'/'+veiwtype+'/'+dateormonth" class="btn-fill-lmd text-light gradient-dodger-blue" style="float:right;margin-bottom:10px"  rel="noopener noreferrer">Download Full Report</a>
@@ -204,12 +204,14 @@ export default {
              fullattenReport:'',
               classes:[],
             button:'SENT SMS ABSENT STUDENT',
+            preloader: true,
 		}
 	},
 
 	methods: {
 
             filter(){
+                this.preloader = true;
 
 // console.log(this.$router.currentRoute.path)
 // console.log(`/school/students/attendance/${this.veiwtype}/${this.dateormonth}`)
@@ -234,6 +236,7 @@ if(this.veiwtype=='Daily'){
                 axios.get(`/api/student/attendance?veiwtype=${this.veiwtype}&dateormonth=${this.dateormonth}&StudentClass=${this.StudentClass}&school_id=${this.school_id}`)
                     .then(({data}) => {
                             this.attreport = data
+                            this.preloader = false;
                         })
                     .catch(() => {
                         // this.$router.push({name: 'supplier'})

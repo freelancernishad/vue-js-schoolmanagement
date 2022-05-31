@@ -1,5 +1,6 @@
 <template>
     <div>
+            <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
 <div class="breadcrumbs-area">
     <h3>SENT SMS</h3>
     <ul>
@@ -49,6 +50,7 @@ export default {
         return {
 
             classes: {},
+            preloader: true,
             message: {},
             button:'SEND SMS' ,
             form: {
@@ -60,11 +62,12 @@ export default {
     },
     methods: {
         formsubmit(){
-
+this.preloader = true;
             this.button='SENDING SMS...'
 
                 axios.post(`/api/sent_sms/submit`,this.form)
                     .then(({data}) => {
+                        this.preloader = false;
                         //  console.log(data[0].data)
                             // this.$router.push({name: 'students'})
                         this.message = data[0].data

@@ -394,7 +394,7 @@ if(this.form.StudentClass!='Nine' || this.form.StudentClass!='Ten') this.form.St
            this.editid = this.$route.params.id;
 
        }else{
-       
+
               this.preloader = false;
        }
        if(this.editid!=''){

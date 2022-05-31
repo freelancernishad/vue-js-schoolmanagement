@@ -1,5 +1,6 @@
 <template>
     <div>
+                <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
         <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
             <h3>Staffs</h3>
@@ -14,13 +15,23 @@
         <!-- Staffs Table Area Start Here -->
         <div class="card height-auto">
             <div class="card-body">
-                <div class="heading-layout1">
-                    <div class="item-title">
-                        <h3>All Staffs Data</h3>
-                    </div>
-                    <router-link class="btn fw-btn-fill btn-gradient-yellow addnewbtn" :to="{ name: 'staffsform' }">Add
-                        Staffs</router-link>
+
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
+                            GO BACK
+                        </router-link>
                 </div>
+                <div class="dropdown">
+ <router-link class="btn fw-btn-fill btn-gradient-yellow addnewbtn" :to="{ name: 'staffsform' }">Add
+                        Staffs</router-link>
+
+
+                </div>
+            </div>
+
+
 
 
 
@@ -168,6 +179,7 @@ export default {
             field: '',
             sorttype: '',
             icon: '',
+                           preloader: true,
             looding:true
         }
     },
@@ -230,6 +242,7 @@ export default {
                         this.staffs = data
                         this.staffsall = data.data
                           this.looding = false
+                                        this.preloader = false;
                     })
                     .catch()
             }, 300);

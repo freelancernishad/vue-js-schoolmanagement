@@ -1,5 +1,6 @@
 <template>
 	<div>
+                <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
    <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
             <h3>Staffs</h3>
@@ -18,11 +19,10 @@
    <!-- Staff Details Area Start Here -->
   <div class="card height-auto">
     <div class="card-body">
-        <router-link class="btn btn-danger my-5"
-    v-if="$routerHistory.hasPrevious()"
-    :to="{ path: $routerHistory.previous().path }">
-    GO BACK
-</router-link>
+                        <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
+                            GO BACK
+                        </router-link>
         <div class="heading-layout1">
 
 
@@ -39,7 +39,7 @@
                     <div class="header-inline item-header">
                         <h3 class="text-dark-medium font-medium">{{ form.TeacherName }}</h3>
                         <div class="header-elements">
-               
+
                         </div>
                     </div>
 
@@ -114,6 +114,7 @@ export default {
             form:{},
             classes:{},
             editid:'',
+                           preloader: true,
             classdisable:false
 		}
 	},
@@ -127,6 +128,7 @@ export default {
                                 .then(({data}) => {
                                     //  console.log(data)
                                     this.form = data
+                                                  this.preloader = false;
                                 })
                                 .catch(() => {
                                     // this.$router.push({name: 'supplier'})

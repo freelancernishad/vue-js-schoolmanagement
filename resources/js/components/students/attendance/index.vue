@@ -15,14 +15,13 @@
 
     <div class="card height-auto">
         <div class="card-body">
-                            <router-link class="btn btn-danger my-5"
-    v-if="$routerHistory.hasPrevious()"
-    :to="{ path: $routerHistory.previous().path }">
-    GO BACK
-</router-link>
+
             <div class="heading-layout1">
                 <div class="item-title">
-                    <h3>Students Attendence</h3>
+                                    <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
+                            GO BACK
+                        </router-link>
                 </div>
                 <div class="dropdown">
 

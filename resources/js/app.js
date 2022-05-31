@@ -38,8 +38,8 @@ import User from './helpers/User';
 window.User = User
 
 window.RootUrl = window.location.origin;
-// window.ASSETURL = '/public/';
-window.ASSETURL = '/';
+window.ASSETURL = '/public/';
+// window.ASSETURL = '/';
 // window.preloader = true;
 
 

@@ -1,5 +1,6 @@
 <template>
     <div>
+            <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
         <div class="breadcrumbs-area">
             <h3>Result</h3>
             <ul>
@@ -141,6 +142,7 @@ export default {
             status: "",
             student_class: "",
             year: null,
+            preloader: true,
             filterdata: {
                 student_class: null,
                 group: 'All',
@@ -181,6 +183,7 @@ export default {
             url = `/api/results/check?filter[school_id]=${this.$route.params.school_id}&filter[class]=${this.$route.params.student_class}&filter[year]=${this.year}&filter[exam_name]=${User.examcomvert(this.$route.params.examType)}&all=true`;
             axios.get(url)
                 .then(({ data }) => {
+                    this.preloader = false;
                     this.students = data
                     this.marks = {};
                     var Bangla_1st_mark = []
@@ -268,12 +271,14 @@ this.totalfailed[student.roll] = this.failed(this.marks[student.roll])
 
 
         formsubmit() {
+            this.preloader = true;
             axios.post(`/api/results/publish`, this.publishids)
                 .then(({ data }) => {
 
                     this.checkResult();
                     this.getformdata();
                     Notification.success();
+                    this.preloader = false;
                 })
                 .catch(() => {
                     // this.$router.push({name: 'supplier'})

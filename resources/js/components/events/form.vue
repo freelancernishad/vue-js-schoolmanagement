@@ -1,5 +1,6 @@
 <template>
     <div>
+            <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
         <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
             <h3>Event</h3>
@@ -82,6 +83,7 @@ export default {
             images: [],
             school_id: '',
             maxImage: 20,
+            preloader: true,
             form: {
                 id: '',
                 school_id: null,
@@ -128,6 +130,7 @@ export default {
                 axios.get(`/api/event/edit?filter[id]=${this.$route.params.id}`)
                     .then(({ data }) => {
                         this.form = data;
+                        this.preloader = false;
                     })
                     .catch()
             }, 300);
@@ -136,10 +139,12 @@ export default {
 
 
         formsubmit() {
+            this.preloader = true;
             axios.post(`/api/event/submit`, this.form)
                 .then(({ data }) => {
                     if (data[0].message == 'validation error') {
                         this.errors = data[0].data
+                        this.preloader = false;
                         Object.values(this.errors).forEach(error => {
                             Notification.validation(error[0]);
                         });
@@ -161,6 +166,8 @@ export default {
         if (this.$route.params.id) {
             this.eventfun();
 
+        }else{
+            this.preloader = false;
         }
     }
 }

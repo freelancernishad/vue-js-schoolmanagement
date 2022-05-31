@@ -1,5 +1,6 @@
 <template>
 	<div>
+                <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
  <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
         <h3>Payments</h3>
@@ -14,15 +15,14 @@
     <!-- Fees Table Area Start Here -->
     <div class="card height-auto">
         <div class="card-body">
-                <router-link class="btn btn-danger my-5"
-    v-if="$routerHistory.hasPrevious()"
-    :to="{ path: $routerHistory.previous().path }">
-    GO BACK
-</router-link>
+
 
             <div class="heading-layout1">
                 <div class="item-title">
-                    <h3>Add New Payment</h3>
+                        <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
+                            GO BACK
+                        </router-link>
                 </div>
 
             </div>
@@ -186,6 +186,7 @@ export default {
        payments:[],
        classes:[],
        months: [],
+                      preloader: true,
        years: [],
 
        form:{
@@ -225,6 +226,7 @@ export default {
           url =`/api/students/single?filter[id]=${this.id}`;
 			axios.get(url)
 			.then(({data}) => {
+                     this.preloader = false;
                 // console.log(data[0])
                 this.form = data[0]
                 this.form['type'] = User.feesconvert(this.$route.params.type);
@@ -246,6 +248,7 @@ export default {
 			.then(({data}) => {
                 // console.log(data[0])
                 // this.form = data[0]
+                              this.preloader = false;
 
                 this.form['id'] = data[0].id;
                 this.form['StudentClass'] = data[0].studentClass;
@@ -273,12 +276,13 @@ export default {
 		},
 
         formsubmit(){
+                 this.preloader = true;
                 axios.post(`/api/students/payments/submit`,this.form)
                 .then(({data}) => {
                     //  console.log(data)
                         this.$router.push({name:'paymentsearch', params: { classname: this.form.StudentClass, year: this.form.year, month:this.form.month, type:User.feesconvert(this.form.type) }})
                         Notification.success();
-
+              this.preloader = false;
                 })
                 .catch(() => {
                     // this.$router.push({name: 'supplier'})

@@ -1,5 +1,6 @@
 <template>
     <div>
+            <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
         <div class="breadcrumbs-area">
             <h3>Result</h3>
             <ul>
@@ -108,6 +109,7 @@ export default {
             students: {},
             edit: "",
             student_class: "",
+            preloader: true,
             year: null,
             filterdata: {
                 student_class: null,
@@ -163,6 +165,7 @@ export default {
                 .then(({ data }) => {
                     this.students = data
                     if (this.edit != 'edit') {
+                        this.preloader = false;
                         // console.log('edit run')
                         data.forEach(value => {
                             this.form.number[value.StudentRoll] = { 'CQ': null, 'MCQ': null, 'EXTRA': null, 'TOTAL': null, 'SUBJECT_TOTAL': null };
@@ -224,12 +227,14 @@ export default {
                 .catch()
         },
         formsubmit() {
+            this.preloader = true;
             axios.post(`/api/results/submit`, this.form)
                 .then(({ data }) => {
                         this.allstudents();
                       this.checkResult();
                         this.getformdata()
                     Notification.success();
+                    this.preloader = false;
                 })
                 .catch(() => {
                     // this.$router.push({name: 'supplier'})

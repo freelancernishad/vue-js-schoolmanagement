@@ -1,5 +1,6 @@
 <template>
 	<div>
+                <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
  <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
         <h3>Accounts</h3>
@@ -16,7 +17,10 @@
         <div class="card-body">
             <div class="heading-layout1">
                 <div class="item-title">
-                    <h3>All Fees Collection</h3>
+                                      <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
+                            GO BACK
+                        </router-link>
                 </div>
                 <div class="dropdown">
 
@@ -200,6 +204,7 @@ export default {
        statustext:'Looding...',
        paymentAmount:'',
        newsearch:'newsearch',
+                      preloader: true,
        paidclass:'badge badge-pill badge-success d-block mg-t-8',
 
 
@@ -208,6 +213,7 @@ export default {
 
 	methods: {
             filter(){
+                              this.preloader = true;
 this.newsearch ='oldsearch',
 
                   this.statustext='Looding...'
@@ -238,6 +244,7 @@ if( this.statustext=='Looding...'){
 			axios.get(url)
 			.then(({data}) => {
                 this.students = data
+              this.preloader = false;
 
             })
 			.catch()
@@ -264,6 +271,7 @@ if(this.newsearch=='newsearch'){
                 this.paymentstatusCheck();
 
 }
+
 
 
 

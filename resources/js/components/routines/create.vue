@@ -1,6 +1,6 @@
 <template>
 	<div>
-
+    <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
 
     <div class="breadcrumbs-area">
         <h3>Routine</h3>
@@ -109,6 +109,8 @@ export default {
 created(){
 if(this.$route.params.create=='edit'){
     this.allroutine()
+}else{
+    this.preloader = false;
 }
 
        this.school_id = getschoolid
@@ -124,6 +126,7 @@ if(this.$route.params.create=='edit'){
 			subjects: [],
 			school_id:"",
 			student_class:"",
+            preloader: true,
             form:{
                 school_id:null,
                 routne_id:null,
@@ -163,7 +166,6 @@ if(this.$route.params.create=='edit'){
                     // this.editform = data;
 
 
-
                 data.forEach(element => {
                     this.form.first_period[element.week_name] = element.first_period
                     this.form.second_period[element.week_name] = element.second_period
@@ -174,6 +176,7 @@ if(this.$route.params.create=='edit'){
                     this.form.seventh_period[element.week_name] = element.seventh_period
 
             });
+                    this.preloader = false;
 
                 })
                 .catch()
@@ -182,11 +185,13 @@ if(this.$route.params.create=='edit'){
 
 
         formsubmit(){
+            this.preloader = true;
                 axios.post(`/api/routines/submit`,this.form)
                                 .then(({data}) => {
                                     //  console.log(data)
                                 this.$router.push({name: 'routineslist',params:{classname:this.student_class,school_id:this.school_id}})
                                 Notification.success();
+                                this.preloader = false;
                                 })
                                 .catch(() => {
                                     // this.$router.push({name: 'supplier'})
