@@ -8,6 +8,29 @@ use Illuminate\Support\Facades\File;
 function sitedetails()
 {
 
+
+
+
+// live server
+// $fullURL = 'https://'.$_SERVER['HTTP_HOST'];
+
+
+// $arrUrl = explode('.',$fullURL);
+
+// // print_r($arrUrl);
+// $count = count($arrUrl);
+// if($count==2){
+//    $fullURL = 'https://'.$_SERVER['HTTP_HOST'];
+// }else{
+//    $fullURL ='https://'.$arrUrl[1].'.'.$arrUrl[2];
+// }
+
+
+
+
+
+    // local server
+
     $fullURL = 'http://' . $_SERVER['HTTP_HOST'];
 
 

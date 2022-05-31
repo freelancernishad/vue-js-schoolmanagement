@@ -93,23 +93,33 @@ a.item.active {background: #ffac01;}
 }
 </style>
 
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> --}}
+{{-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> --}}
 
 
 <script type="text/javascript">
 
-jQuery( window ).on( "swipeleft swiperight", function( event )
-  {
+// jQuery( window ).on( "click", function( event )
+//   {
 
-  if(event.type=='swiperight'){
-    console.log(event.type)
-    document.getElementById('wrapper').classList.add('sidebar-collapsed-mobile')
-  } else if(event.type=='swipeleft'){
-    console.log(event.type)
-    document.getElementById('wrapper').classList.remove('sidebar-collapsed-mobile')
-  }
-  } );
+//     const array1 = event.target.classList;
+// const classListget = Array.from(array1).find(element => element == 'mobilenavClickbutton');
+
+
+
+
+// console.log(event.target.classList)
+// // console.log(event.type)
+//   if(event.type=='click'){
+//       if(event.target.classList=='mobilenavClickbutton'){
+
+//           document.getElementById('wrapper').classList.add('sidebar-collapsed-mobile')
+//         }else{
+//               document.getElementById('wrapper').classList.remove('sidebar-collapsed-mobile')
+
+//       }
+//   }
+//   } );
   </script>
 
 </head>
@@ -146,8 +156,8 @@ jQuery( window ).on( "swipeleft swiperight", function( event )
                <button class="navbar-toggler pulse-animation" type="button" data-toggle="collapse" data-target="#mobile-navbar" aria-expanded="false">
                     <i class="far fa-arrow-alt-circle-down"></i>
                 </button>
-                <button type="button" class="navbar-toggler sidebar-toggle-mobile">
-                    <i class="fas fa-bars"></i>
+                <button type="button" id="mobilenavClickbutton"  class="mobilenavClickbutton navbar-toggler sidebar-toggle-mobile">
+                    <i class="mobilenavClickbutton fas fa-bars" id="mobilenavClickicon"></i>
                 </button>
             </div>
             <div class="header-main-menu collapse navbar-collapse" id="mobile-navbar">
@@ -384,8 +394,7 @@ jQuery( window ).on( "swipeleft swiperight", function( event )
 
                 <router-view></router-view>
 
-			@section('container')
-			@show()
+
 
 
    <!-- Footer Area Start Here -->

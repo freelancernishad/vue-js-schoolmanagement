@@ -38,8 +38,8 @@ import User from './helpers/User';
 window.User = User
 
 window.RootUrl = window.location.origin;
-window.ASSETURL = '/public/';
-// window.ASSETURL = '/';
+// window.ASSETURL = '/public/';
+window.ASSETURL = '/';
 // window.preloader = true;
 
 
@@ -150,5 +150,6 @@ const router = new VueRouter({
 Vue.use(VueRouterBackButton, { router })
 const app = new Vue({
     el: '#wrapper',
+    base: process.env.APP_URL,
     router
 });
