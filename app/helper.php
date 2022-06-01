@@ -37,12 +37,51 @@ function sitedetails()
     $arrUrl = explode('.', $fullURL);
 
     // print_r($arrUrl);
-    $count = count($arrUrl);
-    if ($count == 1) {
-        $fullURL = 'http://' . $_SERVER['HTTP_HOST'];
-    } else {
-        $fullURL = 'http://' . $arrUrl[1];
-    }
+   $count = count($arrUrl);
+
+$sslUrl = explode('//', $arrUrl[0]);
+
+   if ($count == 1) {
+
+       if($arrUrl[0]=='http://localhost:8000'){
+           $fullURL = 'http://' . $_SERVER['HTTP_HOST'];
+       }else{
+           $fullURL = $sslUrl[0].'//' . $_SERVER['HTTP_HOST'];
+       }
+
+
+   }elseif ($count == 2) {
+
+       if($arrUrl[1]=='localhost:8000'){
+           $fullURL = 'http://' . $arrUrl[1];
+       }else{
+           $fullURL = $sslUrl[0].'//' .  $arrUrl[1];
+       }
+
+
+   }elseif ($count == 3) {
+
+       if($arrUrl[2]=='localhost:8000'){
+           $fullURL = 'http://' . $arrUrl[1]. '.'.$arrUrl[2];
+       }else{
+           $fullURL = $arrUrl[0] .'.'. $arrUrl[1]. '.'.$arrUrl[2];
+       }
+
+
+   }elseif ($count == 4) {
+
+       if($arrUrl[2]=='localhost:8000'){
+           $fullURL = 'http://' . $arrUrl[1]. '.'.$arrUrl[2];
+       }else{
+
+
+           $fullURL = $sslUrl[0].'//' . $arrUrl[1]. '.'.$arrUrl[2]. '.'.$arrUrl[3];
+       }
+
+
+   } else {
+       $fullURL = 'http://' . $arrUrl[1];
+   }
 
 
 

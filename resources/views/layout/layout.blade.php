@@ -87,7 +87,7 @@ a.active {
             <div class="container-fluid">
                 <div class="row py-2 for_mobile">
                     <div class="col-lg-2 col-md-2 col-sm-2 logo school_logo">
-                        <img class="img-fluid" src="{{ asset(env('FILE_PATH').'logo/'.sitedetails()->logo) }}" alt="">
+                        <img class="img-fluid" src="{{ asset(env('FILE_PATH').sitedetails()->logo) }}" alt="">
                     </div>
                     <div class="col-lg-8 col-md-8 col-sm-10 text-center school_deails">
                         <h1 class="text-light">{{ sitedetails()->SCHOLL_NAME }}</h1>
