@@ -50,7 +50,7 @@ export default {
         return {
 
             classes: {},
-            preloader: true,
+            preloader: false,
             message: {},
             button:'SEND SMS' ,
             form: {

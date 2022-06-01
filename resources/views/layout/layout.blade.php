@@ -17,6 +17,7 @@
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://connect.facebook.net/en-us/sdk.js#xfbml=1&amp;version=v2.5"></script>
@@ -76,6 +77,7 @@ a.active {
 </style>
 </head>
 <body>
+    <div id="wrapper">
     <x-visitors />
 
     <!-- Header Start -->
@@ -203,7 +205,7 @@ a.active {
         </div>
     </footer>
     <!-- Footer End -->
-
+</div>
 
 
     <!-- Bootstrap JS -->
@@ -212,6 +214,7 @@ a.active {
         crossorigin="anonymous"></script>
 
         <script src="{{ asset('frontend/js/script.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
 
 
 

@@ -8,6 +8,7 @@ let home = require('./components/home.vue').default;
 
 // Students Components
 let students = require('./components/students/index.vue').default;
+let studentimage = require('./components/students/studentimage.vue').default;
 let studentCard = require('./components/students/card.vue').default;
 let studentedit = require('./components/students/form.vue').default;
 let studentview = require('./components/students/view.vue').default;
@@ -20,6 +21,7 @@ let students_attendance_monthly = require('./components/students/attendance/mont
 
 // Staffs Components
 let staffs = require('./components/staffs/index.vue').default;
+let staffsImage = require('./components/staffs/staffsimage.vue').default;
 let staffsedit = require('./components/staffs/form.vue').default;
 let staffsview = require('./components/staffs/view.vue').default;
 let staffsform = require('./components/staffs/form.vue').default;
@@ -103,6 +105,7 @@ export const routes = [
 
   // students Routes
   { path: '/school/students', component: students, name:'students' },
+  { path: '/school/students/image/:id', component: studentimage, name:'studentImage' },
   { path: '/school/students/edit/:id', component: studentedit, name:'studentedit' },
   { path: '/school/students/view/:id', component: studentview, name:'studentview' },
   { path: '/school/students/card', component: studentCard, name:'studentCard' },
@@ -115,6 +118,7 @@ export const routes = [
 
   // Staffs Routes
   { path: '/school/staffs', component: staffs, name:'staffs' },
+  { path: '/school/staffs/image/:id', component: staffsImage, name:'staffsImage' },
   { path: '/school/staffs/edit/:id', component: staffsedit, name:'Staffsedit' },
   { path: '/school/staffs/view/:id', component: staffsview, name:'Staffsview' },
   { path: '/school/staffs/form', component: staffsform, name:'staffsform' },

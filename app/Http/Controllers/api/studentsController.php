@@ -9,7 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Attendance;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
-use Meneses\LaravelMpdf\Facades\LaravelMpdf;
+// use Meneses\LaravelMpdf\Facades\LaravelMpdf;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 class studentsController extends Controller
 {
     public function list(Request $r)
@@ -217,6 +219,34 @@ class studentsController extends Controller
         }
         return response()->json($results);
     }
+
+    public function imageupload(Request $request)
+    {
+        $id =  $request->id;
+        $student = student::find($id);
+        if(File::exists($student->StudentPicture)){
+            unlink($student->StudentPicture);
+        }
+      $StudentPicture=  fileupload($request->image,'backend/students/',250,300,$student->StudentID);
+
+        return $student->update(['StudentPicture'=>$StudentPicture]);
+
+
+    }
+
+    public function imageget(Request $request)
+    {
+        $id =  $request->id;
+        $student = student::find($id);
+
+    return   $StudentPicture=  base64($student->StudentPicture);
+
+
+
+
+    }
+
+
     public function singlestudent(Request $request)
     {
         $result = QueryBuilder::for(student::class)
@@ -288,17 +318,19 @@ class studentsController extends Controller
         $data['types'] = 'pdf';
 
 
-        $data['sign'] = base64(sitedetails()->PRINCIPALS_Signature);
+        $data['sign'] = base64('backend/students/1654069265____2211001.png');
 
 
-        $data['card'] = base64('frontend/jss.PNG');
+         $data['card'] = base64('frontend/jss.PNG');
 
 
 
         $fileName = 'cards-' . date('Y-m-d H:m:s');
         $data['fileName'] = $fileName;
         $foldername = $data['rows'][0]->school_id;
-        $pdf = LaravelMpdf::loadView('admin/cards.' . $foldername, $data);
+        // return $data;
+// return view('admin/cards.' . $foldername, $data);
+        $pdf = PDF::loadView('admin/cards.' . $foldername, $data);
         return $pdf->stream("$fileName.pdf");
     }
     public function student_attendance(Request $request)

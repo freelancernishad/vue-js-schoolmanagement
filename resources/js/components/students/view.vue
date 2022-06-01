@@ -34,7 +34,7 @@
         </div>
         <div class="single-info-details">
             <div class="item-img">
-                <img :src="'/images/'+form.StudentPicture" alt="student">
+                <img :src="ASSETURL+form.StudentPicture" alt="student">
             </div>
             <div class="item-content">
                 <div class="header-inline item-header">
@@ -133,6 +133,7 @@ export default {
 		if (!User.loggedIn()) {
 			this.$router.push({name: '/'})
 		}
+        this.ASSETURL = ASSETURL
 	},
 
 	data () {
@@ -140,6 +141,7 @@ export default {
             form:{},
             classes:{},
             editid:'',
+            ASSETURL: '',
             classdisable:false,
                preloader: true,
 		}

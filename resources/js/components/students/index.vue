@@ -194,7 +194,7 @@
 
                                 <td>
 
-                                    <div class="form-check">
+                                    <div class="form-check" >
                                         <input type="checkbox" class="form-check-input" v-model="actioncheck"
                                             :value="student.id">
                                         <label class="form-check-label">{{ student.StudentRoll }}</label>
@@ -203,11 +203,21 @@
 
                                 </td>
                                 <td class="text-center">
-                                    <a>
-                                        <img id='student_image' class='student_image'
+
+
+
+
+
+                                    <router-link :to="{name:'studentImage',params:{id:student.id}}">
+
+
+                                        <img :id="'student_image'+student.id" class='student_image'
                                             style="    width: 33px !important;height: 34px;border-radius: 50%;"
-                                            :src="'/images/' + student.StudentPicture" alt="student">
-                                    </a>
+                                            :src="ASSETURL+student.StudentPicture" alt="image" @error="imageLoadError()">
+
+
+
+                                    </router-link>
                                 </td>
                                 <td>{{ student.StudentName }}</td>
 
@@ -217,7 +227,7 @@
 
                                 <td>{{ student.StudentPhoneNumber }}</td>
                                 <td>
-                                    <a class="btn btn-info" :href="'/school/student/card/single/' + student.id+'/'+student.school_id"><i
+                                    <a class="btn btn-info" :href="'/school/student/card/single/' + student.id+'/'+student.school_id" @click="preloader=true"><i
                                             class="fas fa-card"></i> Card</a>
 
                                     <router-link class="btn btn-info"
@@ -241,22 +251,32 @@
 
             </div>
         </div>
-
+<!-- <button @click="show">show</button>
+    <modal name="imageupload">
+        This is my first modal
+    </modal> -->
 
     </div>
 </template>
 
 <script>
+
+
 export default {
     created() {
 
-
+    this.ASSETURL = ASSETURL
         this.school_id = getschoolid;
 if(this.$route.params.classname && this.$route.params.status){
     this.student_class = this.$route.params.classname
     this.status = this.$route.params.status
     this.searchtype = 'filterclass'
+
+
+
+
 }
+
 
 
     },
@@ -268,6 +288,7 @@ if(this.$route.params.classname && this.$route.params.status){
             classes: [],
             actioncheck: [],
             action: "",
+            ASSETURL: '',
             searchtype: "",
             name: "",
             student_class: "",
@@ -281,10 +302,19 @@ if(this.$route.params.classname && this.$route.params.status){
             icon: '',
             looding: true,
             preloader: true,
+
         }
     },
 
     methods: {
+
+
+    imageLoadError () {
+return true;
+
+    },
+
+
 
         selectAll: function () {
             this.actioncheck = [];
@@ -349,7 +379,7 @@ if(this.$route.params.classname && this.$route.params.status){
 
                 axios.get(url)
                     .then(({ data }) => {
-                        console.log(data)
+                        // console.log(data)
                         this.students = data
                         this.studentsall = data.data
                         this.looding = false
@@ -423,8 +453,40 @@ if(this.action=='Delete'){
 }
 </script>
 
+</script>
 <style lang="css" scoped>
 #img_size {
     width: 40px;
 }
+
+
+
+#imageUpload
+{
+    display: none;
+}
+
+#profileImage
+{
+    cursor: pointer;
+}
+
+#profile-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+
+#profile-container img {
+    width: 150px;
+    height: 150px;
+}
+
+
+
 </style>

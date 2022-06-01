@@ -56,6 +56,8 @@ Route::post('/school/settings/submit',[SchoolDetailController::class , 'school_u
 
 //student routes
 Route::get('/students/list',[studentsController::class , 'list']);
+Route::get('/students/image/get',[studentsController::class , 'imageget']);
+Route::post('/students/image/upload',[studentsController::class , 'imageupload']);
 Route::get('/students/single',[studentsController::class , 'singlestudent']);
 Route::post('/students/form/submit',[studentsController::class , 'student_submit']);
 Route::post('/student/{action}',[studentsController::class , 'student_action']);
@@ -70,6 +72,9 @@ Route::get('/student/attendance/row',[studentsController::class , 'student_atten
 
 //staffs routes
 Route::get('/staffs/list',[staffsController::class , 'list']);
+Route::get('/staffs/image/get',[staffsController::class , 'imageget']);
+Route::post('/staffs/image/upload',[staffsController::class , 'imageupload']);
+
 Route::get('/staffs/single',[staffsController::class , 'singlestaff']);
 Route::post('/staffs/form/submit',[staffsController::class , 'staff_submit']);
 Route::post('/staff/{action}',[staffsController::class , 'staff_action']);

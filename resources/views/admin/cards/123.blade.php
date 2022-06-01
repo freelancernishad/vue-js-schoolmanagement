@@ -53,24 +53,8 @@
 
 
 
-if($row->StudentPicture==''){
 
-//in Controller
-// $pathstudentimage = '214748347.jpg';
-// $typestudentimage = pathinfo($pathstudentimage, PATHINFO_EXTENSION);
-//     $dataistudentimage = file_get_contents($pathstudentimage);
-//     $studentimage = 'data:image/' . $typestudentimage . ';base64,' . base64_encode($dataistudentimage);
-    $studentimage = base64('214748347.jpg');
-
-
-
-}else{
-
-
-    $studentimage = env('FILE_PATH').'images/'.$row->StudentPicture;
-// $pathstudentimage = env('FILE_PATH').'students/'.$row->StudentPicture;
-
-}
+    // $studentimage = base64(env('FILE_PATH').$row->StudentPicture);
 
 
 
@@ -81,7 +65,7 @@ if($row->StudentPicture==''){
 <img width="410" height="325" src="{!! $card !!}" alt="">
 
 <div class="frontSide" style="position:absolute;top:229px;left:91px">
-    <img width="94" height="105" src="{!! $studentimage !!}" alt="">
+    <img width="94" height="105" style="    z-index: 9999;" src="{!! base64(env('FILE_PATH').$row->StudentPicture) !!}" alt="">
 </div>
 
 

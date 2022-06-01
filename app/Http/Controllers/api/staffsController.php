@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
-
+use Illuminate\Support\Facades\File;
 class staffsController extends Controller
 {
 
@@ -148,6 +148,34 @@ class staffsController extends Controller
         return response()->json($result);
     }
 
+
+
+
+    public function imageupload(Request $request)
+    {
+        $id =  $request->id;
+        $staff = staff::find($id);
+        if(File::exists($staff->ProfilePicture)){
+            unlink($staff->ProfilePicture);
+        }
+      $ProfilePicture=  fileupload($request->image,'backend/staffs/',250,300);
+
+        return $staff->update(['ProfilePicture'=>$ProfilePicture]);
+
+
+    }
+
+    public function imageget(Request $request)
+    {
+        $id =  $request->id;
+        $student = staff::find($id);
+
+    return   $ProfilePicture=  base64($student->ProfilePicture);
+
+
+
+
+    }
 
     public function staff_submit(Request $r)
     {

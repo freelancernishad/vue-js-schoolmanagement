@@ -207,7 +207,7 @@ th, th label {
                                 <ul class="settings-list">
                                     <li>
 
-                                     <router-link class="dropdown-item" to="/school/logout" >
+                                     <router-link class="dropdown-item"  onclick="navhide()"  to="/school/logout" >
                                         <i class="flaticon-turn-off"></i> {{ __('Logout') }}
                                      </router-link>
 
@@ -233,7 +233,7 @@ th, th label {
             <div class="sidebar-main sidebar-menu-one sidebar-expand-md sidebar-color" v-show="$route.path === '/login' || $route.path === '/register' || $route.path === 'forget' ? false : true " id='leftnavbar'>
                <div class="mobile-sidebar-header d-md-none">
                     <div class="header-logo">
-                        <router-link to="/school/"><img src="{{ asset('dashboard_asset/img/logo1.png') }}" alt="logo"></router-link>
+                        <router-link  onclick="navhide()"  to="/school/"><img src="{{ asset('dashboard_asset/img/logo1.png') }}" alt="logo"></router-link>
                     </div>
                </div>
                 <div class="sidebar-menu-content">
@@ -242,7 +242,7 @@ th, th label {
                             <a href="#" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
-                                    <router-link to="/school/" class="nav-link"><i class="fas fa-angle-right"></i> Admin</router-link>
+                                    <router-link  onclick="navhide()"  to="/school/" class="nav-link"><i class="fas fa-angle-right"></i> Admin</router-link>
                                 </li>
                                 <li class="nav-item">
                                     <a href="index3.html" class="nav-link"><i
@@ -261,18 +261,18 @@ th, th label {
                             <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Students</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
-                                    <router-link to="/school/students" class="nav-link"><i class="fas fa-angle-right"></i> All
+                                    <router-link  onclick="navhide()"  to="/school/students" class="nav-link"><i class="fas fa-angle-right"></i> All
                                         Students</router-link>
                                 </li>
                                 {{-- <li class="nav-item">
-                                    <router-link to="/school/students/form" class="nav-link"><i class="fas fa-angle-right"></i>Admission Form</router-link>
+                                    <router-link  onclick="navhide()"  to="/school/students/form" class="nav-link"><i class="fas fa-angle-right"></i>Admission Form</router-link>
                                 </li> --}}
                                 <li class="nav-item">
-                                    <router-link to="/school/student-promotion" class="nav-link"><i
+                                    <router-link  onclick="navhide()"  to="/school/student-promotion" class="nav-link"><i
                                             class="fas fa-angle-right"></i> Student Promotion</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link :to="{name:'studentCard'}" class="nav-link"><i
+                                    <router-link   onclick="navhide()" :to="{name:'studentCard'}" class="nav-link"><i
                                             class="fas fa-angle-right"></i>Student Card</router-link>
                                 </li>
                             </ul>
@@ -282,17 +282,17 @@ th, th label {
                                     class="flaticon-multiple-users-silhouette"></i><span>Teachers</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
-                                    <router-link to="/school/staffs" class="nav-link"><i class="fas fa-angle-right"></i> All
+                                    <router-link  onclick="navhide()"  to="/school/staffs" class="nav-link"><i class="fas fa-angle-right"></i> All
                                         Teachers</router-link>
                                 </li>
 
                                 {{-- <li class="nav-item">
-                                    <router-link to="/school/staffs/form" class="nav-link"><i class="fas fa-angle-right"></i>Add
+                                    <router-link  onclick="navhide()"  to="/school/staffs/form" class="nav-link"><i class="fas fa-angle-right"></i>Add
                                         Teacher</router-link>
                                 </li> --}}
 
                                 <li class="nav-item">
-                                    <router-link to="/school/staffs/attendance" class="nav-link"><i class="fas fa-angle-right"></i> Attendence</router-link>
+                                    <router-link  onclick="navhide()"  to="/school/staffs/attendance" class="nav-link"><i class="fas fa-angle-right"></i> Attendence</router-link>
                                 </li>
 
 
@@ -304,7 +304,7 @@ th, th label {
                             <a href="#" class="nav-link"><i class="flaticon-technological"></i><span>Acconunt</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
-                                    <router-link to="/school/payment" class="nav-link"><i class="fas fa-angle-right"></i> Payments</router-link>
+                                    <router-link  onclick="navhide()"  to="/school/payment" class="nav-link"><i class="fas fa-angle-right"></i> Payments</router-link>
                                 </li>
 
                             </ul>
@@ -318,12 +318,12 @@ th, th label {
 
 
 
-                        <li class="nav-item"> <router-link :to="{name:'studentsattendance'}" class="nav-link"><i class="flaticon-checklist"></i><span>Attendence</span></router-link> </li>
+                        <li class="nav-item"> <router-link   onclick="navhide()" :to="{name:'studentsattendance'}" class="nav-link"><i class="flaticon-checklist"></i><span>Attendence</span></router-link> </li>
 
 
 
 
-                        <li class="nav-item"> <router-link :to="{ name:'routines' }" class="nav-link"><i class="flaticon-checklist"></i><span>Routines</span></router-link> </li>
+                        <li class="nav-item"> <router-link   onclick="navhide()" :to="{ name:'routines' }" class="nav-link"><i class="flaticon-checklist"></i><span>Routines</span></router-link> </li>
 
 
 
@@ -333,7 +333,7 @@ th, th label {
                             <a href="#" class="nav-link"><i class="flaticon-shopping-list"></i><span>Exam</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
-                                    <router-link to="/school/results" class="nav-link"><i class="fas fa-angle-right"></i> Result</router-link>
+                                    <router-link  onclick="navhide()"  to="/school/results" class="nav-link"><i class="fas fa-angle-right"></i> Result</router-link>
                                 </li>
 
                             </ul>
@@ -343,9 +343,9 @@ th, th label {
                             <a href="#" class="nav-link"><i class="flaticon-script"></i><span>Gallery</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
-                                    <router-link to="/school/gallery_category" class="nav-link"><i class="fas fa-angle-right"></i> Galley Category</router-link>
+                                    <router-link  onclick="navhide()"  to="/school/gallery_category" class="nav-link"><i class="fas fa-angle-right"></i> Galley Category</router-link>
                                 </li>
-                                <li class="nav-item"><router-link :to="{name:'gallerys'}" class="nav-link"><i class="fas fa-angle-right"></i> Gallery</router-link>
+                                <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'gallerys'}" class="nav-link"><i class="fas fa-angle-right"></i> Gallery</router-link>
                                 </li>
                             </ul>
                         </li>
@@ -354,9 +354,9 @@ th, th label {
                             <a href="#" class="nav-link"><i class="flaticon-script"></i><span>Notice</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
-                                    <router-link :to="{ name:'smsNotice' }" class="nav-link"><i class="fas fa-angle-right"></i> Sms Notice</router-link>
+                                    <router-link   onclick="navhide()" :to="{ name:'smsNotice' }" class="nav-link"><i class="fas fa-angle-right"></i> Sms Notice</router-link>
                                 </li>
-                                {{-- <li class="nav-item"><router-link to="/school/notice" class="nav-link"><i class="fas fa-angle-right"></i> Website Notice</router-link></li> --}}
+                                {{-- <li class="nav-item"><router-link  onclick="navhide()"  to="/school/notice" class="nav-link"><i class="fas fa-angle-right"></i> Website Notice</router-link></li> --}}
 
                             </ul>
                         </li>
@@ -365,10 +365,10 @@ th, th label {
                             <a href="#" class="nav-link"><i class="flaticon-script"></i><span>Blogs</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
-                                    <router-link :to="{name:'blogs'}" class="nav-link"><i class="fas fa-angle-right"></i>Posts</router-link>
+                                    <router-link   onclick="navhide()" :to="{name:'blogs'}" class="nav-link"><i class="fas fa-angle-right"></i>Posts</router-link>
                                 </li>
 
-                                <li class="nav-item"><router-link :to="{ name:'blogcategorys' }" class="nav-link"><i class="fas fa-angle-right"></i> Post Categories</router-link>
+                                <li class="nav-item"><router-link   onclick="navhide()" :to="{ name:'blogcategorys' }" class="nav-link"><i class="fas fa-angle-right"></i> Post Categories</router-link>
                                 </li>
 
                             </ul>
@@ -377,17 +377,17 @@ th, th label {
 
 
 
-                        <li class="nav-item"><router-link :to="{name:'events'}" class="nav-link"><i class="flaticon-script"></i><span>Events</span></router-link></li>
+                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'events'}" class="nav-link"><i class="flaticon-script"></i><span>Events</span></router-link></li>
 
 
                         <li class="nav-item sidebar-nav-item">
                             <a href="#" class="nav-link"><i class="flaticon-script"></i><span>Settings</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
-                                    <router-link to="/school/settings" class="nav-link"><i class="fas fa-angle-right"></i> School Profile</router-link>
+                                    <router-link  onclick="navhide()"  to="/school/settings" class="nav-link"><i class="fas fa-angle-right"></i> School Profile</router-link>
                                 </li>
-                                <li class="nav-item"><router-link to="/school/settings/seo" class="nav-link"><i class="fas fa-angle-right"></i> Seo Settings</router-link></li>
-                                <li class="nav-item"><router-link to="/school/settings/slider" class="nav-link"><i class="fas fa-angle-right"></i> Slider</router-link></li>
+                                <li class="nav-item"><router-link  onclick="navhide()"  to="/school/settings/seo" class="nav-link"><i class="fas fa-angle-right"></i> Seo Settings</router-link></li>
+                                <li class="nav-item"><router-link  onclick="navhide()"  to="/school/settings/slider" class="nav-link"><i class="fas fa-angle-right"></i> Slider</router-link></li>
 
 
                             </ul>
@@ -455,11 +455,13 @@ th, th label {
 
 
 
+<script>
 
-</div>
-</div>
+function navhide(){
+    document.getElementById('wrapper').classList.remove('sidebar-collapsed-mobile');
+}
 
-
+</script>
 
 </body>
 

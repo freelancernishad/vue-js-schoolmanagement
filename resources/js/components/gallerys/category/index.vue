@@ -1,5 +1,6 @@
 <template>
     <div>
+            <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
 
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
@@ -143,6 +144,7 @@ export default {
             },
             errors:{},
               looding:true,
+               preloader: true,
         }
     },
     methods: {
@@ -163,17 +165,20 @@ export default {
                 .then(({ data }) => {
                     this.categorys = data;
          this.looding =false
+         this.preloader = false;
                 })
                 .catch()
                   }, 300);
         },
 
             editfuncion(){
+                this.preloader = true;
                  axios.get(`/api/gallery_category?filter[id]=${this.$route.params.id}`)
                 .then(({ data }) => {
                     if(data.data.length>0){
 
                         this.form = data.data[0];
+                        this.preloader = false;
                     }
 
                 })
@@ -186,10 +191,11 @@ export default {
 
 
         formsubmit() {
+            this.preloader = true;
             axios.post(`/api/gallery_category/submit`, this.form)
                 .then(({ data }) => {
                     // console.log(data[0].message);
-
+this.preloader = false;
                     if(data[0].message=='validation error'){
                         this.errors = data[0].data
                         Object.values(this.errors).forEach(error => {

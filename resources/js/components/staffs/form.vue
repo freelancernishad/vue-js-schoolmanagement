@@ -142,19 +142,19 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>Teacher Date Of Birth:</label>
-                <input class="form-control air-datepicker" type="text" placeholder="Enter Teacher Date Of Birth" v-model="form.TeacherDateOfBirth" id="TeacherDateOfBirth" required />
+                <input class="form-control air-datepicker" type="date" placeholder="Enter Teacher Date Of Birth" v-model="form.TeacherDateOfBirth" id="TeacherDateOfBirth" required />
             </div>
         </div>
         <div class="col-md-4 d-none">
             <div class="form-group">
                 <label>Teacher Joining Date:</label>
-                <input class="form-control air-datepicker" type="text" placeholder="Enter Teacher Joining Date" v-model="form.TeacherJoiningDate" id="TeacherJoiningDate"  />
+                <input class="form-control air-datepicker" type="date" placeholder="Enter Teacher Joining Date" v-model="form.TeacherJoiningDate" id="TeacherJoiningDate"  />
             </div>
         </div>
         <div class="col-md-4 d-none">
             <div class="form-group">
                 <label>Teacher Leaving Date:</label>
-                <input class="form-control air-datepicker" type="text" placeholder="Enter Teacher Leaving Date" v-model="form.TeacherLeavingDate" id="TeacherLeavingDate"  />
+                <input class="form-control air-datepicker" type="date" placeholder="Enter Teacher Leaving Date" v-model="form.TeacherLeavingDate" id="TeacherLeavingDate"  />
             </div>
         </div>
         <div class="col-md-4">

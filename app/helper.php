@@ -584,7 +584,7 @@ function base64($Image)
     return $b64image = 'data:image/png;base64,'.base64_encode(file_get_contents($Image));
 }
 
- function fileupload($Image,$path,$width,$height)
+ function fileupload($Image,$path,$width,$height,$customname='')
 {
 
 
@@ -593,7 +593,13 @@ function base64($Image)
     $sub = substr($Image, 0, $position);
     $ext = explode('/', $sub)[1];
     $random = rand(10000,99999);
+if($customname!=''){
+    $name = time().'____'.$customname.'.'.$ext;
+}else{
     $name = time().'____'.$random.'.'.$ext;
+}
+
+
     $img = Image::make($Image)->resize($width, $height);
 
     $upload_path = $path;

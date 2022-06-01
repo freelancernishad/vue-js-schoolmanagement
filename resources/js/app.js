@@ -38,8 +38,8 @@ import User from './helpers/User';
 window.User = User
 
 window.RootUrl = window.location.origin;
-// window.ASSETURL = '/public/';
-window.ASSETURL = '/';
+window.ASSETURL = '/public/';
+// window.ASSETURL = '/';
 // window.preloader = true;
 
 
@@ -93,8 +93,13 @@ Vue.use(VueLazyload)
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
 Vue.component('VueUploadMultipleImage', VueUploadMultipleImage);
 
+// import VModal from 'vue-js-modal'
+// Vue.use(VModal)
 
 
+
+// import studentimage from './components/studentimage.vue'
+// Vue.component('studentimage', studentimage);
 /* import the fontawesome core */
 // import { library } from '@fortawesome/fontawesome-svg-core'
 

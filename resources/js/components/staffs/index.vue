@@ -84,7 +84,16 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <input type="checkbox" @click="selectAll" v-model="allSelected">
+
+                                    <div class="form-check">
+
+                                        <input type="checkbox" class="form-check-input" @click="selectAll"
+                                            v-model="allSelected">
+                                        <label class="form-check-label">SL</label>
+                                    </div>
+
+
+
                                 </th>
                                 <th>Photo</th>
                                 <th @click="sortby('TeacherName')">Name</th>
@@ -108,17 +117,27 @@
 </tr>
 
 
-                            <tr v-else v-for="Staffs in staffs.data" :key="Staffs.id">
+                            <tr v-else v-for="(Staffs,index) in staffs.data" :key="Staffs.id">
 
                                 <td>
-                                    <input type="checkbox" v-model="actioncheck" :value="Staffs.id">
+
+                                    <div class="form-check" >
+                                        <input type="checkbox" class="form-check-input" v-model="actioncheck"
+                                            :value="Staffs.id">
+                                        <label class="form-check-label">{{ index+1 }}</label>
+                                    </div>
+
+                                    <!-- <input type="checkbox" v-model="actioncheck" :value="Staffs.id"> -->
                                 </td>
                                 <td class="text-center">
-                                    <a>
-                                        <img id='Staffs_image' class='Staffs_image'
+
+                                    <router-link :to="{name:'staffsImage',params:{id:Staffs.id}}">
+                                        <img :id="'student_image'+Staffs.id" class='student_image'
                                             style="    width: 33px !important;height: 34px;border-radius: 50%;"
-                                            :src="'/images/' + Staffs.StaffsPicture" alt="Staffs">
-                                    </a>
+                                            :src="ASSETURL+Staffs.ProfilePicture" alt="image" @error="imageLoadError()">
+                                    </router-link>
+
+
                                 </td>
                                 <td>{{ Staffs.TeacherName }}</td>
 
@@ -161,6 +180,7 @@ export default {
 
     created() {
        this.school_id = getschoolid
+           this.ASSETURL = ASSETURL
     },
     data() {
         return {
@@ -171,6 +191,7 @@ export default {
             searchtype: "",
             name: "",
             Staffs_class: "",
+            ASSETURL: '',
             status: "",
             school_id: "",
             year: new Date().getFullYear(),
@@ -252,7 +273,9 @@ export default {
             this.searchtype = "filtername";
             this.allstaffs()
         },
-
+imageLoadError(){
+    console.log('image load error')
+},
         actionclick() {
             Swal.fire({
                 title: 'Are you sure?',
