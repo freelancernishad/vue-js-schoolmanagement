@@ -6,7 +6,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 441px !important;">
+    width: 441px;">
                 <div class="card-header">
                     <h3>Sign In</h3>
                 </div>
@@ -104,6 +104,13 @@ export default {
 
 .container.loginpage {
     height: 100vh;
+}
+@media (max-width:600px) {
+ 
+     .card{
+
+    width: 275px !important;
+}
 }
 
 </style>
