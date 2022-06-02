@@ -46,12 +46,14 @@ window.ASSETURL = '/public/';
 import loader from "vue-ui-preloader";
 
 Vue.use(loader);
-
+var datas = {};
 function schoolid(){
 
 
     axios.get("/api/school_id")
         .then(({ data }) => {
+            // datas.push(data)
+            datas['dd'] = data;
             localStorage.setItem('getschoolid', data);
         })
 
@@ -60,7 +62,6 @@ function schoolid(){
         }
 
             schoolid();
-
 
 
 

@@ -199,6 +199,9 @@ export default {
             this.status = this.$route.params.status
             this.searchtype = 'filterclass'
         }
+
+// console.log(getschoolid)
+
     },
     data() {
         return {

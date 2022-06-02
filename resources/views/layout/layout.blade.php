@@ -22,6 +22,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://connect.facebook.net/en-us/sdk.js#xfbml=1&amp;version=v2.5"></script>
 <style>
+    body{
+        background:white !important;
+    }
 a.active {
     background: #79050b;
     border-radius: 5px;
@@ -208,6 +211,126 @@ a.active {
     <!-- Footer End -->
 </div>
 
+<style>
+    .fullwidth {
+        width: 100%;
+        height: 100vh;
+        background: #000000e8;
+        position: fixed;
+        top: 0;
+        z-index: 999999;
+    }
+    .popup {
+         position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background:#FF7391;
+        height:200px;
+        width:330px;
+        border-radius:7px;
+        border:1px solid #e5e5e5;
+        font-family:'helvetica neue';
+    }
+
+
+    .valid {
+        height:30px;
+        width:30px;
+        background:#fff;
+        margin:0 auto;
+        margin-top:30px;
+        border-radius:5px;
+    }
+    #Layer_2 {
+        margin:7px;
+    }
+    h1 {
+        color:white;
+        font-family:helvetica;
+        font-size:.9em;
+        text-align:center;
+        font-weight:bold;
+        line-height:10px;
+        margin-top:26px;
+    }
+    p {
+        color:white;
+        font-family:helvetica;
+        font-size:.75em;
+        text-align:center;
+        line-height:1px;
+        text-shadow: 0px 1px 1px #4CB572;
+    }
+    .bottom-popup {
+        width:100%;
+        background:#fff;
+        -webkit-border-bottom-right-radius: 7px;
+        -webkit-border-bottom-left-radius: 7px;
+        -moz-border-radius-bottomright: 7px;
+        -moz-border-radius-bottomleft: 7px;
+        border-bottom-right-radius: 7px;
+        border-bottom-left-radius: 7px;
+        margin-top:32px;
+        padding:30px 0 30px 0;
+    }
+    a.start {
+        margin:-12px 39% 0 0;
+        border-radius:40px;
+        background:#FF7391;
+        padding:6px 20px 6px 20px;
+        font-family:'helvetica';
+        color:white;
+        font-weight:bold;
+        text-decoration:none;
+        font-size:.6em;
+        float:right;
+        -webkit-transition: all .4s ease-out;
+        -moz-transition: all .4s ease-out;
+        -ms-transition: all .4s ease-out;
+        -o-transition: all .4s ease-out;
+        transition: all .4s ease-out;
+    }
+    a.start:hover {
+        border-radius:5px;
+        -webkit-transition: all .4s ease-out;
+        -moz-transition: all .4s ease-out;
+        -ms-transition: all .4s ease-out;
+        -o-transition: all .4s ease-out;
+        transition: all .4s ease-out;
+    }
+    #Layer_1 {
+        float:right;
+        margin:10px;
+    }
+
+    </style>
+
+<div class="fullwidth" id="fullwidth" style=" display: none;">
+    <div class="popup">
+
+
+
+        <div class="valid">
+            <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" width="15px" height="15px" viewBox="222.744 227.408 67.744 58.526"
+            enable-background="new 222.744 227.408 67.744 58.526" xml:space="preserve">
+                <path fill="#39BA6F" d="M250.062,285.934c-9.435-11.111-15.731-18.195-27.318-28.935l5.793-5.357
+        c6.778,3.28,11.076,5.774,18.693,11.204c14.32-16.25,23.783-24.495,41.372-35.438l1.886,4.335
+        C275.983,244.402,265.359,258.502,250.062,285.934z" />
+            </svg>
+        </div>
+         <h1>Welcome!</h1>
+
+        <p>Thanks For Visiting Our application First Time</p>
+        <div class="bottom-popup">
+            <a class="start" href="">GET START</a>
+
+        </div>
+    </div>
+    </div>
+
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -328,6 +451,13 @@ var contactForm = function() {
 contactForm();
 
 })(jQuery);
+
+
+
+if(localStorage.getItem('getschoolid')==null){
+    document.getElementById('fullwidth').style.display='block'
+}
+
 
               </script>
 

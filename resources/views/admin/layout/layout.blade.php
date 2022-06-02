@@ -216,6 +216,7 @@ th, th label {
                             <div class="admin-title">
                                 {{-- <h5 class="item-title">{{ Auth::user()->name }}</h5>
                                 <span>{{ Auth::user()->role }}</span> --}}
+
                             </div>
                             <div class="admin-img">
                                 <img src="{{ asset('dashboard_asset/img/figure/admin.jpg') }}" alt="Admin">
@@ -224,6 +225,7 @@ th, th label {
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="item-header">
                                 {{-- <h6 class="item-title">{{ Auth::user()->name }}</h6> --}}
+
                             </div>
                             <div class="item-content">
                                 <ul class="settings-list">
@@ -447,6 +449,7 @@ th, th label {
 
 
 
+
     <script src="{{ asset('js/app.js') }}"></script>
 <!-- Plugins js -->
 {{-- <script src="{{ asset('dashboard_asset/js/plugins.js') }}"></script> --}}
@@ -501,6 +504,7 @@ function myFunction() {
     header.classList.remove("fixednav");
   }
 }
+
 
 
 
