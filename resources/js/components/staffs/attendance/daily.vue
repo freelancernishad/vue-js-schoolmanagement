@@ -1,5 +1,6 @@
 <template>
 	<div>
+                        <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
   <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
         <h3>Staffs Attendence</h3>
@@ -15,17 +16,15 @@
 
     <div class="card height-auto">
         <div class="card-body">
-                            <router-link class="btn btn-danger my-5"
-    v-if="$routerHistory.hasPrevious()"
-    :to="{ path: $routerHistory.previous().path }">
-    GO BACK
-</router-link>
 
   <form  enctype="multipart/form-data" v-on:submit.prevent="formsubmit" >
 
             <div class="heading-layout1">
                 <div class="item-title">
-                    <h3>Staffs Attendence</h3>
+                                  <router-link  class="btn-fill-md radius-4 text-light bg-orange-red"
+                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
+                            GO BACK
+                        </router-link>
                 </div>
                 <div class="dropdown">
 
@@ -162,6 +161,7 @@ export default {
                 attendence:[],
                 data:[],
             },
+             preloader: true,
 
             dailyatten:{},
             classes:{},
@@ -180,6 +180,7 @@ export default {
 	methods: {
 
             filter(){
+                this.preloader = true;
                 if(this.$router.currentRoute.path===`/school/staffs/attendance/${this.veiwtype}/${this.dateormonth}`){
 
                 }else{
@@ -202,6 +203,7 @@ export default {
 
                 axios.get(`/api/staff/attendance?veiwtype=${this.veiwtype}&dateormonth=${this.dateormonth}&school_id=${this.school_id}`)
                     .then(({data}) => {
+                        this.preloader = false;
                         this.counttype = data.counttype;
                         if(data.counttype==1){
                             this.dailyatten = JSON.parse(data.data[0].attendance);
@@ -228,17 +230,20 @@ export default {
                     })
             },
             formsubmit(){
+                this.preloader = true;
                 axios.post(`/api/staff/attendance/submit`,this.form)
                 .then(({data}) => {
                     this.getdata();
                     this.form.id = '';
                    Notification.success();
+                   this.preloader = false;
                 })
                 .catch(() => {
                     // this.$router.push({name: 'supplier'})
                 })
         },
         updateattendance(id){
+            this.preloader = true;
             this.form.id = id;
                 this.dailyatten.forEach((value, index) => {
                     // console.log(value.TeacherId)

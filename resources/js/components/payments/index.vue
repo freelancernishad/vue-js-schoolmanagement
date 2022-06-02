@@ -92,13 +92,12 @@
                 <table class="table text-nowrap">
                     <thead>
                         <tr>
-                            <th class="" scope="col">Class</th>
                             <th scope="col">Roll</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Paid Amount</th>
+                            <th  class="tablecolhide" scope="col">Amount</th>
+                            <th  class="tablecolhide" scope="col">Paid Amount</th>
                             <th scope="col">status</th>
-                            <th scope="col">Date</th>
+                            <th  class="tablecolhide" scope="col">Date</th>
                             <th scope="col">Action</th>
 
                         </tr>

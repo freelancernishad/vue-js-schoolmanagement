@@ -25,7 +25,7 @@
                         </router-link>
                 </div>
                 <div class="dropdown">
-                 <a :href="'/school/attendence_sheet/pdf/'+school_id+'/'+StudentClass+'/'+veiwtype+'/'+dateormonth" class="btn-fill-lmd text-light gradient-dodger-blue" style="float:right;margin-bottom:10px"  rel="noopener noreferrer">Download Full Report</a>
+                 <a :href="'/school/attendence_sheet/pdf/'+school_id+'/'+StudentClass+'/'+veiwtype+'/'+dateormonth" class="btn-fill-lmd text-light gradient-dodger-blue" style="float:right;margin-bottom:10px"  rel="noopener noreferrer" @click="preloader = true">Download Full Report</a>
 
                 </div>
             </div>
@@ -82,61 +82,10 @@
 
 
 
-
-
-
-
 <div v-html="fullattenReport"></div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <h5>
-                <div class="well tex-center">DATE :
-
-                </div>
-            </h5>
-            <h5>
-                <center> STUDENTS ATTENDANCE</center>
-
-            </h5>
             <div class="table-responsive">
 
               <table class="table display text-nowrap">
@@ -154,7 +103,7 @@
                             <td scope="col">{{ att.date }}</td>
                             <td scope="col">
                                 <router-link :to="{name:'students_attendance_daily', params: { classname: StudentClass, type: 'Daily', date:att.date } }"
-                                    class="btn-fill-lmd text-light gradient-dodger-blue">View Full Data</router-link>
+                                    class="btn-fill-lmd text-light gradient-dodger-blue" >View Full Data</router-link>
 
                                  <span @click="sendAbsentSms(StudentClass,'Daily',att.date,school_id)" v-if="att.message_status=='Pending'" class="btn-fill-lg font-normal no-radius text-light gradient-orange-peel" id="att_class6_msg" >SENT SMS ABSENT STUDENT</span>
                                   <span class="btn-fill-lmd text-light bg-gradient-gplus" v-else>SMS SENT SUCCESSFULLY COMPLETED!</span>

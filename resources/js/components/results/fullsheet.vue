@@ -24,7 +24,7 @@
                     <div class="dropdown">
 
                         <!-- {{ url('school/result_sheet/pdf/' . $group . '/' . $class . '/' . $exam_name . '/All/' . $date) }} -->
-                     <a  v-if="status=='Published'" target="_blank" :href="'/school/result_sheet/pdf/' + form.school_id +'/'+ filterdata.group + '/' + filterdata.student_class + '/' + filterdata.examType + '/All/' + filterdata.date"  class="btn-fill-lmd radius-4 text-light bg-violet-blue float-left" style="float:right">Download</a>
+                     <a  v-if="status=='Published'"  :href="'/school/result_sheet/pdf/' + form.school_id +'/'+ filterdata.group + '/' + filterdata.student_class + '/' + filterdata.examType + '/All/' + filterdata.date"  class="btn-fill-lmd radius-4 text-light bg-violet-blue float-left" style="float:right" @click="preloader = true">Download</a>
 
                     </div>
                 </div>
@@ -33,10 +33,10 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div style="width: 100%;" class="exam">
-                                <h5>
+                                <h5 class="mobilefonthead">
                                     Exam Name: {{ filterdata.examType }}
                                 </h5>
-                                <h5>
+                                <h5 class="mobilefonthead">
                                     Subject: {{ filterdata.subject }}
                                 </h5>
                             </div>
@@ -72,8 +72,8 @@
                                 <tr>
                                     <th scope="col" colspan="15">
                                         <h5>
-                                            <center>
-                                                CLASS {{ filterdata.student_class }} RESULT
+                                            <center class="mobilefonthead">
+                                                 {{ filterdata.student_class }} RESULT
                                             </center>
                                         </h5>
                                     </th>

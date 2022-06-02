@@ -16,16 +16,16 @@
 
     <div class="card height-auto">
         <div class="card-body">
-                        <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
-                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
-                            GO BACK
-                        </router-link>
+
 
   <form  enctype="multipart/form-data" v-on:submit.prevent="formsubmit" >
 
             <div class="heading-layout1">
                 <div class="item-title">
-                    <h3>Students Attendence</h3>
+                   <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                            v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
+                            GO BACK
+                        </router-link>
                 </div>
                 <div class="dropdown">
 
@@ -86,12 +86,12 @@
 
 
             <h5>
-                <div class="well tex-center">DATE :
+                <div class="well tex-center mobilefonthead">DATE : {{ form.date }}
 
                 </div>
             </h5>
             <h5>
-                <center> STUDENTS ATTENDANCE</center>
+                <center class="mobilefonthead"> {{ form.student_class }} ATTENDANCE</center>
 
             </h5>
             <div class="table-responsive">

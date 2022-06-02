@@ -40,8 +40,8 @@
                         <form id="form" enctype="multipart/form-data" method="POST" v-on:submit.prevent="formsubmit" >
 
                             <h5>
-                                <center v-if="this.$route.params.create=='edit'">EDIT CLASS {{ student_class }} ROUTION </center>
-                                <center v-else >ADD NEW CLASS {{ student_class }} ROUTION </center>
+                                <center v-if="this.$route.params.create=='edit'" class="mobilefonthead">EDIT CLASS {{ student_class }} ROUTION </center>
+                                <center v-else  class="mobilefonthead">ADD NEW CLASS {{ student_class }} ROUTION </center>
 
                             </h5>
                             <div class="table-responsive">

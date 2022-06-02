@@ -102,7 +102,29 @@ th, th label {
     font-size: 13px !important;
 }td {
     font-size: 12px;
+
 }
+
+.tablecolhide{
+    display: none;
+}
+.textwrap{
+    white-space: break-spaces;
+}
+.mobilefonthead {
+    font-size: 14px;
+}
+
+.fixednav {
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+}
+
+
+    }
+    .minheight{
+        height: 150px;
     }
 
 </style>
@@ -149,7 +171,7 @@ th, th label {
 
 
        <!-- Header Menu Area Start Here -->
-        <div class="navbar navbar-expand-md header-menu-one bg-light" v-show="$route.path === '/login' || $route.path === '/register' || $route.path === 'forget' ? false : true " >
+        <div class="navbar navbar-expand-md header-menu-one bg-light" id='topnavbar' v-show="$route.path === '/login' || $route.path === '/register' || $route.path === 'forget' ? false : true " >
             <div class="nav-bar-header-one">
                 <div class="header-logo">
                     <a href="index.html">
@@ -272,8 +294,7 @@ th, th label {
                                             class="fas fa-angle-right"></i> Student Promotion</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link   onclick="navhide()" :to="{name:'studentCard'}" class="nav-link"><i
-                                            class="fas fa-angle-right"></i>Student Card</router-link>
+                                    <router-link   onclick="navhide()" :to="{name:'studentCard'}" class="nav-link"><i class="fas fa-angle-right"></i> Student Card</router-link>
                                 </li>
                             </ul>
                         </li>
@@ -460,6 +481,28 @@ th, th label {
 function navhide(){
     document.getElementById('wrapper').classList.remove('sidebar-collapsed-mobile');
 }
+
+
+
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the header
+var header = document.getElementById("topnavbar");
+
+// Get the offset position of the navbar
+var sticky = header.offsetTop;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("fixednav");
+  } else {
+    header.classList.remove("fixednav");
+  }
+}
+
+
 
 </script>
 

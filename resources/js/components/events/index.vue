@@ -14,13 +14,13 @@
             <div class="card-body">
                 <div class="heading-layout1">
                     <div class="item-title">
-                        <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                        <router-link  class="btn-fill-md radius-4 text-light bg-orange-red"
                             v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
                             GO BACK
                         </router-link>
                     </div>
                     <div class="dropdown">
-                        <router-link  class="btn-fill-md text-light bg-dark-pastel-green mt-3 float-right" :to="{name:'eventnew'}">Add New</router-link>
+                        <router-link  class="btn-fill-md text-light bg-dark-pastel-green float-right" :to="{name:'eventnew'}">Add New</router-link>
 
                     </div>
                 </div>
@@ -46,7 +46,7 @@
 
 
                 <div class="table-responsive">
-                    <table class="table display data-table text-nowrap">
+                    <table class="table display data-table text-nowrap" id="tableid">
                         <thead>
                             <tr>
                                 <th>
@@ -87,9 +87,27 @@
 
                                 </td>
                                 <td>
-                                    <router-link class="btn btn-success" :to="{name:'eventsView',params:{id:event.id}}">View All</router-link>
-                                    <router-link class="btn btn-primary" :to="{name:'eventEdit',params:{id:event.id}}">Edit</router-link>
-                                    <span @click="actionclick(event.id)" class="btn btn-danger" >Delete</span>
+
+
+
+
+                                   <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                    <router-link class="dropdown-item" :to="{name:'eventsView',params:{id:event.id}}"><i class="fas fa-eye"></i> View All</router-link>
+                                    <router-link class="dropdown-item" :to="{name:'eventEdit',params:{id:event.id}}"><i class="fas fa-cogs"></i> Edit</router-link>
+                                    <span @click="actionclick(event.id)" class="dropdown-item" ><i class="fas fa-trash-alt fa-fw"></i> Delete</span>
+
+
+
+                                        </div>
+                                    </div>
+
                                 </td>
                             </tr>
                         </tbody>
@@ -128,6 +146,12 @@ export default {
             axios.get(`/api/event?page=${page}&filter[school_id]=${this.school_id}&filter[title]=${this.title}`)
                 .then(({ data }) => {
                     this.events = data;
+                                        if(data.data.length<3){
+                        document.getElementById('tableid').classList.add('minheight');
+                    }else{
+                        document.getElementById('tableid').classList.remove('minheight');
+
+                    }
                     this.looding =false
                     this.preloader = false;
                 })

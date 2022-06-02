@@ -26,10 +26,10 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div style="width: 100%;" class="exam">
-                                <h5>
+                                <h5 class="mobilefonthead">
                                     Exam Name: {{ filterdata.examType }}
                                 </h5>
-                                <h5>
+                                <h5 class="mobilefonthead">
                                     Subject: {{ filterdata.subject }}
                                 </h5>
                             </div>
@@ -48,15 +48,15 @@
                                 <tr>
                                     <th scope="col" colspan="15">
                                         <h5>
-                                            <center>
-                                                CLASS {{ filterdata.student_class }} RESULT
+                                            <center class="mobilefonthead">
+                                                 {{ filterdata.student_class }} RESULT
                                             </center>
                                         </h5>
                                     </th>
                                 </tr>
                                 <tr id="changeTableHead">
                                     <th scope="col">রোল.</th>
-                                    <th scope="col" width="15%">নাম</th>
+                                    <th scope="col" class="textwrap" width="15%">নাম</th>
                                     <th scope="col">লিখিত</th>
                                     <th scope="col">বহুনির্বাচনী</th>
                                     <th scope="col">অতিরিক্ত</th>
@@ -66,7 +66,7 @@
                             <tbody>
                                 <tr v-for="student in students">
                                     <td scope="col">{{ student.StudentRoll }}</td>
-                                    <td scope="col">{{ student.StudentName }}</td>
+                                    <td scope="col" class="textwrap">{{ student.StudentName }}</td>
                                     <td scope="col"><input type="number" min="1" max="100" class="form-control"
                                             v-model="form.number[student.StudentRoll]['CQ']" required></td>
                                     <td scope="col"><input type="number" min="1" max="100"

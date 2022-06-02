@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Attendance;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
-// use Meneses\LaravelMpdf\Facades\LaravelMpdf;
+use Meneses\LaravelMpdf\Facades\LaravelMpdf;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 class studentsController extends Controller
@@ -454,18 +454,18 @@ class studentsController extends Controller
         $students = student::where(['school_id' => $school_id, 'StudentClass' => $class, 'Year' => $year, 'StudentStatus' => 'Active'])->get();
         // die();
         $table = "
-<div class='col-12' >
-    <div class='card'>
-        <div class='card-body'>
+
+
+
             <div class='heading-layout1'>
                 <div class='item-title'>
                     <h5>
-                        <center>CLASS  ATTENDANCE</center>
+                        <center class='mobilefonthead'>$class  ATTENDANCE</center>
                         </center>
                     </h5>
                 </div>
                 <h5>
-                    <div class='well tex-center'>DATE :
+                    <div class='well tex-center mobilefonthead'>DATE : $date_month
                     </div>
                 </h5>
             </div>
@@ -502,9 +502,10 @@ class studentsController extends Controller
         $table .= "</tbody>
             </table>
              </div>
-            </div>
-        </div>
-    </div>";
+
+
+
+        ";
         return $table;
     }
 

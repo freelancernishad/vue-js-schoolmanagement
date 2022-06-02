@@ -103,14 +103,14 @@
                 <table class="table text-nowrap">
                     <thead>
                         <tr>
-                            <th class="" scope="col">Class</th>
-                            <th scope="col">Roll</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Paid Amount</th>
-                            <th scope="col">status</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Action</th>
+
+                            <th scope="col" width="15%">Roll</th>
+                            <th scope="col" width="10%">Name</th>
+                            <th  class="tablecolhide" width="15%" scope="col">Amount</th>
+                            <th  class="tablecolhide" width="15%" scope="col">Paid Amount</th>
+                            <th scope="col" width="15%">status</th>
+                            <th  class="tablecolhide" width="15%" scope="col">Date</th>
+                            <th scope="col" width="15%">Action</th>
 
                         </tr>
                     </thead>
@@ -121,12 +121,12 @@
 
 
                             <tr v-for="studentList in students">
-                                <td scope="col">{{ studentList.StudentClass }}</td>
-                                <td scope="col">{{ studentList.StudentRoll }}</td>
-                                <td scope="col">{{ studentList.StudentName }}</td>
-                                <td scope="col">{{ paymentAmount }}</td>
 
-                                <td scope="col">
+                                <td>{{ studentList.StudentRoll }}</td>
+                                <td class="textwrap">{{ studentList.StudentName }}</td>
+                                <td  class="tablecolhide">{{ paymentAmount }}</td>
+
+                                <td  class="tablecolhide">
                                          <span v-if="statustext=='Looding...'">{{ statustext }}</span>
                                <span v-else>{{ paidamount[studentList.StudentRoll] }}</span>
                                     </td>
@@ -137,26 +137,48 @@
                                <span v-else>{{ status[studentList.StudentRoll] }}</span>
                                </td>
                                <td class='badge badge-pill badge-danger d-block mg-t-8' v-else  >{{ statustext }}</td>
-                               <td>
+                               <td  class="tablecolhide">
                                    <span v-if="statustext=='Looding...'">{{ statustext }}</span>
                                <span v-else>{{ paiddate[studentList.StudentRoll] }}</span></td>
 
 
 
                                 <td>
+
 <div v-if="statustext=='Looding...'">{{ statustext }}</div>
 
-<div v-else>
-<div v-if="status[studentList.StudentRoll]=='Paid'" >
-                                    <router-link :to="{name: 'paymentedit', params: {create:'edit',id:ids[studentList.StudentRoll] }}" class="btn btn-info"
-                                        style="font-size: 10px;background:green !important;" id="">Edit</router-link>
-                                    <a href="" target="_blank"
-                                        class="btn btn-info" style="font-size: 10px;" id="">Invoice</a>
-</div>
+                     <div class="dropdown" v-else>
+                                        <button class="btn btn-info dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                                    <router-link :to="{name: 'paymentcreate', params: {create:'create',classname:studentList.StudentClass,year:year,month:month,type:type,id:studentList.id}}" v-else class="btn btn-info add_paymentById"
-                                        style="font-size: 10px;" >Pay Now</router-link>
-</div>
+          <router-link :to="{name: 'paymentedit', params: {create:'edit',id:ids[studentList.StudentRoll] }}" v-if="status[studentList.StudentRoll]=='Paid'" class="dropdown-item" id=""><i class="fas fa-cogs"></i> Edit</router-link>
+
+        <a href="" target="_blank" class="dropdown-item" v-if="status[studentList.StudentRoll]=='Paid'" id=""><i class="fas fa-download fa-fw"></i> Invoice</a>
+
+                                    <router-link :to="{name: 'paymentcreate', params: {create:'create',classname:studentList.StudentClass,year:year,month:month,type:type,id:studentList.id}}" v-else class="dropdown-item add_paymentById" >Pay Now</router-link>
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                 </td>
                             </tr>

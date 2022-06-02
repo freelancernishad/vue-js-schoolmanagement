@@ -92,7 +92,7 @@ this.imageget();
 				let reader = new FileReader;
 				reader.onload = event => {
 					this.form.image = event.target.result
-					console.log(event.target.result);
+					// console.log(event.target.result);
 				};
 				reader.readAsDataURL(file)
 			}
@@ -122,9 +122,10 @@ this.form.image = data
 
 
 
-                        this.$router.push({name: 'staffs'})
+                        // this.$router.push({name: 'staffs'})
                         Notification.success();
                         this.preloader = false;
+                         return this.$router.go(-1)
 
 
                 })

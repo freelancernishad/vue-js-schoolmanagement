@@ -45,7 +45,7 @@
 
 
                 <div class="table-responsive">
-                    <table class="table display data-table text-nowrap">
+                    <table class="table display data-table text-nowrap" id="tableid">
                         <thead>
                             <tr>
                                 <th>
@@ -83,9 +83,22 @@
 
                                 </td>
                                 <td>
-                                    <router-link class="btn btn-success" :to="{name:'gallerysView',params:{id:gallery.id}}">View All</router-link>
-                                    <router-link class="btn btn-primary" :to="{name:'galleryEdit',params:{id:gallery.id}}">Edit</router-link>
-                                    <span @click="actionclick(gallery.id)" class="btn btn-danger" >Delete</span>
+                                   <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                    <router-link class="dropdown-item" :to="{name:'gallerysView',params:{id:gallery.id}}"><i class="fas fa-eye"></i> View All</router-link>
+                                    <router-link class="dropdown-item" :to="{name:'galleryEdit',params:{id:gallery.id}}"><i class="fas fa-cogs"></i> Edit</router-link>
+                                    <span @click="actionclick(gallery.id)" class="dropdown-item" ><i class="fas fa-trash-alt fa-fw"></i> Delete</span>
+
+
+
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -121,6 +134,12 @@ export default {
             axios.get(`/api/gallery?page=${page}&filter[school_id]=${this.school_id}&filter[title]=${this.title}&filter[category]=${this.$route.params.category}`)
                 .then(({ data }) => {
                     this.gallerys = data;
+                   if(data.data.length<3){
+                        document.getElementById('tableid').classList.add('minheight');
+                    }else{
+                        document.getElementById('tableid').classList.remove('minheight');
+
+                    }
                     // console.log(data)
                     // console.log(data[0].school_id)
                     // this.school_id = data[0].school_id

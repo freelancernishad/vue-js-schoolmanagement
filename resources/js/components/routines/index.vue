@@ -46,7 +46,7 @@
 
                     <div class="col-md-12 mt-5">
                         <h5>
-                            <center>CLASS ROUTION LIST</center>
+                            <center class="mobilefonthead" >{{ student_class }} ROUTION LIST</center>
                             </center>
                         </h5>
                         <div class="table-responsive">

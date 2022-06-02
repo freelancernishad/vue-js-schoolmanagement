@@ -1,7 +1,7 @@
 <template>
     <div>
             <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
-            
+
         <div class="breadcrumbs-area">
             <h3>Blog</h3>
             <ul>
@@ -15,13 +15,13 @@
             <div class="card-body">
                 <div class="heading-layout1">
                     <div class="item-title">
-                        <router-link  class="btn-fill-md radius-4 text-light bg-orange-red mb-3"
+                        <router-link  class="btn-fill-md radius-4 text-light bg-orange-red"
                             v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }">
                             GO BACK
                         </router-link>
                     </div>
                     <div class="dropdown">
-                        <router-link  class="btn-fill-md text-light bg-dark-pastel-green mt-3 float-right" :to="{name:'blognew'}">Add New</router-link>
+                        <router-link  class="btn-fill-md text-light bg-dark-pastel-green float-right" :to="{name:'blognew'}">Add New</router-link>
 
                     </div>
                 </div>
@@ -47,7 +47,7 @@
 
 
                 <div class="table-responsive">
-                    <table class="table display data-table text-nowrap">
+                    <table class="table display data-table text-nowrap" id="tableid" >
                         <thead>
                             <tr>
                                 <th>
@@ -89,9 +89,23 @@
 
                                 </td>
                                 <td>
-                                    <router-link class="btn btn-success" :to="{name:'blogsView',params:{id:blog.id}}">View All</router-link>
-                                    <router-link class="btn btn-primary" :to="{name:'blogEdit',params:{id:blog.id}}">Edit</router-link>
-                                    <span @click="actionclick(blog.id)" class="btn btn-danger" >Delete</span>
+
+                                   <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                    <router-link class="dropdown-item" :to="{name:'blogsView',params:{id:blog.id}}"><i class="fas fa-eye"></i> View All</router-link>
+                                    <router-link class="dropdown-item" :to="{name:'blogEdit',params:{id:blog.id}}"><i class="fas fa-cogs"></i> Edit</router-link>
+                                    <span @click="actionclick(blog.id)" class="dropdown-item" ><i class="fas fa-trash-alt fa-fw"></i> Delete</span>
+
+
+
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -128,6 +142,13 @@ export default {
             axios.get(`/api/blog?page=${page}&filter[school_id]=${this.school_id}&filter[title]=${this.title}&filter[Category]=${this.$route.params.category}`)
                 .then(({ data }) => {
                     this.blogs = data;
+
+                                        if(data.data.length<3){
+                        document.getElementById('tableid').classList.add('minheight');
+                    }else{
+                        document.getElementById('tableid').classList.remove('minheight');
+
+                    }
                     this.preloader = false;
                     this.looding =false
                 })

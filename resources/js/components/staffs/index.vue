@@ -42,9 +42,9 @@
 
 
 
-                <div class="d-flex justify-content-between">
+                <div class="row">
 
-                    <div class="d-flex align-items-end" v-if="actioncheck != ''">
+                    <div class="d-flex align-items-end col-md-6" v-if="actioncheck != ''">
                         <div class="form-group">
                             <label for="">Action :</label>
                             <select class="form-control" v-model="action" style="width:200px">
@@ -62,11 +62,11 @@
 
                     </div>
 
-                    <div v-else></div>
+                    <div v-else class=" col-md-6"></div>
 
 
 
-                    <div class="form-group">
+                    <div class="form-group  col-md-6">
                         <label for="">Search :</label>
                         <input type="text" v-model="name" @keyup="searchname" placeholder="Search By Name"
                             class="form-control">
@@ -98,11 +98,11 @@
                                 <th>Photo</th>
                                 <th @click="sortby('TeacherName')">Name</th>
 
-                                <th @click="sortby('InchargeClass')">Incharge Class</th>
+                                <th  class="tablecolhide" @click="sortby('InchargeClass')">Incharge Class</th>
 
-                                <th @click="sortby('TeacherSubjectHandling')">Subject</th>
-                                <th @click="sortby('TeacherPhoneNumber')">Phone</th>
-                                <th @click="sortby('TeacherEmail')">E-mail</th>
+                                <th  class="tablecolhide" @click="sortby('TeacherSubjectHandling')">Subject</th>
+                                <th  class="tablecolhide" @click="sortby('TeacherPhoneNumber')">Phone</th>
+                                <th  class="tablecolhide" @click="sortby('TeacherEmail')">E-mail</th>
                                 <th>Action</th>
 
                             </tr>
@@ -141,20 +141,37 @@
                                 </td>
                                 <td>{{ Staffs.TeacherName }}</td>
 
-                                <td>{{ Staffs.InchargeClass }}</td>
-                                <td>{{ Staffs.TeacherSubjectHandling }}</td>
-                                <td>{{ Staffs.TeacherPhoneNumber }}</td>
-                                <td>{{ Staffs.TeacherEmail }}</td>
+                                <td  class="tablecolhide">{{ Staffs.InchargeClass }}</td>
+                                <td  class="tablecolhide">{{ Staffs.TeacherSubjectHandling }}</td>
+                                <td  class="tablecolhide">{{ Staffs.TeacherPhoneNumber }}</td>
+                                <td  class="tablecolhide">{{ Staffs.TeacherEmail }}</td>
 
                                 <td>
 
 
-                                    <router-link class="btn btn-info"
+
+                     <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <router-link class="btn btn-info  dropdown-item"
                                         :to="{ name: 'Staffsview', params: { id: Staffs.id } }"><i class="fas fa-eye"></i>
                                         View</router-link>
-                                    <router-link class="btn btn-success"
+                                    <router-link class="btn btn-success  dropdown-item"
                                         :to="{ name: 'Staffsedit', params: { id: Staffs.id } }"><i class="fas fa-cogs"></i>
                                         Edit</router-link>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
                                 </td>
 
                             </tr>

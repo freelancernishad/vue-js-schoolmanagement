@@ -18,7 +18,7 @@
         <div class="card-body">
             <div class="heading-layout1">
                 <div class="item-title">
-                    <h3>All Gallery Category</h3>
+                    <h3 class="mobilefonthead">All Gallery Category</h3>
                 </div>
                 <div class="dropdown">
 
@@ -55,7 +55,7 @@
 
                     <div class="col-12 form-group">
                       <div class="d-grid">
-                       <button class="btn btn-primary">Add Gallery Category</button>
+                       <button class="btn-fill-lg font-normal text-light gradient-pastel-green">Add Gallery Category</button>
                       </div>
                     </div>
                   </form>
@@ -96,11 +96,25 @@
 
 
                           <td>
-                            <div class="d-flex align-items-center gap-3 fs-6">
 
-                        <router-link @click.native="editfuncion" :to="{name:'categoryedit',params:{id:category.id}}" class="text-warning" ><i class="fas fa-edit fa-fw"></i></router-link>
-                         <span @click="actionclick(category.id)" style="color:red" ><i class="fas fa-trash-alt fa-fw"></i></span>
-                            </div>
+
+                                   <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+
+ <router-link @click.native="editfuncion" :to="{name:'categoryedit',params:{id:category.id}}" class="dropdown-item" ><i class="fas fa-cogs"></i> Edit</router-link>
+ <span @click="actionclick(category.id)" class="dropdown-item" ><i class="fas fa-trash-alt fa-fw"></i> Delete</span>
+
+
+                                        </div>
+                                    </div>
+
+
                           </td>
                         </tr>
 
