@@ -118,7 +118,7 @@ th, th label {
 .fixednav {
     position: fixed;
     width: 100%;
-    z-index: 9;
+    z-index: 10;
 }
 
 
