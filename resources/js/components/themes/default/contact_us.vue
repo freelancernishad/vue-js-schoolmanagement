@@ -95,7 +95,7 @@
 			        			<span class="fa fa-phone"></span>
 			        		</div>
 			        		<div class="text">
-				            <p><span>Phone:</span> <a :href="'tel:'+schooldetails.contact_number">{{ schooldetails.contact_number }}</a></p>
+				            <p><span>Phone:</span> <a class="contactlink" :href="'tel:'+schooldetails.contact_number">{{ schooldetails.contact_number }}</a></p>
 				          </div>
 			          </div>
 							</div>
@@ -105,7 +105,7 @@
 			        			<span class="fa fa-paper-plane"></span>
 			        		</div>
 			        		<div class="text">
-				            <p><span>Email:</span> <a :href="'mailto:'+schooldetails.contact_email">{{ schooldetails.contact_email }}</a></p>
+				            <p><span>Email:</span> <a class="contactlink" :href="'mailto:'+schooldetails.contact_email">{{ schooldetails.contact_email }}</a></p>
 				          </div>
 			          </div>
 							</div>
@@ -115,7 +115,7 @@
 			        			<span class="fa fa-globe"></span>
 			        		</div>
 			        		<div class="text">
-				            <p><span>Website</span> <a :href="schooldetails.school_domain">{{ schooldetails.school_domain }}</a></p>
+				            <p><span>Website</span> <a class="contactlink" :href="schooldetails.school_domain">{{ schooldetails.school_domain }}</a></p>
 				          </div>
 			          </div>
 							</div>
@@ -189,82 +189,20 @@ this.getSchoolData()
 
 <style>
 
-body {
-  font-family: "Poppins", Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.8;
-  font-weight: normal;
-  background: #fafafa;
-  color: #666666; }
 
-a {
+a.contactlink {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
   color: #2553b8; }
-  a:hover, a:focus {
+  a.contactlink:hover, a.contactlink:focus {
     text-decoration: none !important;
     outline: none !important;
     -webkit-box-shadow: none;
     box-shadow: none; }
 
-h1, h2, h3, h4, h5,
-.h1, .h2, .h3, .h4, .h5 {
-  line-height: 1.5;
-  font-weight: 400;
-  font-family: "Poppins", Arial, sans-serif;
-  color: #000; }
 
-.bg-primary {
-  background: #2553b8 !important; }
 
-.ftco-section {
-  padding: 7em 0; }
-
-.ftco-no-pt {
-  padding-top: 0; }
-
-.ftco-no-pb {
-  padding-bottom: 0; }
-
-.heading-section {
-  font-size: 28px;
-  color: #000; }
-
-.img {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center; }
-
-.form-control {
-  height: 44px;
-  background: #fff;
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 14px;
-  border-radius: 2px;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  border: none; }
-  .form-control::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
-    color: rgba(0, 0, 0, 0.3) !important; }
-  .form-control::-moz-placeholder {
-    /* Firefox 19+ */
-    color: rgba(0, 0, 0, 0.3) !important; }
-  .form-control:-ms-input-placeholder {
-    /* IE 0+ */
-    color: rgba(0, 0, 0, 0.3) !important; }
-  .form-control:-moz-placeholder {
-    /* Firefox 18- */
-    color: rgba(0, 0, 0, 0.3) !important; }
-  .form-control:focus, .form-control:active {
-    border-color: #2553b8 !important; }
-
-textarea.form-control {
-  height: inherit !important; }
-
-.wrapper {
-  width: 100%; }
 
 .contact-wrap {
   background: #e8edf0; }
@@ -297,38 +235,8 @@ textarea.form-control {
   .dbox .text {
     width: 100%; }
 
-.btn {
-  padding: 12px 16px;
-  cursor: pointer;
-  border-width: 1px;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: 400;
-  -webkit-box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
-  box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
-  position: relative;
-  margin-bottom: 20px;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s; }
-  @media (prefers-reduced-motion: reduce) {
-    .btn {
-      -webkit-transition: none;
-      -o-transition: none;
-      transition: none; } }
-  .btn:hover, .btn:active, .btn:focus {
-    outline: none !important;
-    -webkit-box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.22) !important;
-    -moz-box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.22) !important;
-    box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.22) !important; }
-  .btn.btn-primary {
-    background: #2553b8 !important;
-    border-color: #2553b8 !important;
-    color: #fff; }
-    .btn.btn-primary:hover, .btn.btn-primary:focus {
-      border-color: #1c408e !important;
-      background: #1c408e !important; }
+
+
 
 .contactForm .label {
   color: #000;
@@ -339,11 +247,6 @@ textarea.form-control {
 .contactForm .form-control {
   border: none; }
 
-#map {
-  width: 100%; }
-  @media (max-width: 767.98px) {
-    #map {
-      height: 300px; } }
 
 #contactForm .error {
   color: red;
@@ -366,13 +269,5 @@ textarea.form-control {
   font-size: 18px;
   font-weight: 500; }
 
-.submitting {
-  float: left;
-  width: 100%;
-  padding: 10px 0;
-  display: none;
-  font-size: 16px;
-  font-weight: 500;
-  color: #2553b8; }
 
 </style>
