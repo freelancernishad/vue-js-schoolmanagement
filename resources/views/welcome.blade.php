@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://connect.facebook.net/en-us/sdk.js#xfbml=1&amp;version=v2.5"></script>
+	{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+	{{-- <script src="https://connect.facebook.net/en-us/sdk.js#xfbml=1&amp;version=v2.5"></script> --}}
 <style>
     body{
         background:white !important;
