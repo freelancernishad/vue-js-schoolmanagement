@@ -254,7 +254,7 @@ a.active {
         line-height:10px;
         margin-top:26px;
     }
-    p {
+    .popu_p {
         color:white;
         font-family:helvetica;
         font-size:.75em;
@@ -322,7 +322,7 @@ a.active {
         </div>
          <h1>Welcome!</h1>
 
-        <p>Thanks For Visiting Our application First Time</p>
+        <p class='popu_p'>Thanks For Visiting Our application First Time</p>
         <div class="bottom-popup">
             <a class="start" href="">GET START</a>
 

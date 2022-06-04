@@ -227,7 +227,7 @@ class studentsController extends Controller
         if(File::exists($student->StudentPicture)){
             unlink($student->StudentPicture);
         }
-      $StudentPicture=  fileupload($request->image,'backend/students/',250,300,$student->StudentID);
+      $StudentPicture=  fileupload($request->StudentPicture,'backend/students/',250,300,$student->StudentID);
 
         return $student->update(['StudentPicture'=>$StudentPicture]);
 

@@ -34,7 +34,23 @@
         </div>
         <div class="single-info-details">
             <div class="item-img">
-                <img :src="ASSETURL+form.StudentPicture" alt="student">
+
+
+
+                    <div class="form-input">
+                        <div class="preview">
+                        <img :src="form.StudentPicture" id="file-ip-1-preview">
+                        </div>
+                        <label for="file-ip-1">Choose File</label>
+                        <input type="file" id="file-ip-1"  @change="studentimage">
+
+                    </div>
+
+
+
+
+
+                <!-- <img :src="ASSETURL+form.StudentPicture" alt="student"> -->
             </div>
             <div class="item-content">
                 <div class="header-inline item-header">
@@ -151,12 +167,53 @@ export default {
 
 
 
+	studentimage(event){
+
+			let file = event.target.files[0];
+			if (file.size > 5048576) {
+				Notification.image_validation();
+			} else {
+				let reader = new FileReader;
+				reader.onload = event => {
+					this.form.StudentPicture = event.target.result
+					// console.log(event.target.result);
+ this.preloader = true;
+                axios.post('/api/students/image/upload',this.form)
+                .then(({ data }) => {
+
+
+
+                        // this.$router.push({ path: $routerHistory.previous().path })
+                        Notification.success();
+                        // this.preloader = false;
+                        // return this.$router.go(-1)
+                        this.getstudent();
+
+
+                })
+                .catch()
+
+
+
+				};
+				reader.readAsDataURL(file)
+			}
+		},
+
+
+
+
+
+
+
+
         getstudent(){
                 axios.get(`/api/students/single?filter[id]=${this.editid}`)
                                 .then(({data}) => {
                                     //  console.log(data)
                                     this.form = data[0]
-                                              this.preloader = false;
+                                    this.form.StudentPicture = ASSETURL+this.form.StudentPicture;
+                                    this.preloader = false;
                                 })
                                 .catch(() => {
                                     // this.$router.push({name: 'supplier'})

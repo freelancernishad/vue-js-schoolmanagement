@@ -128,6 +128,39 @@ return $result;
 }
 
 
+    public function checkSingleResult(Request $request)
+    {
+
+// return $class_group = $request->filter['class_group'];
+
+
+
+        $result = QueryBuilder::for(StudentResult::class)
+        ->allowedFilters([
+            AllowedFilter::exact('school_id'),
+            AllowedFilter::exact('exam_name'),
+            AllowedFilter::exact('year'),
+            AllowedFilter::exact('roll'),
+            AllowedFilter::exact('class'),
+            AllowedFilter::exact('subject'),
+            AllowedFilter::exact('class_group'),
+            AllowedFilter::exact('StudentReligion'),
+            AllowedFilter::exact('status'),
+            AllowedFilter::exact('message_status'),
+            AllowedFilter::exact('FinalResultStutus'),
+            AllowedFilter::exact('date'),
+            AllowedFilter::exact('stu_id'),
+            AllowedFilter::exact('Bangla_1st'),
+           AllowedFilter::exact('id')
+        ])
+        ->get();
+    return response()->json($result);
+    }
+
+
+
+
+
     public function checkResult(Request $request)
     {
  if($request->subject=='ইসলামধর্ম'){

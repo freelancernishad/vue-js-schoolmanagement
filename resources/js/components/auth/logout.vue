@@ -13,7 +13,8 @@ export default {
 			title: 'Logout in successfully'
 		})
 
-		this.$router.push({name: '/'})
+		// this.$router.push({name: '/login'})
+            window.location.href ="/login";
 	}
 }
 </script>

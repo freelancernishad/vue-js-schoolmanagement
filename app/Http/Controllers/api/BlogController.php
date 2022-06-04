@@ -27,10 +27,11 @@ class blogController extends Controller
             'Tags',
             AllowedFilter::exact('id'),
             AllowedFilter::exact('school_id'),
+            AllowedFilter::exact('slug'),
             AllowedFilter::exact('post_id'),
             AllowedFilter::exact('Category'),
             AllowedFilter::exact('status'),
-        ])
+        ])->orderBy('id','DESC')
         ->paginate(10);
     return response()->json($result);
 

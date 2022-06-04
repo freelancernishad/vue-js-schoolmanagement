@@ -48,18 +48,26 @@ class frontendController extends Controller
         $data['rows'] = DB::table('staff')->where('school_id',$school_id)->get();
         return view(sitedetails()->theme.'.teacher', $data);
     }
-    public function student_at_a_glance()
+    public function student_at_a_glance(Request $request)
     {
-        $school_id = sitedetails()->school_id;
-        //$data['rows'] = DB::table('students')->get();
-        $class = ['Play', 'Nursery', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+
+        $school_id = $request->school_id;
+
+        $class =  class_list();
+
+
         $classCount = count($class);
-        $totalStudent = [];
-        $maleStudent = [];
-        $FemaleStudent = [];
-        $scienceStudent = [];
-        $HumanitiesStudent = [];
-        $CommerceStudent = [];
+
+
+        $students = [];
+        $totalStudent = 0;
+        $maleStudent = 0;
+        $FemaleStudent = 0;
+        $scienceStudent = 0;
+        $HumanitiesStudent = 0;
+        $CommerceStudent = 0;
+
+
         for ($i = 0; $i < $classCount; $i++) {
             //total
             $whereTotal = [
@@ -67,7 +75,12 @@ class frontendController extends Controller
                 'StudentStatus' => 'Active',
                 'StudentClass' => $class[$i],
             ];
-            $totalStudent[$class[$i]] = DB::table('students')->where($whereTotal)->count();
+            // $totalStudent[$class[$i]] = DB::table('students')->where($whereTotal)->count();
+
+$totalStudentcount = DB::table('students')->where($whereTotal)->count();
+$students[class_en_to_bn($class[$i])]['totalStudent'] = $totalStudentcount;
+            $totalStudent += $totalStudentcount;
+
             //maleStudent
             $wheremale = [
                 'school_id'=>$school_id,
@@ -75,7 +88,10 @@ class frontendController extends Controller
                 'StudentStatus' => 'Active',
                 'StudentClass' => $class[$i],
             ];
-            $maleStudent[$class[$i]] = DB::table('students')->where($wheremale)->count();
+            // $maleStudent[$class[$i]] = DB::table('students')->where($wheremale)->count();
+            $maleStudentcount = DB::table('students')->where($wheremale)->count();
+            $students[class_en_to_bn($class[$i])]['maleStudent'] = $maleStudentcount;
+            $maleStudent += $maleStudentcount;
             //FemaleStudent
             $whereFemale = [
                 'school_id'=>$school_id,
@@ -83,7 +99,10 @@ class frontendController extends Controller
                 'StudentStatus' => 'Active',
                 'StudentClass' => $class[$i],
             ];
-            $FemaleStudent[$class[$i]] = DB::table('students')->where($whereFemale)->count();
+            // $FemaleStudent[$class[$i]] = DB::table('students')->where($whereFemale)->count();
+            $FemaleStudentcount = DB::table('students')->where($whereFemale)->count();
+            $students[class_en_to_bn($class[$i])]['FemaleStudent'] =$FemaleStudentcount;
+            $FemaleStudent += $FemaleStudentcount;
             //science
             $wherescience = [
                 'school_id'=>$school_id,
@@ -91,7 +110,10 @@ class frontendController extends Controller
                 'StudentStatus' => 'Active',
                 'StudentClass' => $class[$i],
             ];
-            $scienceStudent[$class[$i]] = DB::table('students')->where($wherescience)->count();
+            // $scienceStudent[$class[$i]] = DB::table('students')->where($wherescience)->count();
+            $scienceStudentcount = DB::table('students')->where($wherescience)->count();
+            $students[class_en_to_bn($class[$i])]['scienceStudent'] = $scienceStudentcount;
+            $scienceStudent += $scienceStudentcount;
             //HumanitiesStudent
             $whereHumanities = [
                 'school_id'=>$school_id,
@@ -99,7 +121,10 @@ class frontendController extends Controller
                 'StudentStatus' => 'Active',
                 'StudentClass' => $class[$i],
             ];
-            $HumanitiesStudent[$class[$i]] = DB::table('students')->where($whereHumanities)->count();
+            // $HumanitiesStudent[$class[$i]] = DB::table('students')->where($whereHumanities)->count();
+            $maleStudentcount = DB::table('students')->where($whereHumanities)->count();
+            $students[class_en_to_bn($class[$i])]['HumanitiesStudent'] = $maleStudentcount;
+            $HumanitiesStudent += $maleStudentcount;
             //CommerceStudent
             $whereCommerce = [
                 'school_id'=>$school_id,
@@ -107,31 +132,23 @@ class frontendController extends Controller
                 'StudentStatus' => 'Active',
                 'StudentClass' => $class[$i],
             ];
-            $CommerceStudent[$class[$i]] = DB::table('students')->where($whereCommerce)->count();
+            // $CommerceStudent[$class[$i]] = DB::table('students')->where($whereCommerce)->count();
+            $maleStudentcount = DB::table('students')->where($whereCommerce)->count();
+            $students[class_en_to_bn($class[$i])]['CommerceStudent'] = $maleStudentcount;
+            $CommerceStudent += $maleStudentcount;
         }
-        for ($j = 0; $j < $classCount; $j++) {
-            $studentCount[$class[$j]] = [
-                ['class' => $class[$j]],
-                [
-                    'totalStudent' => $totalStudent,
-                    'maleStudent' => $maleStudent,
-                    'FemaleStudent' => $FemaleStudent,
-                    'scienceStudent' => $scienceStudent,
-                    'HumanitiesStudent' => $HumanitiesStudent,
-                    'CommerceStudent' => $CommerceStudent,
-                ]
-            ];
-        }
-        $data['staudents'] = $studentCount;
-        //   echo '<pre>';
-        // print_r($studentCount);
-        $j = 0;
-        // foreach($staudents as $list){
-        // //   echo   $class[$j];
-        //      print_r($list);
-        // $j++;
-        // }
-        return view(sitedetails()->theme.'.student_at_a_glance', $data);
+
+
+$data['data'] = $students;
+$data['countdata']['মোট শিক্ষার্থীর সংখ্যা'] = $totalStudent;
+$data['countdata']['ছেলে'] = $maleStudent;
+$data['countdata']['মেয়ে'] = $FemaleStudent;
+$data['countdata']['বিজ্ঞান বিভাগ'] = $scienceStudent;
+$data['countdata']['ব্যবসায় শিক্ষা বিভাগ'] = $HumanitiesStudent;
+$data['countdata']['মানবিক বিভাগ'] = $CommerceStudent;
+
+       return response()->json($data);
+        // return view(sitedetails()->theme.'.student_at_a_glance', $data);
     }
 
 
@@ -252,9 +269,9 @@ $data['year'] = $year;
 
 
     }
-    public function view_result_pdf(Request $r, $class, $roll, $year, $exam_name)
+    public function view_result_pdf(Request $r,$school_id, $class, $roll, $year, $exam_name)
     {
-        $school_id = sitedetails()->school_id;
+
         $data['types'] = 'pdf';
         $data['class'] = $class;
         $data['roll'] = $roll;
@@ -267,9 +284,9 @@ $data['year'] = $year;
             'year' => $year,
             'exam_name' => $exam_name,
         ];
-        $data['check'] = DB::table('student_result')->where($wd)->count();
+        $data['check'] = DB::table('student_results')->where($wd)->count();
         if ($data['check'] > 0) {
-            $data['rows'] = DB::table('student_result')->where($wd)->get();
+            $data['rows'] = DB::table('student_results')->where($wd)->get();
             $StudentID = $data['rows'][0]->stu_id;
             $wds = [
                 'StudentID' => $StudentID,
@@ -282,7 +299,7 @@ $data['year'] = $year;
         $datais = file_get_contents($paths);
         $logos = 'data:image/' . $types . ';base64,' . base64_encode($datais);
         $data['sign'] = $logos;
-        $pdf = LaravelMpdf::loadView('view_result', $data);
+        $pdf = LaravelMpdf::loadView('admin/pdfReports.view_result', $data);
         return $pdf->stream('document.pdf');
         // return view('view_result', $data);
     }

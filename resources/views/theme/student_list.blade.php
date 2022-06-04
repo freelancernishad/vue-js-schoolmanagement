@@ -23,19 +23,8 @@
                 </td>
                 <td class="columnStyleRight">
                     <select name="class"  id="ContentPlaceHolder1_cmbClass" class="form-control">
-                        <option selected="selected" value="Select Class">শ্রেণী নির্বাচন করুন</option>
-                        <option value="Play">{{ class_en_to_bn('Play') }}</option>
-                        <option value="Nursery">{{ class_en_to_bn('Nursery') }}</option>
-                        <option value="One">{{ class_en_to_bn('One') }}</option>
-                        <option value="Two">{{ class_en_to_bn('Two') }}</option>
-                        <option value="Three">{{ class_en_to_bn('Three') }}</option>
-                        <option value="Four">{{ class_en_to_bn('Four') }}</option>
-                        <option value="Five">{{ class_en_to_bn('Five') }}</option>
-                        <option value="Six">{{ class_en_to_bn('Six') }}</option>
-                        <option value="Seven">{{ class_en_to_bn('Seven') }}</option>
-                        <option value="Eight">{{ class_en_to_bn('Eight') }}</option>
-                        <option value="Nine">{{ class_en_to_bn('Nine') }}</option>
-                        <option value="Ten">{{ class_en_to_bn('Ten') }}</option>
+                        <option selected="selected" value="">শ্রেণী নির্বাচন করুন</option>
+                        <option v-for="classlist in classes[0]">{{ classlist }}</option>
                     </select>
                 </td>
             </tr>

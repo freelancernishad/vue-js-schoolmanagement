@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\smsController;
 use App\Http\Controllers\api\BlogController;
+use App\Http\Controllers\frontendController;
 use  App\Http\Controllers\api\authController;
 use App\Http\Controllers\api\EventController;
 use App\Http\Controllers\api\resultController;
@@ -45,6 +46,12 @@ Route::group([
     Route::post('me', [authController::class,'login']);
 
 });
+
+
+
+Route::get('/student_at_a_glance',[frontendController::class ,'student_at_a_glance']);
+
+
 
 Route::get('/school_id',[SchoolDetailController::class , 'school_id']);
 Route::get('/classes',[SchoolDetailController::class , 'class_list']);
@@ -97,6 +104,7 @@ Route::post('/routines/submit',[RoutineController::class , 'submit']);
 //result routes
 Route::post('/results/submit',[resultController::class , 'submit']);
 Route::get('/results/check',[resultController::class , 'checkResult']);
+Route::get('/results/single',[resultController::class , 'checkSingleResult']);
 Route::post('/results/publish',[resultController::class , 'publishResult']);
 
 

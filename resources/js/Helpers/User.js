@@ -299,6 +299,17 @@ class User {
             .catch();
         return list;
     }
+    schoolDetils() {
+        var list = [];
+        axios
+            .get(`/api/school_id`)
+            .then(({ data }) => {
+                list.push(data)
+
+            })
+            .catch();
+        return list;
+    }
     all_list(type = '', classname = '', group = '') {
         var list = [];
         axios

@@ -1,5 +1,10 @@
 <template>
+<div>
+     <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
     <div class="container loginpage">
+
+
+
         <div class="d-flex justify-content-center h-100">
             <div class="card" style="    height: 350px;
     position: absolute;
@@ -53,13 +58,15 @@
             </div>
         </div>
     </div>
+    </div>
 </template>
 
 <script>
 export default {
     created() {
         if (User.loggedIn()) {
-            this.$router.push({ name: "home" });
+            // this.$router.push({ name: "home" });
+             window.location.href ="/school";
         }
     },
 
@@ -69,11 +76,13 @@ export default {
                 email: null,
                 password: null,
             },
+                preloader: false,
             errors: {},
         };
     },
     methods: {
         login() {
+this.preloader = true;
             // alert('done')
             axios
                 .post("/api/auth/login", this.form)
@@ -81,12 +90,12 @@ export default {
                     console.log(res);
                     User.responseAfterLogin(res);
 
-                    Toast.fire({
-                        icon: "success",
-                        title: "Signed in successfully",
-                    });
+Notification.customsucess('Signed in successfully')
+setTimeout(() => {
 
-                    this.$router.push({ name: "home" });
+    window.location.href ="/school";
+}, 2000);
+                    // this.$router.push({ name: "home" });
                 })
                 .catch((error) => (this.errors = error.response.data.errors));
             // .catch(
@@ -106,7 +115,7 @@ export default {
     height: 100vh;
 }
 @media (max-width:600px) {
- 
+
      .card{
 
     width: 275px !important;

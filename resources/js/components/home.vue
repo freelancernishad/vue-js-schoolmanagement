@@ -10,7 +10,7 @@
             </ol>
         </div>
 
-        
+
     </div>
 </template>
 <script>
@@ -18,7 +18,8 @@ export default {
     name: "home",
     created() {
         if (!User.loggedIn()) {
-            this.$router.push({ name: "/" });
+            // this.$router.push({ name: "/" });
+             window.location.href ="/";
         }
     },
     props: {

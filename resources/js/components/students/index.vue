@@ -118,7 +118,7 @@
                                         <label class="form-check-label">#</label>
                                     </div>
                                 </th>
-                                <th>ছবি</th>
+                                <!-- <th>ছবি</th> -->
                                 <th @click="sortby('StudentName')">নাম</th>
                                 <th class="tablecolhide" @click="sortby('StudentClass')">শ্রেণী</th>
                                 <th class="tablecolhide" @click="sortby('StudentFatherName')">অভিভাবক</th>
@@ -141,14 +141,14 @@
                                         <label class="form-check-label">{{ student.StudentRoll }}</label>
                                     </div>
                                 </td>
-                                <td class="text-center">
+                                <!-- <td class="text-center">
                                     <router-link :to="{ name: 'studentImage', params: { id: student.id } }">
                                         <img :id="'student_image' + student.id" class='student_image'
                                             style="    width: 33px !important;height: 34px;border-radius: 50%;"
                                             :src="ASSETURL + student.StudentPicture" alt="image"
                                             @error="imageLoadError()">
                                     </router-link>
-                                </td>
+                                </td> -->
                                 <td>{{ student.StudentName }}</td>
                                 <td class="tablecolhide">{{ student.StudentClass }}</td>
                                 <td class="tablecolhide">{{ student.StudentFatherName }}</td>
@@ -298,6 +298,16 @@ export default {
             this.searchtype = "filtername";
             this.allstudents()
         },
+
+
+
+
+
+
+
+
+
+
         actionclick() {
             Swal.fire({
                 title: 'Are you sure?',

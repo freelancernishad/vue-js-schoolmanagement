@@ -15,6 +15,7 @@ class SchoolDetailController extends Controller
      */
     public function index(Request $request)
     {
+$front = $request->front;
 $school_id = $request->school_id;
 $result = DB::table('school_details')->where('school_id', $school_id)->first();
 
@@ -47,14 +48,31 @@ $data = [
 "slider"=> $result->slider
 ];
 
-$data['logo']= base64($result->logo);
-$data['PRINCIPALS_IMGAGE']= base64($result->PRINCIPALS_IMGAGE);
-$data['PRINCIPALS_Signature']= base64($result->PRINCIPALS_Signature);
-$data['HISTORY_OF_THE_ORGANIZATION_IMAGE']= base64($result->HISTORY_OF_THE_ORGANIZATION_IMAGE);
-$data['VICE_PRINCIPALS_IMGAGE']= base64($result->VICE_PRINCIPALS_IMGAGE);
-$data['VICE_PRINCIPALS_Signature']= base64($result->VICE_PRINCIPALS_Signature);
-
 $slider = [];
+    if($front=='front'){
+
+        $data['logo']= $result->logo;
+        $data['PRINCIPALS_IMGAGE']= $result->PRINCIPALS_IMGAGE;
+        $data['PRINCIPALS_Signature']= $result->PRINCIPALS_Signature;
+        $data['HISTORY_OF_THE_ORGANIZATION_IMAGE']= $result->HISTORY_OF_THE_ORGANIZATION_IMAGE;
+        $data['VICE_PRINCIPALS_IMGAGE']= $result->VICE_PRINCIPALS_IMGAGE;
+        $data['VICE_PRINCIPALS_Signature']= $result->VICE_PRINCIPALS_Signature;
+
+
+
+        $data['slider'] =  json_decode($result->slider);
+    }else{
+
+
+        $data['logo']= base64($result->logo);
+        $data['PRINCIPALS_IMGAGE']= base64($result->PRINCIPALS_IMGAGE);
+        $data['PRINCIPALS_Signature']= base64($result->PRINCIPALS_Signature);
+        $data['HISTORY_OF_THE_ORGANIZATION_IMAGE']= base64($result->HISTORY_OF_THE_ORGANIZATION_IMAGE);
+        $data['VICE_PRINCIPALS_IMGAGE']= base64($result->VICE_PRINCIPALS_IMGAGE);
+        $data['VICE_PRINCIPALS_Signature']= base64($result->VICE_PRINCIPALS_Signature);
+
+
+
 
         $i = 0;
 foreach (json_decode($result->slider) as $key => $value) {
@@ -79,6 +97,14 @@ array_push($slider,[
    $i++;
 };
 $data['slider'] = $slider;
+    }
+
+
+
+
+
+
+
 
 
 
@@ -221,7 +247,7 @@ $data['slider'] = $slider;
     public function school_id()
     {
 
-        return response()->json(sitedetails()->school_id);
+        return response()->json(sitedetails());
     }
 
 

@@ -285,3 +285,88 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+
+
+
+.modal-dialog {
+    max-width: 1250px;
+    margin: 1.75rem auto;
+}
+
+
+.Present:checked+label.Present {
+    background: green
+}
+
+.att {
+    background: #647a84;
+    padding: 10px;
+    color: #fff
+}
+
+input[type=radio]:checked+label {
+    background: red;
+    padding: 10px;
+    color: #fff;
+    font-size: 15px
+}
+
+label {
+    font-size: 15px
+}
+
+button.btn-fill-lg.btn-gradient-yellow.btn-hover-bluedark {
+    padding: 7px 7px;
+    margin-top: 20px;
+}
+.filePreview {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a.item {padding: 7px;font-size: 13px;border: 1px solid #ffac01;margin: 0 2px;transition: all 0.2s;border-radius: 2px;}
+
+a.item:hover {background: #ffab01;color: white;cursor: pointer;}
+
+a.item.active {background: #ffac01;}
+.image-container.position-relative.text-center {
+    width: 100% !important;
+}
+
+
+    @media(max-width:767px){
+        .btn-fill-md, .btn-fill-lg, .fw-btn-fill, .btn-fill-lmd {
+    font-size: 13px;
+    padding: 8px 15px;
+}
+th, th label {
+    font-size: 13px !important;
+}td {
+    font-size: 12px;
+
+}
+
+.tablecolhide{
+    display: none;
+}
+.textwrap{
+    white-space: break-spaces;
+}
+.mobilefonthead {
+    font-size: 14px;
+}
+
+.fixednav {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+
+    }
+    .minheight{
+        height: 150px;
+    }

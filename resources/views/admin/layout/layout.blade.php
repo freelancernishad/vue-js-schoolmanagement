@@ -39,9 +39,6 @@
     <!-- jquery-->
 {{-- <script src="{{ asset('dashboard_asset/js/jquery-3.3.1.min.js') }}"></script> --}}
 
-
-
-<script src="https://unpkg.com/cropperjs"></script>
 <style>
 
 

@@ -37,6 +37,20 @@ import {routes} from './routes';
 import User from './helpers/User';
 window.User = User
 
+// Import helper class
+import Rightsidebar from './components/themes/default/sidebar';
+Vue.component('rightsidebar', Rightsidebar);
+
+
+
+// Import helper class
+// import Dashboard from './components/layouts/Dashboard'
+// Vue.component('dashboardlayout', Dashboard);
+
+// // Import helper class
+// import loginlayout from './components/layouts/login'
+// Vue.component('loginlayout', loginlayout);
+
 window.RootUrl = window.location.origin;
 window.ASSETURL = '/public/';
 // window.ASSETURL = '/';
@@ -46,15 +60,16 @@ window.ASSETURL = '/public/';
 import loader from "vue-ui-preloader";
 
 Vue.use(loader);
-var datas = {};
+// var datas = {};
 function schoolid(){
 
 
     axios.get("/api/school_id")
         .then(({ data }) => {
             // datas.push(data)
-            datas['dd'] = data;
-            localStorage.setItem('getschoolid', data);
+            // datas['dd'] = data;
+            // console.log(data.school_id)
+            localStorage.setItem('getschoolid', data.school_id);
         })
 
         window.getschoolid  = localStorage.getItem('getschoolid');
@@ -63,7 +78,13 @@ function schoolid(){
 
             schoolid();
 
+            // if (User.loggedIn()) {
+            //     // this.$router.push({ name: "/" });
+            //     window.location.href ="/school";
+            // }else{
+            //     window.location.href ="/";
 
+            // }
 
 
 
