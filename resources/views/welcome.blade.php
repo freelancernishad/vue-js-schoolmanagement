@@ -170,7 +170,7 @@ a.item.active {background: #ffac01;}
         <x-visitors />
 
         <!-- Header Start -->
-        <header>
+        <header v-show="$route.path === '/login' || $route.path === '/register' || $route.path === 'forget' ? false : true " >
             <!-- Top header -->
             <div class="top_header">
                 <div class="container-fluid">
@@ -268,7 +268,7 @@ a.item.active {background: #ffac01;}
 
 
     <!-- Footer Start -->
-    <footer class="bg-primary py-3">
+    <footer class="bg-primary py-3"  v-show="$route.path === '/login' || $route.path === '/register' || $route.path === 'forget' ? false : true " style="display: none">
         <div class="container-fluid">
             <div class="row text-light text-center">
                 <div class="col-lg-4">
