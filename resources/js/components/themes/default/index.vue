@@ -1,7 +1,7 @@
 <template>
     <div>
+            <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
 
-   <header>
 
         <!-- Slider -->
         <div class="container-fluid">
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-    </header>
+
     <!-- Header End -->
 
     <!-- Main Start -->
@@ -191,6 +191,7 @@ export default {
             schooldetails:{},
              school_id:null,
              ASSETURL: '',
+             preloader: true,
 
 		}
 	},
@@ -201,6 +202,7 @@ export default {
             axios.get(`/api/school/settings?school_id=${this.school_id}&front=front`)
                 .then(({ data }) => {
                     this.schooldetails = data;
+                     this.preloader = false;
                 })
                 .catch()
         },

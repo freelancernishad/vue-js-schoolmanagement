@@ -1,7 +1,7 @@
 <template>
     <div>
 
-
+            <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
 
 <section class="inner-header divider layer-overlay overlay-theme-colored-7" >
 <div class="container">
@@ -86,6 +86,7 @@ export default {
             school_id:null,
             ASSETURL: '',
             year: new Date().getFullYear(),
+            preloader: true,
 		}
 	},
 
@@ -100,6 +101,7 @@ search(){
                 axios.get(`/api/routines?filter[school_id]=${this.school_id}&filter[year]=${this.year}`)
                 .then(({data}) => {
                     this.routines = data
+                     this.preloader = false;
                 })
                 .catch()
             },

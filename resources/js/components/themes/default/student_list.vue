@@ -1,8 +1,7 @@
 <template>
     <div>
 
-
-
+            <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
 <section class="inner-header divider layer-overlay overlay-theme-colored-7" >
 <div class="container">
     <!-- Section Content -->
@@ -109,6 +108,7 @@ export default {
             sorttype:'',
             student_class:'',
             status:'Active',
+            preloader: true,
 
 		}
 	},
@@ -132,6 +132,7 @@ search(){
                 axios.get(url)
                     .then(({ data }) => {
                         this.students = data
+                         this.preloader = false;
         if (this.$router.currentRoute.path === `/student_list/${this.student_class}`) {
             } else {
                 this.$router.push({ name: 'frontstudent_listsearch', params: { classname: this.student_class } });

@@ -1,7 +1,7 @@
 <template>
     <div>
 
-
+            <loader v-if="preloader==true" object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="circular"></loader>
 
 <section class="inner-header divider layer-overlay overlay-theme-colored-7" >
 <div class="container">
@@ -286,6 +286,7 @@ export default {
             roll: '',
             count: '',
             years: [],
+            preloader: false,
             filterdata:{
                 student_class:null,
                 group:'All',
@@ -303,6 +304,7 @@ export default {
 	methods: {
 
         search(){
+             this.preloader = true;
 
 // /result/:student_class/:group/:examType/:subject/:religion/:year/:roll/:school_id
 var group,subject,religion;
@@ -338,7 +340,7 @@ var group,subject,religion;
 
 
 
-
+ this.preloader = false;
                         this.result = data
                         if(data.length==0){
 
