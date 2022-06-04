@@ -37,7 +37,7 @@
 
 
                             <div v-for="(slide,index) in schooldetails.slider" class="carousel-item"  :class="{'active' : index == 0 ? true : false }">
-                                <img class="img-fluid" :src="ASSETURL+slide"  alt="...">
+                                <img width="100%" class="img-fluid" :src="ASSETURL+slide"  alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                 </div>
                             </div>
