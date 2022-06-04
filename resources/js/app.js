@@ -19,15 +19,15 @@ import VueRouterBackButton from 'vue-router-back-button'
 
 
 
-import VueQRCodeComponent from 'vue-qrcode-component'
-Vue.component('qr-code', VueQRCodeComponent)
+// import VueQRCodeComponent from 'vue-qrcode-component'
+// Vue.component('qr-code', VueQRCodeComponent)
 
-import VueBarcode from 'vue-barcode';
-Vue.component('barcode', VueBarcode)
+// import VueBarcode from 'vue-barcode';
+// Vue.component('barcode', VueBarcode)
 
-import { BModal , BButton  } from 'bootstrap-vue'
-Vue.component('b-modal', BModal)
-Vue.component('b-button', BButton)
+// import { BModal , BButton  } from 'bootstrap-vue'
+// Vue.component('b-modal', BModal)
+// Vue.component('b-button', BButton)
 
 
 // Router Imported
@@ -99,19 +99,19 @@ import Notification from './helpers/Notification';
 window.Notification = Notification
 
 // import { Bar } from 'vue-chartjs'
-import { Bar } from 'vue-chartjs/legacy'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
-
-Vue.component('Bar', Bar);
+// import { Bar } from 'vue-chartjs/legacy'
+// import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+// ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+// Vue.component('Bar', Bar);
 
 
 
 
-import VueLazyload from 'vue-lazyload'
+// import VueLazyload from 'vue-lazyload'
 
-Vue.use(VueLazyload)
+// Vue.use(VueLazyload)
+
+
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
 Vue.component('VueUploadMultipleImage', VueUploadMultipleImage);
 
@@ -152,20 +152,21 @@ import '@fortawesome/fontawesome-free/js/all.js';
 Vue.component('pagination', require('laravel-vue-semantic-ui-pagination'));
 
 //Swee alert 2 start
-import Swal from 'sweetalert2'
-window.Swal = Swal;
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.addEventListener('mouseenter', Swal.stopTimer)
-    toast.addEventListener('mouseleave', Swal.resumeTimer)
-  }
-});
-window.Toast = Toast;
+// import Swal from 'sweetalert2'
+// window.Swal = Swal;
+
+// const Toast = Swal.mixin({
+//   toast: true,
+//   position: 'top-end',
+//   showConfirmButton: false,
+//   timer: 3000,
+//   timerProgressBar: true,
+//   didOpen: (toast) => {
+//     toast.addEventListener('mouseenter', Swal.stopTimer)
+//     toast.addEventListener('mouseleave', Swal.resumeTimer)
+//   }
+// });
+// window.Toast = Toast;
 //Sweet alert 2 end
 
 window.Reload = new Vue();
