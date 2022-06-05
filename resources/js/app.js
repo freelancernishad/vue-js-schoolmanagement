@@ -38,8 +38,7 @@ import User from './helpers/User';
 window.User = User
 
 // Import helper class
-import Rightsidebar from './components/themes/default/sidebar';
-Vue.component('rightsidebar', Rightsidebar);
+
 
 
 
