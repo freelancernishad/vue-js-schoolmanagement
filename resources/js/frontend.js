@@ -1,4 +1,5 @@
 require('./bootstrap');
+// require('./js/bootstrap.bundle.min.js');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
@@ -9,7 +10,7 @@ Vue.use(VueRouter)
 import {routes} from './frontroutes';
 import User from './helpers/User';
 window.User = User
-
+import '@fortawesome/fontawesome-free/js/all.js';
 import Rightsidebar from './components/themes/default/sidebar';
 Vue.component('rightsidebar', Rightsidebar);
 
