@@ -40,7 +40,7 @@ window.User = User
 // Import helper class
 
 
-
+Vue.prototype.$localStorage = localStorage;
 
 // Import helper class
 // import Dashboard from './components/layouts/Dashboard'
@@ -51,8 +51,8 @@ window.User = User
 // Vue.component('loginlayout', loginlayout);
 
 window.RootUrl = window.location.origin;
-window.ASSETURL = '/public/';
-// window.ASSETURL = '/';
+// window.ASSETURL = '/public/';
+window.ASSETURL = '/';
 // window.preloader = true;
 
 
@@ -151,8 +151,8 @@ import '@fortawesome/fontawesome-free/js/all.js';
 Vue.component('pagination', require('laravel-vue-semantic-ui-pagination'));
 
 //Swee alert 2 start
-// import Swal from 'sweetalert2'
-// window.Swal = Swal;
+import Swal from 'sweetalert2'
+window.Swal = Swal;
 
 // const Toast = Swal.mixin({
 //   toast: true,

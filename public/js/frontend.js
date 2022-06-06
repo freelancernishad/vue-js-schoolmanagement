@@ -4424,10 +4424,34 @@ var AppStorage = /*#__PURE__*/function () {
       localStorage.setItem('user', user);
     }
   }, {
+    key: "storerole",
+    value: function storerole(role) {
+      localStorage.setItem('role', role);
+    }
+  }, {
+    key: "storeteacherOrstudent",
+    value: function storeteacherOrstudent(teacherOrstudent) {
+      localStorage.setItem('teacherOrstudent', teacherOrstudent);
+    }
+  }, {
+    key: "storeusers",
+    value: function storeusers(users) {
+      localStorage.setItem('users', users);
+    }
+  }, {
+    key: "storeusersid",
+    value: function storeusersid(usersid) {
+      localStorage.setItem('usersid', usersid);
+    }
+  }, {
     key: "store",
-    value: function store(token, user) {
-      this.storeToken(token);
-      this.storeUser(user);
+    value: function store(access_token, username, role, teacherOrstudent, users, usersid) {
+      this.storeToken(access_token);
+      this.storeUser(username);
+      this.storerole(role);
+      this.storeteacherOrstudent(teacherOrstudent);
+      this.storeusers(users);
+      this.storeusersid(usersid);
     }
   }, {
     key: "clear",
@@ -4763,6 +4787,9 @@ var User = /*#__PURE__*/function () {
       var dd = today.getDate();
       var mm = today.getMonth() + 1;
       var yyyy = today.getFullYear();
+      var hrs = today.getHours();
+      var mins = today.getMinutes();
+      var ampm = hrs >= 12 ? 'pm' : 'am';
 
       if (dd < 10) {
         dd = '0' + dd;
@@ -4770,6 +4797,14 @@ var User = /*#__PURE__*/function () {
 
       if (mm < 10) {
         mm = '0' + mm;
+      }
+
+      if (hrs <= 9) {
+        hrs = '0' + hrs;
+      }
+
+      if (mins < 10) {
+        mins = '0' + mins;
       }
 
       today = yyyy + '-' + mm + '-' + dd;
@@ -4783,6 +4818,8 @@ var User = /*#__PURE__*/function () {
       today = dd + '/' + mm + '/' + yyyy;
       dates.push(today);
       today = yyyy;
+      dates.push(today);
+      today = yyyy + '-' + mm + '-' + dd + ' ' + hrs + ':' + mins + ' ' + ampm;
       dates.push(today);
       return dates;
     }
@@ -5072,9 +5109,13 @@ var User = /*#__PURE__*/function () {
     value: function responseAfterLogin(res) {
       var access_token = res.data.access_token;
       var username = res.data.name;
+      var role = res.data.role;
+      var teacherOrstudent = res.data.teacherOrstudent;
+      var users = res.data.users;
+      var usersid = res.data.user_id;
 
       if (_Token__WEBPACK_IMPORTED_MODULE_0__["default"].isValid(access_token)) {
-        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(access_token, username);
+        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(access_token, username, role, teacherOrstudent, users, usersid);
       }
     }
   }, {

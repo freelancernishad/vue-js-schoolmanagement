@@ -12,6 +12,7 @@ use App\Http\Controllers\api\staffsController;
 use App\Http\Controllers\api\GalleryController;
 use App\Http\Controllers\api\PaymentController;
 use App\Http\Controllers\api\RoutineController;
+use App\Http\Controllers\api\HomeworkController;
 use App\Http\Controllers\api\studentsController;
 use App\Http\Controllers\api\SchoolDetailController;
 /*
@@ -138,6 +139,17 @@ Route::get('/event',[EventController::class , 'index']);
 Route::get('/event/edit',[EventController::class , 'eventedit']);
 Route::get('/event/delete/{id}',[EventController::class , 'eventDelete']);
 Route::post('/event/submit',[EventController::class , 'event_submit']);
+
+
+//homework routes
+
+Route::get('/homework',[HomeworkController::class , 'index']);
+Route::get('/homework/edit',[HomeworkController::class , 'homeworkedit']);
+Route::get('/homework/delete/{id}',[HomeworkController::class , 'homeworkDelete']);
+Route::post('/homework/submit',[HomeworkController::class , 'homework_submit']);
+Route::post('/student/homework/submit',[HomeworkController::class , 'student_homework_submit']);
+Route::get('/student/homework/submit/check',[HomeworkController::class , 'student_homework_check']);
+Route::get('/student/homework/time/check',[HomeworkController::class , 'student_homework_timecheck']);
 
 
 

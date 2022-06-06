@@ -1,17 +1,20 @@
 <?php
 namespace App\Http\Controllers\api;
-use URL;
 use PDF;
+use URL;
+use App\Models\User;
 use App\Models\student;
+use App\Models\Attendance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Attendance;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
 use Meneses\LaravelMpdf\Facades\LaravelMpdf;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+
 class studentsController extends Controller
 {
     public function list(Request $r)
@@ -194,6 +197,20 @@ class studentsController extends Controller
         }
         return response()->json($data);
     }
+
+
+public function usercreate($name,$email,$password,$id,$type)
+{
+    $studentuserdata =[
+        'name'=>$name,
+        'email'=>$email,
+        'password'=>hash::make($password),
+        'teacherOrstudent'=>$id,
+        'role'=>$type,
+    ];
+    $user =   User::create($studentuserdata);
+}
+
     public function student_submit(Request $r)
     {
         // return $r->all();
@@ -211,6 +228,11 @@ class studentsController extends Controller
             $result =   student::create($data);
             $results['result'] = $result;
             $results['status'] = 'Created';
+
+
+            $this->usercreate($result->school_id,$result->StudentName,$result->StudentEmail,$result->StudentPassword,$result->id,'student');
+            $this->usercreate($result->school_id,$result->StudentFatherName,$result->ParentEmail,$result->ParentPassword,$result->id,'parent');
+
         } else {
             $student = student::find($r->id);
             $result = $student->update($data);

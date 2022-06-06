@@ -83,5 +83,6 @@ Route::group(['middleware'=>['api']],function(){
     });
 
     Route::get('/{vue_capture?}', function () {
+
         return view('welcome');
     })->where('vue_capture', '[\/\w\.-]*');

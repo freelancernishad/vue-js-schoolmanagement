@@ -82,6 +82,13 @@ let events = require('./components/events/index.vue').default;
 let eventsView = require('./components/events/view.vue').default;
 let eventnew = require('./components/events/form.vue').default;
 
+// event Components
+let homeworks = require('./components/homework/index.vue').default;
+let homeworksView = require('./components/homework/view.vue').default;
+let homeworknew = require('./components/homework/form.vue').default;
+let homeworkSubmit = require('./components/homework/homeworksubmit.vue').default;
+let homeworkSubmitview = require('./components/homework/homeworksubmitview.vue').default;
+
 
 
 let smsNotice = require('./components/notice/sms.vue').default;
@@ -197,6 +204,15 @@ export const routes = [
   { path: '/school/event/view/:id', component: eventsView, name:'eventsView' },
   { path: '/school/event/edit/:id', component: eventnew, name:'eventEdit' },
   { path: '/school/event/new', component: eventnew, name:'eventnew' },
+
+
+  // homeworks Routes
+  { path: '/school/homework', component: homeworks, name:'homeworks' },
+  { path: '/school/homework/view/:id', component: homeworksView, name:'homeworksView' },
+  { path: '/school/homework/edit/:id', component: homeworknew, name:'homeworkEdit' },
+  { path: '/school/homework/submit/:id', component: homeworkSubmit, name:'homeworkSubmit' },
+  { path: '/school/homework/submit/view/:school_id/:student_id/:homework_id', component: homeworkSubmitview, name:'homeworkSubmitview' },
+  { path: '/school/homework/new', component: homeworknew, name:'homeworknew' },
 
 
 //   notice

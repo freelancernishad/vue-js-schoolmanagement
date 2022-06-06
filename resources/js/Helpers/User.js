@@ -35,12 +35,28 @@ class User {
         var dd = today.getDate();
         var mm = today.getMonth() + 1;
         var yyyy = today.getFullYear();
+        let hrs = today.getHours()
+        let mins = today.getMinutes()
+        var ampm = hrs >= 12 ? 'pm' : 'am';
+
         if (dd < 10) {
             dd = '0' + dd;
         }
         if (mm < 10) {
             mm = '0' + mm;
         }
+
+        if(hrs<=9){
+            hrs = '0' + hrs
+
+        }
+        if(mins<10){
+
+            mins = '0' + mins
+        }
+
+
+
         today = yyyy + '-' + mm + '-' + dd;
         dates.push(today)
         today = mm + '-' + dd + '-' + yyyy;
@@ -52,6 +68,8 @@ class User {
         today = dd + '/' + mm + '/' + yyyy;
         dates.push(today)
         today = yyyy;
+        dates.push(today)
+        today = yyyy + '-' + mm + '-' + dd + ' '+ hrs+':'+ mins+' '+ampm;
         dates.push(today)
         return dates;
     }
@@ -333,8 +351,12 @@ class User {
     responseAfterLogin(res) {
         const access_token = res.data.access_token
         const username = res.data.name
+        const role = res.data.role
+        const teacherOrstudent = res.data.teacherOrstudent
+        const users = res.data.users
+        const usersid = res.data.user_id
         if (Token.isValid(access_token)) {
-            AppStorage.store(access_token, username)
+            AppStorage.store(access_token, username, role, teacherOrstudent, users, usersid)
         }
     }
     hasToken() {

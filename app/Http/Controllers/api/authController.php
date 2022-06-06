@@ -12,6 +12,9 @@ class authController extends Controller
 {
     public function login(Request $r)
     {
+
+
+
         $validator = Validator::make($r->all(), [
             'email' => 'required|email',
             'password' => 'required',
@@ -20,17 +23,23 @@ class authController extends Controller
             return sent_error('validation error', $validator->errors(), 422);
         }
 
-        $credentials = $r->only('email', 'password');
+        $credentials = $r->only('school_id','email', 'password');
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
+            $data['id'] = $user->id;
+            $data['school_id'] = $user->school_id;
             $data['name'] = $user->name;
             $data['email '] = $user->email;
             $data['access_token'] = $user->createToken('accessToken')->accessToken;
             //  return sent_response('Login Success', $data);
-            return $this->respondWithToken($user->createToken('accessToken')->accessToken);
+            return $this->respondWithToken($data['access_token']);
         } else {
             return sent_error('Unauthorised', '', 401);
         }
+
+
+
+
     }
 
 
@@ -44,6 +53,9 @@ class authController extends Controller
             'user_id' => auth()->user()->id,
             'name' => auth()->user()->name,
             'email' => auth()->user()->email,
+            'role' => auth()->user()->role,
+            'teacherOrstudent' => auth()->user()->teacherOrstudent,
+            'users' => auth()->user(),
         ]);
     }
 

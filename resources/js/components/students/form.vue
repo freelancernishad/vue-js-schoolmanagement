@@ -24,7 +24,7 @@
                         </router-link>
         <div class="heading-layout1">
             <div class="item-title">
-                <h3>Add New Students</h3>
+
             </div>
             <div class="dropdown">
 
@@ -37,13 +37,8 @@
 
         <form  enctype="multipart/form-data" v-on:submit.prevent="formsubmit" >
 
-
-            <input class="form-control" type="hidden" v-model="form.school_id" id="school_id" />
-            <input class="form-control" type="hidden"  v-model="form.id" id="id" />
-
-
-            <input class="form-control" type="hidden"  placeholder="Enter Year" v-model="form.Year" id="Year" />
-
+<fieldset class="col-md-12 mt-3" style="border: 2px solid;">
+ <legend> <h3>Students Detials</h3></legend>
 
 
             <div class="row">
@@ -129,36 +124,24 @@
                         <input class="form-control" type="text"  placeholder="Enter StudentName" v-model="form.StudentName" id="StudentName" required />
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Student Father Name:</label>
-                        <input class="form-control" type="text"  placeholder="Enter Student Father Name" v-model="form.StudentFatherName" id="StudentFatherName" required />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Student Mother Name:</label>
-                        <input class="form-control" type="text"  placeholder="Enter Student Mother Name" v-model="form.StudentMotherName" id="StudentMotherName" required />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Student Father Occupation:</label>
-                        <input class="form-control" type="text"  placeholder="Enter Student Father Occupation" v-model="form.StudentFatherOccupation" id="StudentFatherOccupation" required />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Student Mother Occupation:</label>
-                        <input class="form-control" type="text"  placeholder="Enter Student Mother Occupation" v-model="form.StudentMotherOccupation" id="StudentMotherOccupation" required />
-                    </div>
-                </div>
+
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Student Email:</label>
                         <input class="form-control" type="text"  placeholder="Enter Student Email" v-model="form.StudentEmail" id="StudentEmail" required />
                     </div>
                 </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Student Password:</label>
+                        <input class="form-control" type="password"  placeholder="Enter Student Password" v-model="form.StudentPassword" id="StudentEmail" required />
+                    </div>
+                </div>
+
+
+
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Student Date Of Birth:</label>
@@ -200,12 +183,15 @@
 
 
                 </div>
+
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Student Address:</label>
                         <input class="form-control" type="text"  placeholder="Enter Student Address" v-model="form.StudentAddress" id="StudentAddress" required />
                     </div>
                 </div>
+
+
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Student Phone Number:</label>
@@ -235,27 +221,65 @@
                             </option>
                         </select>
                     </div>
-
+                </div>
 
                 </div>
-                <div class="col-md-4 d-none" >
+
+      </fieldset>
+
+            <fieldset class="col-md-12 mt-3" style="border: 2px solid;">
+             <legend> <h3>Parents Detials</h3></legend>
+<div class="row">
+
+
+
+
+
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label>Student Tranfer From:</label>
-                        <input class="form-control" type="text"  placeholder="Enter Student Tranfer From" v-model="form.StudentTranferFrom" id="StudentTranferFrom" readonly required />
+                        <label>Student Father Name:</label>
+                        <input class="form-control" type="text"  placeholder="Enter Student Father Name" v-model="form.StudentFatherName" id="StudentFatherName" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Mother Name:</label>
+                        <input class="form-control" type="text"  placeholder="Enter Student Mother Name" v-model="form.StudentMotherName" id="StudentMotherName" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Father Occupation:</label>
+                        <input class="form-control" type="text"  placeholder="Enter Student Father Occupation" v-model="form.StudentFatherOccupation" id="StudentFatherOccupation" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Mother Occupation:</label>
+                        <input class="form-control" type="text"  placeholder="Enter Student Mother Occupation" v-model="form.StudentMotherOccupation" id="StudentMotherOccupation" required />
                     </div>
                 </div>
 
 
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Parent Email:</label>
+                        <input class="form-control" type="text"  placeholder="Enter Student Email" v-model="form.ParentEmail" id="StudentEmail" required />
+                    </div>
+                </div>
 
-                <input type="hidden" v-model="form.StudentPicture" >
-                <input type="hidden" v-model="form.JoiningDate" >
-                <input type="hidden" v-model="form.StudentTranferStatus" >
-                <input type="hidden" v-model="form.AplicationStatus" >
-                <input type="hidden" v-model="form.ThisMonthPaymentStatus" >
-                <input type="hidden" v-model="form.created_at" >
-                <input type="hidden" v-model="form.updated_at" >
-                <input type="hidden" v-model="form.status" >
 
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Parent Password:</label>
+                        <input class="form-control" type="password"  placeholder="Enter Student Password" v-model="form.ParentPassword" id="StudentEmail" required />
+                    </div>
+                </div>
+
+
+                </div>
+</fieldset>
+<div class="row">
 
                 <div class="col-md-12" >
                     <div class="form-group">
@@ -304,7 +328,7 @@ export default {
             form:{
                 id:null,
                 school_id:null,
-                Year:null,
+                Year:new Date().getFullYear(),
                 AdmissionID:null,
                 StudentID:null,
                 StudentRoll:null,
@@ -316,7 +340,10 @@ export default {
                 StudentMotherName:null,
                 StudentFatherOccupation:null,
                 StudentMotherOccupation:null,
+                ParentEmail:null,
+                StudentPassword:null,
                 StudentEmail:null,
+                StudentPassword:null,
                 StudentDateOfBirth:null,
                 StudentBirthCertificateNo:null,
                 StudentGroup:null,
@@ -374,7 +401,7 @@ if(this.form.StudentClass!='Nine' || this.form.StudentClass!='Ten') this.form.St
                 axios.post(`/api/students/form/submit`,this.form)
                 .then(({data}) => {
                     //  console.log(data)
-                        this.$router.push({name: 'students'})
+                        // this.$router.push({name: 'students'})
                         Notification.success();
                                   this.preloader = false;
                 })

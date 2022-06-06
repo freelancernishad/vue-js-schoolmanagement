@@ -258,14 +258,20 @@ th, th label {
                     </div>
                </div>
                 <div class="sidebar-menu-content">
-                    <ul class="nav nav-sidebar-menu sidebar-toggle-view">
+
+
+
+
+
+
+                    <ul class="nav nav-sidebar-menu sidebar-toggle-view" v-show="$localStorage.getItem('role')=='admin' || $localStorage.getItem('role')=='teacher' ? true : false " style="display:none" >
                         <li class="nav-item sidebar-nav-item">
                             <a href="#" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
                                     <router-link  onclick="navhide()"  to="/school/" class="nav-link"><i class="fas fa-angle-right"></i> Admin</router-link>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item" >
                                     <a href="index3.html" class="nav-link"><i
                                             class="fas fa-angle-right"></i> Students</a>
                                 </li>
@@ -278,7 +284,8 @@ th, th label {
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item sidebar-nav-item">
+
+                        <li class="nav-item sidebar-nav-item" >
                             <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Students</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
@@ -297,7 +304,22 @@ th, th label {
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item sidebar-nav-item">
+
+
+
+
+                        <li class="nav-item"  v-if="$localStorage.getItem('role')=='teacher'"><router-link   onclick="navhide()" :to="{name:'events'}" class="nav-link"><i class="flaticon-script"></i><span>Profile</span></router-link></li>
+
+
+                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'homeworks'}" class="nav-link"><i class="flaticon-script"></i><span>Home Work</span></router-link></li>
+
+
+                        <li class="nav-item" ><router-link   onclick="navhide()" :to="{name:'events'}" class="nav-link"><i class="flaticon-script"></i><span>Massege</span></router-link></li>
+
+
+
+
+                        <li class="nav-item sidebar-nav-item"  v-if="$localStorage.getItem('role')=='admin'">
                             <a href="#" class="nav-link"><i
                                     class="flaticon-multiple-users-silhouette"></i><span>Teachers</span></a>
                             <ul class="nav sub-group-menu">
@@ -311,7 +333,7 @@ th, th label {
                                         Teacher</router-link>
                                 </li> --}}
 
-                                <li class="nav-item">
+                                <li class="nav-item" >
                                     <router-link  onclick="navhide()"  to="/school/staffs/attendance" class="nav-link"><i class="fas fa-angle-right"></i> Attendence</router-link>
                                 </li>
 
@@ -320,7 +342,7 @@ th, th label {
                             </ul>
                         </li>
 
-                        <li class="nav-item sidebar-nav-item">
+                        <li class="nav-item sidebar-nav-item" >
                             <a href="#" class="nav-link"><i class="flaticon-technological"></i><span>Acconunt</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
@@ -338,18 +360,18 @@ th, th label {
 
 
 
-                        <li class="nav-item"> <router-link   onclick="navhide()" :to="{name:'studentsattendance'}" class="nav-link"><i class="flaticon-checklist"></i><span>Attendence</span></router-link> </li>
+                        <li class="nav-item"  > <router-link   onclick="navhide()" :to="{name:'studentsattendance'}" class="nav-link"><i class="flaticon-checklist"></i><span>Attendence</span></router-link> </li>
 
 
 
 
-                        <li class="nav-item"> <router-link   onclick="navhide()" :to="{ name:'routines' }" class="nav-link"><i class="flaticon-checklist"></i><span>Routines</span></router-link> </li>
+                        <li class="nav-item" > <router-link   onclick="navhide()" :to="{ name:'routines' }" class="nav-link"><i class="flaticon-checklist"></i><span>Routines</span></router-link> </li>
 
 
 
 
 
-                        <li class="nav-item sidebar-nav-item">
+                        <li class="nav-item sidebar-nav-item"  >
                             <a href="#" class="nav-link"><i class="flaticon-shopping-list"></i><span>Exam</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
@@ -359,7 +381,7 @@ th, th label {
                             </ul>
                         </li>
 
-                        <li class="nav-item sidebar-nav-item">
+                        <li class="nav-item sidebar-nav-item" >
                             <a href="#" class="nav-link"><i class="flaticon-script"></i><span>Gallery</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
@@ -370,7 +392,7 @@ th, th label {
                             </ul>
                         </li>
 
-                        <li class="nav-item sidebar-nav-item">
+                        <li class="nav-item sidebar-nav-item" >
                             <a href="#" class="nav-link"><i class="flaticon-script"></i><span>Notice</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
@@ -381,7 +403,7 @@ th, th label {
                             </ul>
                         </li>
 
-                        <li class="nav-item sidebar-nav-item">
+                        <li class="nav-item sidebar-nav-item" >
                             <a href="#" class="nav-link"><i class="flaticon-script"></i><span>Blogs</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
@@ -400,7 +422,7 @@ th, th label {
                         <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'events'}" class="nav-link"><i class="flaticon-script"></i><span>Events</span></router-link></li>
 
 
-                        <li class="nav-item sidebar-nav-item">
+                        <li class="nav-item sidebar-nav-item" >
                             <a href="#" class="nav-link"><i class="flaticon-script"></i><span>Settings</span></a>
                             <ul class="nav sub-group-menu">
                                 <li class="nav-item">
@@ -412,6 +434,48 @@ th, th label {
 
                             </ul>
                         </li>
+
+
+
+
+
+                    </ul>
+
+
+                    <ul class="nav nav-sidebar-menu sidebar-toggle-view" v-show="$localStorage.getItem('role')=='student' || $localStorage.getItem('role')=='parent' ? true : false " style="display:none" >
+                        <li class="nav-item sidebar-nav-item">
+                            <a href="#" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></a>
+                            <ul class="nav sub-group-menu">
+                                <li class="nav-item">
+                                    <router-link  onclick="navhide()"  to="/school/" class="nav-link"><i class="fas fa-angle-right"></i> Admin</router-link>
+                                </li>
+                                <li class="nav-item" >
+                                    <a href="index3.html" class="nav-link"><i
+                                            class="fas fa-angle-right"></i> Students</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="index4.html" class="nav-link"><i class="fas fa-angle-right"></i> Parents</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="index5.html" class="nav-link"><i
+                                            class="fas fa-angle-right"></i> Teachers</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+
+                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'studentview',params:{id:$localStorage.getItem('teacherOrstudent')}}" class="nav-link"><i class="flaticon-script"></i><span>Profile View</span></router-link></li>
+
+
+
+                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'studentedit',params:{id:$localStorage.getItem('teacherOrstudent')}}" class="nav-link"><i class="flaticon-script"></i><span>Profile Edit</span></router-link></li>
+
+
+                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'homeworks'}" class="nav-link"><i class="flaticon-script"></i><span>Home Work</span></router-link></li>
+
+
+                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'events'}" class="nav-link"><i class="flaticon-script"></i><span>Massege</span></router-link></li>
 
 
 
@@ -502,6 +566,9 @@ function myFunction() {
   }
 }
 
+
+
+console.log(localStorage.getItem('role'));
 
 
 

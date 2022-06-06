@@ -8,10 +8,7 @@ export default {
 		localStorage.removeItem('token')
 		localStorage.removeItem('user')
 
-		Toast.fire({
-			icon: 'success',
-			title: 'Logout in successfully'
-		})
+        Notification.customsucess('Logout in successfully')
 
 		// this.$router.push({name: '/login'})
             window.location.href ="/login";

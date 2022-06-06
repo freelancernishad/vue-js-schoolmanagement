@@ -87,7 +87,7 @@ this.preloader = true;
             axios
                 .post("/api/auth/login", this.form)
                 .then((res) => {
-                    console.log(res);
+                     console.log(res);
                     User.responseAfterLogin(res);
 
 Notification.customsucess('Signed in successfully')

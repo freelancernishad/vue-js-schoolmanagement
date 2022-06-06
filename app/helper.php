@@ -619,8 +619,8 @@ function base64($Image)
 
     }
 
-// return $Image;
-    return $b64image = 'data:image/png;base64,'.base64_encode(file_get_contents($Image));
+$ext =  pathinfo($Image, PATHINFO_EXTENSION);;
+    return $b64image = "data:image/$ext;base64,".base64_encode(file_get_contents($Image));
 }
 
  function fileupload($Image,$path,$width,$height,$customname='')
