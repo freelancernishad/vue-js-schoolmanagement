@@ -97,7 +97,12 @@ let smsNotice = require('./components/notice/sms.vue').default;
 let settings = require('./components/settings/index.vue').default;
 let seoSettings = require('./components/settings/seo.vue').default;
 let sliderSettings = require('./components/settings/slider.vue').default;
+
+
 let chat = require('./components/chat.vue').default;
+
+let questionbank = require('./components/questionbank/index.vue').default;
+let questionbanknew = require('./components/questionbank/form.vue').default;
 
 
 
@@ -225,6 +230,10 @@ export const routes = [
   { path: '/school/settings/slider', component: sliderSettings, name:'sliderSettings' },
 
   { path: '/school/chat', component: chat, name:'chat' },
+
+  { path: '/school/questionbank', component: questionbank, name:'questionbank' },
+  { path: '/school/questionbank/edit/:id', component: questionbanknew, name:'questionbankEdit' },
+  { path: '/school/questionbank/new', component: questionbanknew, name:'questionbanknew' },
 
 
 

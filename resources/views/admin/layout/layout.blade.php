@@ -315,6 +315,9 @@ th, th label {
                         <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'homeworks'}" class="nav-link"><i class="flaticon-script"></i><span>Home Work</span></router-link></li>
 
 
+                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'questionbank'}" class="nav-link"><i class="flaticon-script"></i><span>Questinbank</span></router-link></li>
+
+
                         <li class="nav-item" ><router-link   onclick="navhide()" :to="{name:'chat'}" class="nav-link"><i class="flaticon-script"></i><span>Massege</span></router-link></li>
 
 

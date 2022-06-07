@@ -88,10 +88,24 @@ public function conversionget(Request $request)
     $userone =$request->filter['user_one'];
     $usertwo =$request->filter['user_two'];
 
-        $result = Conversion::where(['user_one'=>$userone,'user_two'=>$usertwo])
-        ->orWhere(['user_one'=>$usertwo,'user_two'=>$userone])
-            ->orderBy('id', 'desc')
-            ->first();
+
+
+     $result1count = Conversion::where(['user_one'=>$userone,'user_two'=>$usertwo])->count();
+           $result2count = Conversion::Where(['user_one'=>$usertwo,'user_two'=>$userone])->count();
+
+if($result1count>0){
+
+    $result = Conversion::where(['user_one'=>$userone,'user_two'=>$usertwo])->first();
+}elseif($result2count>0){
+
+    $result = Conversion::Where(['user_one'=>$usertwo,'user_two'=>$userone])->first();
+}else{
+    $result = [];
+}
+
+
+
+
         return response()->json($result);
 
 }

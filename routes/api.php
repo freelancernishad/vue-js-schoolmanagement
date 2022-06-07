@@ -15,6 +15,7 @@ use App\Http\Controllers\api\PaymentController;
 use App\Http\Controllers\api\RoutineController;
 use App\Http\Controllers\api\HomeworkController;
 use App\Http\Controllers\api\studentsController;
+use App\Http\Controllers\QuestionbankController;
 use App\Http\Controllers\api\SchoolDetailController;
 /*
 |--------------------------------------------------------------------------
@@ -166,6 +167,10 @@ Route::get('/attendence_sheet/sms/{class}/{view}/{date}/{school_id}',[smsControl
 
 
 
+Route::get('/questionbank',[QuestionbankController::class , 'index']);
+Route::get('/questionbank/edit',[QuestionbankController::class , 'questionbankedit']);
+Route::get('/questionbank/delete/{id}',[QuestionbankController::class , 'questionbankDelete']);
+Route::post('/questionbank/submit',[QuestionbankController::class , 'questionbank_submit']);
 
     // Route::prefix('v1')->group(function () {
 
