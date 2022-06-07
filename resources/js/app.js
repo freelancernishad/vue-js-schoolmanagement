@@ -19,6 +19,10 @@ import VueRouterBackButton from 'vue-router-back-button'
 
 
 
+
+
+
+
 // import VueQRCodeComponent from 'vue-qrcode-component'
 // Vue.component('qr-code', VueQRCodeComponent)
 
@@ -146,6 +150,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
 // import vueselect from 'vue-select2';
 
 // Vue.component('vue-select', vueselect)
+
 
 
 Vue.component('pagination', require('laravel-vue-semantic-ui-pagination'));

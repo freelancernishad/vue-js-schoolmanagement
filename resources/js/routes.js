@@ -97,6 +97,7 @@ let smsNotice = require('./components/notice/sms.vue').default;
 let settings = require('./components/settings/index.vue').default;
 let seoSettings = require('./components/settings/seo.vue').default;
 let sliderSettings = require('./components/settings/slider.vue').default;
+let chat = require('./components/chat.vue').default;
 
 
 
@@ -222,6 +223,8 @@ export const routes = [
   { path: '/school/settings', component: settings, name:'settings' },
   { path: '/school/settings/seo', component: seoSettings, name:'seoSettings' },
   { path: '/school/settings/slider', component: sliderSettings, name:'sliderSettings' },
+
+  { path: '/school/chat', component: chat, name:'chat' },
 
 
 

@@ -50,6 +50,8 @@
         "vue-router-back-button": "^1.3.2",
         "vue-select2": "^0.2.6",
         "vue-ui-preloader": "^1.2.1",
-        "vue-upload-multiple-image": "^1.1.6"
+        "vue-upload-multiple-image": "^1.1.6",
+        "laravel-echo": "^1.3.5",
+        "pusher-js": "^4.2.2"
     }
 }

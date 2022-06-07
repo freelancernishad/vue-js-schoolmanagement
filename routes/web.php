@@ -1,5 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\api\resultController;
 use App\Http\Controllers\api\PaymentController;
@@ -55,6 +57,8 @@ use App\Http\Controllers\api\studentsController;
 Route::get('/pdf/{school_id}/{class}/{roll}/{year}/{exam}',[frontendController::class ,'view_result_pdf']);
 
 Route::get('/routines/{school_id}/{class}/{year}/download',[RoutineController::class , 'routine_download'])->name('routines.routine_download');
+
+
 // Auth::routes();
 Route::group(['middleware'=>['api']],function(){
 

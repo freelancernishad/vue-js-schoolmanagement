@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>AKKHOR | Home 1</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -314,7 +315,7 @@ th, th label {
                         <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'homeworks'}" class="nav-link"><i class="flaticon-script"></i><span>Home Work</span></router-link></li>
 
 
-                        <li class="nav-item" ><router-link   onclick="navhide()" :to="{name:'events'}" class="nav-link"><i class="flaticon-script"></i><span>Massege</span></router-link></li>
+                        <li class="nav-item" ><router-link   onclick="navhide()" :to="{name:'chat'}" class="nav-link"><i class="flaticon-script"></i><span>Massege</span></router-link></li>
 
 
 
@@ -471,11 +472,17 @@ th, th label {
 
                         <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'studentedit',params:{id:$localStorage.getItem('teacherOrstudent')}}" class="nav-link"><i class="flaticon-script"></i><span>Profile Edit</span></router-link></li>
 
+                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'routinescreateupdate', params:{create:'view',classname:'Play',school_id:$localStorage.getItem('getschoolid'),year:'2022'}}" class="nav-link"><i class="flaticon-script"></i><span>Routine</span></router-link></li>
+
+
+
 
                         <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'homeworks'}" class="nav-link"><i class="flaticon-script"></i><span>Home Work</span></router-link></li>
 
 
-                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'events'}" class="nav-link"><i class="flaticon-script"></i><span>Massege</span></router-link></li>
+
+
+                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'chat'}" class="nav-link"><i class="flaticon-script"></i><span>Massege</span></router-link></li>
 
 
 

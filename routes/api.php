@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\smsController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\api\BlogController;
 use App\Http\Controllers\frontendController;
 use  App\Http\Controllers\api\authController;
@@ -47,6 +48,13 @@ Route::group([
     Route::post('me', [authController::class,'login']);
 
 });
+
+
+
+Route::get('/users/get',[MessageController::class ,'usersget']);
+Route::get('/conversion/get',[MessageController::class ,'conversionget']);
+Route::get('/messages/get',[MessageController::class ,'messagesget']);
+Route::post('/message/sent',[MessageController::class ,'messagessent']);
 
 
 

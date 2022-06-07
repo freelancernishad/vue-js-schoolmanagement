@@ -26,7 +26,7 @@
 
 
 
-                        <span v-show="$localStorage.getItem('role')=='student' && homeworkTimestatus==false ? true : false " style="display:none"  class="btn-fill-md radius-4 text-light bg-orange-red mb-3 float-right">Homework Submit TimeOut</span>
+                        <span v-show="$localStorage.getItem('role')=='student' && homeworkstatus=='' && homeworkTimestatus==false ? true : false " style="display:none"  class="btn-fill-md radius-4 text-light bg-orange-red mb-3 float-right">Homework Submit TimeOut</span>
 
 
 

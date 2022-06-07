@@ -41,6 +41,7 @@
 
                             <h5>
                                 <center v-if="this.$route.params.create=='edit'" class="mobilefonthead">EDIT CLASS {{ student_class }} ROUTION </center>
+                                <center v-if="this.$route.params.create=='view'" class="mobilefonthead"> {{ student_class }} ROUTION </center>
                                 <center v-else  class="mobilefonthead">ADD NEW CLASS {{ student_class }} ROUTION </center>
 
                             </h5>
@@ -71,14 +72,20 @@
 
                                         </td>
 
-                                        <td scope="col" v-for="formsubjectsInput in formsubjectsInputs">
+                                        <td scope="col" v-for="formsubjectsInput in formsubjectsInputs" v-show="form[formsubjectsInput][day]!='' ? true : false" style="display:none">
 
-                                            <select class="form-control" v-model="form[formsubjectsInput][day]" required>
+
+
+
+                                            <select class="form-control" v-model="form[formsubjectsInput][day]" v-if="$route.params.create=='edit'">
                                                 <option value="">
                                                     SELECT
                                                 </option>
                                                 <option v-for="subject in subjects[0]">{{ subject }}</option>
                                             </select>
+
+                                            <span v-else>{{ form[formsubjectsInput][day] }}</span>
+
                                         </td>
 
                                     </tr>
@@ -86,7 +93,7 @@
                                 </tbody>
                             </table>
                         </div>
-                            <input class="btn btn-success" type="submit" value="SUBMIT" id="save_btn" />
+                            <input v-if="$route.params.create=='edit'" class="btn btn-success" type="submit" value="SUBMIT" id="save_btn" />
                         </form>
                     </div><!-- col-md-12 -->
 
@@ -107,14 +114,18 @@
 <script>
 export default {
 created(){
+          this.student_class = this.$route.params.classname
+       this.school_id = getschoolid
+       this.form.school_id = getschoolid
 if(this.$route.params.create=='edit'){
     this.allroutine()
-}else{
+}else if(this.$route.params.create=='view'){
+ this.allroutine()
+}else {
     this.preloader = false;
 }
 
-       this.school_id = getschoolid
-       this.form.school_id = getschoolid
+
 
 },
 
@@ -204,8 +215,8 @@ if(this.$route.params.create=='edit'){
 	mounted(){
 
 
-         this.student_class = this.$route.params.classname
-		this.classes =  User.classlist();
+
+
 		this.days =  User.days();
 		this.subjects =  User.subjects(this.student_class);
 
