@@ -10,6 +10,7 @@ use  App\Http\Controllers\api\authController;
 use App\Http\Controllers\api\EventController;
 use App\Http\Controllers\api\resultController;
 use App\Http\Controllers\api\staffsController;
+use App\Http\Controllers\OnlineexamController;
 use App\Http\Controllers\api\GalleryController;
 use App\Http\Controllers\api\PaymentController;
 use App\Http\Controllers\api\RoutineController;
@@ -171,6 +172,18 @@ Route::get('/questionbank',[QuestionbankController::class , 'index']);
 Route::get('/questionbank/edit',[QuestionbankController::class , 'questionbankedit']);
 Route::get('/questionbank/delete/{id}',[QuestionbankController::class , 'questionbankDelete']);
 Route::post('/questionbank/submit',[QuestionbankController::class , 'questionbank_submit']);
+
+
+Route::get('/onlineexam',[OnlineexamController::class , 'index']);
+Route::get('/onlineexam/view',[OnlineexamController::class , 'examview']);
+Route::post('/onlineexam/start',[OnlineexamController::class , 'examstart']);
+Route::get('/onlineexam/edit',[OnlineexamController::class , 'onlineexamsedit']);
+Route::get('/onlineexam/delete/{id}',[OnlineexamController::class , 'onlineexamsDelete']);
+Route::post('/onlineexam/submit',[OnlineexamController::class , 'onlineexams_submit']);
+
+
+
+Route::get('/answeres',[OnlineexamController::class , 'answeres']);
 
     // Route::prefix('v1')->group(function () {
 

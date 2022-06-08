@@ -10,6 +10,9 @@ class AppStorage{
 	storerole(role){
 		localStorage.setItem('role',role);
 	}
+    storeclassname(classname){
+		localStorage.setItem('classname',classname);
+	}
 	storeteacherOrstudent(teacherOrstudent){
 		localStorage.setItem('teacherOrstudent',teacherOrstudent);
 	}
@@ -20,10 +23,11 @@ class AppStorage{
 		localStorage.setItem('usersid',usersid);
 	}
 
-	store(access_token, username, role, teacherOrstudent, users, usersid){
+	store(access_token, username, role, teacherOrstudent, classname, users, usersid){
 		this.storeToken(access_token)
 		this.storeUser(username)
 		this.storerole(role)
+		this.storeclassname(classname)
 		this.storeteacherOrstudent(teacherOrstudent)
 		this.storeusers(users)
 		this.storeusersid(usersid)

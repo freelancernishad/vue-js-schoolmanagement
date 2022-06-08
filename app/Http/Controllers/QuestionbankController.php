@@ -20,6 +20,7 @@ class QuestionbankController extends Controller
         ->allowedFilters([
             AllowedFilter::exact('id'),
             AllowedFilter::exact('school_id'),
+            AllowedFilter::exact('year'),
             AllowedFilter::exact('class'),
             AllowedFilter::exact('group'),
             AllowedFilter::exact('subject'),

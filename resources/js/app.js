@@ -118,6 +118,9 @@ window.Notification = Notification
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
 Vue.component('VueUploadMultipleImage', VueUploadMultipleImage);
 
+import FlipCountdown from 'vue2-flip-countdown'
+Vue.component('FlipCountdown', FlipCountdown);
+
 // import VModal from 'vue-js-modal'
 // Vue.use(VModal)
 

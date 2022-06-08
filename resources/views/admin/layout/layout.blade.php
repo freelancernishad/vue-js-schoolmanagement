@@ -89,7 +89,11 @@ a.item.active {background: #ffac01;}
 .image-container.position-relative.text-center {
     width: 100% !important;
 }
-
+.container.flip-clock {
+    position: fixed;
+    top: 70px;
+    left: 42%;
+}
 
     @media(max-width:767px){
         .btn-fill-md, .btn-fill-lg, .fw-btn-fill, .btn-fill-lmd {
@@ -318,6 +322,9 @@ th, th label {
                         <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'questionbank'}" class="nav-link"><i class="flaticon-script"></i><span>Questinbank</span></router-link></li>
 
 
+                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'onlineexam'}" class="nav-link"><i class="flaticon-script"></i><span>Online Exam</span></router-link></li>
+
+
                         <li class="nav-item" ><router-link   onclick="navhide()" :to="{name:'chat'}" class="nav-link"><i class="flaticon-script"></i><span>Massege</span></router-link></li>
 
 
@@ -482,6 +489,7 @@ th, th label {
 
                         <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'homeworks'}" class="nav-link"><i class="flaticon-script"></i><span>Home Work</span></router-link></li>
 
+                        <li class="nav-item"><router-link   onclick="navhide()" :to="{name:'onlineexam'}" class="nav-link"><i class="flaticon-script"></i><span>Online Exam</span></router-link></li>
 
 
 

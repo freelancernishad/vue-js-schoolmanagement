@@ -199,7 +199,7 @@ class studentsController extends Controller
     }
 
 
-public function usercreate($name,$email,$password,$id,$type)
+public function usercreate($name,$email,$password,$id,$class,$type)
 {
     $studentuserdata =[
         'name'=>$name,
@@ -207,6 +207,7 @@ public function usercreate($name,$email,$password,$id,$type)
         'password'=>hash::make($password),
         'teacherOrstudent'=>$id,
         'role'=>$type,
+        'class'=>$class,
     ];
     $user =   User::create($studentuserdata);
 }
@@ -230,8 +231,8 @@ public function usercreate($name,$email,$password,$id,$type)
             $results['status'] = 'Created';
 
 
-            $this->usercreate($result->school_id,$result->StudentName,$result->StudentEmail,$result->StudentPassword,$result->id,'student');
-            $this->usercreate($result->school_id,$result->StudentFatherName,$result->ParentEmail,$result->ParentPassword,$result->id,'parent');
+            $this->usercreate($result->school_id,$result->StudentName,$result->StudentEmail,$result->StudentPassword,$result->id,$result->StudentClass,'student');
+            $this->usercreate($result->school_id,$result->StudentFatherName,$result->ParentEmail,$result->ParentPassword,$result->id,$result->StudentClass,'parent');
 
         } else {
             $student = student::find($r->id);

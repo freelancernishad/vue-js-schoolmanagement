@@ -4429,6 +4429,11 @@ var AppStorage = /*#__PURE__*/function () {
       localStorage.setItem('role', role);
     }
   }, {
+    key: "storeclassname",
+    value: function storeclassname(classname) {
+      localStorage.setItem('classname', classname);
+    }
+  }, {
     key: "storeteacherOrstudent",
     value: function storeteacherOrstudent(teacherOrstudent) {
       localStorage.setItem('teacherOrstudent', teacherOrstudent);
@@ -4445,10 +4450,11 @@ var AppStorage = /*#__PURE__*/function () {
     }
   }, {
     key: "store",
-    value: function store(access_token, username, role, teacherOrstudent, users, usersid) {
+    value: function store(access_token, username, role, teacherOrstudent, classname, users, usersid) {
       this.storeToken(access_token);
       this.storeUser(username);
       this.storerole(role);
+      this.storeclassname(classname);
       this.storeteacherOrstudent(teacherOrstudent);
       this.storeusers(users);
       this.storeusersid(usersid);
@@ -4789,6 +4795,7 @@ var User = /*#__PURE__*/function () {
       var yyyy = today.getFullYear();
       var hrs = today.getHours();
       var mins = today.getMinutes();
+      var secs = today.getSeconds();
       var ampm = hrs >= 12 ? 'pm' : 'am';
 
       if (dd < 10) {
@@ -4807,6 +4814,10 @@ var User = /*#__PURE__*/function () {
         mins = '0' + mins;
       }
 
+      if (secs < 10) {
+        secs = '0' + secs;
+      }
+
       today = yyyy + '-' + mm + '-' + dd;
       dates.push(today);
       today = mm + '-' + dd + '-' + yyyy;
@@ -4820,6 +4831,8 @@ var User = /*#__PURE__*/function () {
       today = yyyy;
       dates.push(today);
       today = yyyy + '-' + mm + '-' + dd + ' ' + hrs + ':' + mins + ' ' + ampm;
+      dates.push(today);
+      today = yyyy + '-' + mm + '-' + dd + ' ' + hrs + ':' + mins + ':' + secs;
       dates.push(today);
       return dates;
     }
@@ -5110,12 +5123,13 @@ var User = /*#__PURE__*/function () {
       var access_token = res.data.access_token;
       var username = res.data.name;
       var role = res.data.role;
+      var classname = res.data["class"];
       var teacherOrstudent = res.data.teacherOrstudent;
       var users = res.data.users;
       var usersid = res.data.user_id;
 
       if (_Token__WEBPACK_IMPORTED_MODULE_0__["default"].isValid(access_token)) {
-        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(access_token, username, role, teacherOrstudent, users, usersid);
+        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(access_token, username, role, teacherOrstudent, classname, users, usersid);
       }
     }
   }, {

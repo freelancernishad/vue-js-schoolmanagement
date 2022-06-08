@@ -109,8 +109,9 @@ export default {
         this.school_id = getschoolid
         this.ASSETURL = ASSETURL
         this.studentOrteacher_id = this.$localStorage.getItem('teacherOrstudent');
+        this.studentclass = this.$localStorage.getItem('classname');
         if (this.$localStorage.getItem('role') == 'student' || this.$localStorage.getItem('role') == 'parent') {
-            this.getstudentorteacher();
+            this.status = 'Published';
         }
     },
     data() {
@@ -129,17 +130,7 @@ export default {
         }
     },
     methods: {
-        getstudentorteacher() {
-            axios.get(`/api/students/single?filter[id]=${this.studentOrteacher_id}`)
-                .then(({ data }) => {
-                    console.log(data)
-                    this.studentclass = data[0].StudentClass;
-                    this.status = 'Published';
-                })
-                .catch(() => {
-                    // this.$router.push({name: 'supplier'})
-                })
-        },
+
         dataformater(date) {
             return User.dateformat(date)[6];
         },

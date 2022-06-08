@@ -101,8 +101,16 @@ let sliderSettings = require('./components/settings/slider.vue').default;
 
 let chat = require('./components/chat.vue').default;
 
+
+
 let questionbank = require('./components/questionbank/index.vue').default;
 let questionbanknew = require('./components/questionbank/form.vue').default;
+
+
+let onlineexam = require('./components/onlineexam/index.vue').default;
+let onlineexamstart = require('./components/onlineexam/start.vue').default;
+let onlineexamView = require('./components/onlineexam/view.vue').default;
+let onlineexamnew = require('./components/onlineexam/form.vue').default;
 
 
 
@@ -234,6 +242,15 @@ export const routes = [
   { path: '/school/questionbank', component: questionbank, name:'questionbank' },
   { path: '/school/questionbank/edit/:id', component: questionbanknew, name:'questionbankEdit' },
   { path: '/school/questionbank/new', component: questionbanknew, name:'questionbanknew' },
+
+
+
+
+  { path: '/school/onlineexam', component: onlineexam, name:'onlineexam' },
+  { path: '/school/onlineexam/start/:id', component: onlineexamstart, name:'onlineexamstart' },
+  { path: '/school/onlineexam/view/:id', component: onlineexamView, name:'onlineexamView' },
+  { path: '/school/onlineexam/edit/:id', component: onlineexamnew, name:'onlineexamEdit' },
+  { path: '/school/onlineexam/new', component: onlineexamnew, name:'onlineexamnew' },
 
 
 

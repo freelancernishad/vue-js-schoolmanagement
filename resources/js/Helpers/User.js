@@ -37,6 +37,7 @@ class User {
         var yyyy = today.getFullYear();
         let hrs = today.getHours()
         let mins = today.getMinutes()
+        let secs = today.getSeconds()
         var ampm = hrs >= 12 ? 'pm' : 'am';
 
         if (dd < 10) {
@@ -54,6 +55,10 @@ class User {
 
             mins = '0' + mins
         }
+        if(secs<10){
+
+            secs = '0' + secs
+        }
 
 
 
@@ -70,6 +75,8 @@ class User {
         today = yyyy;
         dates.push(today)
         today = yyyy + '-' + mm + '-' + dd + ' '+ hrs+':'+ mins+' '+ampm;
+        dates.push(today)
+        today = yyyy + '-' + mm + '-' + dd + ' '+ hrs+':'+ mins+':'+secs;
         dates.push(today)
         return dates;
     }
@@ -352,11 +359,12 @@ class User {
         const access_token = res.data.access_token
         const username = res.data.name
         const role = res.data.role
+        const classname = res.data.class
         const teacherOrstudent = res.data.teacherOrstudent
         const users = res.data.users
         const usersid = res.data.user_id
         if (Token.isValid(access_token)) {
-            AppStorage.store(access_token, username, role, teacherOrstudent, users, usersid)
+            AppStorage.store(access_token, username, role, teacherOrstudent, classname, users, usersid)
         }
     }
     hasToken() {
