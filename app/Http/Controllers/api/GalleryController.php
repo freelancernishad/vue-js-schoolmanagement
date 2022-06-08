@@ -140,8 +140,8 @@ if($id!=''){
     // return $gallery->image;
     foreach (json_decode($gallery->image) as $value) {
         // return Storage::disk('public')->exists($path);
-     if(File::exists($value)){
-        unlink($value);
+     if(File::exists(env('FILE_PATH').$value)){
+        unlink(env('FILE_PATH').$value);
     }
     }
 
