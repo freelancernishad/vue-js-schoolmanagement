@@ -153,7 +153,7 @@ if($id!=''){
 
                 $upload_path = 'backend/gallery/';
                 $image_url = $upload_path.$name;
-                 $img->save($image_url);
+                 $img->save(env('FILE_PATH').$image_url);
                  array_push($images,$image_url);
         }
         //  $imageerrorcoun = count($imageerror);
