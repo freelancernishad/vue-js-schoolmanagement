@@ -55,8 +55,8 @@ Vue.prototype.$localStorage = localStorage;
 // Vue.component('loginlayout', loginlayout);
 
 window.RootUrl = window.location.origin;
-// window.ASSETURL = '/public/';
-window.ASSETURL = '/';
+window.ASSETURL = '/public/';
+// window.ASSETURL = '/';
 // window.preloader = true;
 
 
