@@ -52,7 +52,7 @@
                     <div class="form-group col-md-12">
                         <label for="">Image</label>
                         <vue-upload-multiple-image @upload-success="uploadImageSuccess" @before-remove="beforeRemove"
-                            @edit-image="editImage" :data-images="form.images" dragText="Drag images (multiple)"
+                            @edit-image="editImage" :show-edit="showEdit" :data-images="form.images" dragText="Drag images (multiple)"
                             browseText="(or) Select" primaryText="Default" markIsPrimaryText="Set as default"
                             popupText="This image will be displayed as default" dropText="Drop your files here..."
                             :maxImage="maxImage"></vue-upload-multiple-image>
@@ -79,6 +79,7 @@ export default {
             images: [],
             school_id: '',
             maxImage: 20,
+            showEdit: false,
             preloader: true,
             form: {
                 id: '',
@@ -94,7 +95,7 @@ export default {
     methods: {
         uploadImageSuccess(formData, index, fileList) {
             //   console.log('data', formData, index, fileList)
-            console.log(formData)
+            console.log(fileList)
             this.form.images = fileList
         },
         beforeRemove(index, done, fileList) {
@@ -106,10 +107,15 @@ export default {
             } else {
             }
         },
+
         editImage(formData, index, fileList) {
             //   console.log('edit data', formData, index, fileList)
+             console.log(fileList)
             this.form.images = fileList
         },
+
+
+
         categorysfun() {
             axios.get(`/api/gallery_category?filter[school_id]=${this.school_id}`)
                 .then(({ data }) => {

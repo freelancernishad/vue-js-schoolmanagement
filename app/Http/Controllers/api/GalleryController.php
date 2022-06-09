@@ -158,7 +158,7 @@ if($id!=''){
             'size'=>['Failed to upload images. The image maximum size is 1MB.'],
         ];
 
-
+// return $request->images;
 
         $images = [];
         foreach ($request->images as $key => $value) {
@@ -171,7 +171,7 @@ if($id!=''){
                 $sub = substr($Image, 0, $position);
                 $ext = explode('/', $sub)[1];
 
-                $name = time().'____'.$value['name'].'.'.$ext;
+                $name = time().'____'.$value['name'];
                 $img = Image::make($Image)->resize(240, 200);
 
                 $upload_path = 'backend/gallery/';

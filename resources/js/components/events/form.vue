@@ -56,7 +56,7 @@
                     <div class="form-group col-md-12">
                         <label for="">Image</label>
                         <vue-upload-multiple-image @upload-success="uploadImageSuccess" @before-remove="beforeRemove"
-                            @edit-image="editImage" :data-images="form.images" dragText="Drag images (multiple)"
+                            @edit-image="editImage" :show-edit="showEdit" :data-images="form.images" dragText="Drag images (multiple)"
                             browseText="(or) Select" primaryText="Default" markIsPrimaryText="Set as default"
                             popupText="This image will be displayed as default" dropText="Drop your files here..."
                             :maxImage="maxImage"></vue-upload-multiple-image>
@@ -83,6 +83,7 @@ export default {
             images: [],
             school_id: '',
             maxImage: 20,
+            showEdit: false,
             preloader: true,
             form: {
                 id: '',
