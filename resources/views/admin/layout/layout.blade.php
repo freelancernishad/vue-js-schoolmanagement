@@ -255,7 +255,7 @@ th, th label {
         </div>
         <!-- Header Menu Area End Here -->
         <!-- Page Area Start Here -->
-        <div class="dashboard-page-one" id="dashboardheight">
+        <div class="dashboard-page-one">
             <!-- Sidebar Area Start Here -->
             <div class="sidebar-main sidebar-menu-one sidebar-expand-md sidebar-color" v-show="$route.path === '/login' || $route.path === '/register' || $route.path === 'forget' ? false : true " id='leftnavbar'>
                <div class="mobile-sidebar-header d-md-none">
@@ -263,7 +263,7 @@ th, th label {
                         <router-link  onclick="navhide()"  to="/school/"><img src="{{ asset('dashboard_asset/img/logo1.png') }}" alt="logo"></router-link>
                     </div>
                </div>
-                <div class="sidebar-menu-content">
+                <div class="sidebar-menu-content"  id="dashboardheight">
 
 
 
@@ -604,8 +604,6 @@ function autoResizeDiv()
             var index = 1
             if(localStorage.getItem('role')=='admin' || localStorage.getItem('role')=='teacher'){
                 index= 0
-            }else{
-                index = 1;
             }
                 var clientHeight = document.getElementsByClassName('navBar')[index].clientHeight;
                         console.log('menu height:',clientHeight)
@@ -617,7 +615,7 @@ function autoResizeDiv()
                 menuheight= clientHeight
             }
             document.getElementById('wrapper').style.height = menuheight +'px';
-            // document.getElementById('dashboardheight').style.height = menuheight +'px';
+            document.getElementById('dashboardheight').style.height = menuheight +'px';
         }
         window.onresize = autoResizeDiv;
         autoResizeDiv();
