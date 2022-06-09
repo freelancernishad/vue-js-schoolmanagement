@@ -16570,10 +16570,10 @@ module.exports = {
         </a>\
         <!-- Last Item -->\
         <a class="item" @click.prevent="selectPage(++data.current_page)" v-if="data.next_page_url">\
-            <i class="right icon" :class="icon"></i>\
+            <i class="right icon" :class="icon2"></i>\
         </a>\
         <a class="disabled item" v-if="showDisabled && !data.next_page_url">\
-            <i class="right icon" :class="icon"></i>\
+            <i class="right icon" :class="icon2"></i>\
         </a>\
     </div>',
 
@@ -16585,6 +16585,11 @@ module.exports = {
             required: false
         },
         icon: {
+            type: String,
+            default: 'angle double',
+            required: false
+        },
+        icon2: {
             type: String,
             default: 'angle double',
             required: false
@@ -16647,6 +16652,7 @@ module.exports = {
         }
     }
 };
+
 
 /***/ }),
 

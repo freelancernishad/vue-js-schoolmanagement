@@ -373,6 +373,11 @@ public function usercreate($school_id,$name,$email,$password,$id,$class,$type)
         $pdf = PDF::loadView('admin/cards.' . $foldername, $data);
         return $pdf->stream("$fileName.pdf");
     }
+
+
+
+
+
     public function student_attendance(Request $request)
     {
         $id = $request->id;
@@ -389,16 +394,16 @@ public function usercreate($school_id,$name,$email,$password,$id,$class,$type)
             ];
             $data =  Attendance::where($where)->orderBy('date', 'ASC')->get();
         } elseif ($veiwtype == 'Daily') {
-            $count =  Attendance::where(['school_id' => $school_id, 'date' => $dateormonth, 'year' => date("Y", strtotime($dateormonth))])->count();
+            $count =  Attendance::where(['school_id' => $school_id, 'student_class' => $StudentClass, 'date' => $dateormonth, 'year' => date("Y", strtotime($dateormonth))])->count();
             if ($count > 0) {
-                $data['data'] = Attendance::where(['school_id' => $school_id, 'date' => $dateormonth, 'year' => date("Y", strtotime($dateormonth))])->get();
+                $data['data'] = Attendance::where(['school_id' => $school_id,'student_class' => $StudentClass, 'date' => $dateormonth, 'year' => date("Y", strtotime($dateormonth))])->get();
                 $data['counttype'] = 1;
             } else {
                 $data['data'] = student::where(['school_id' => $school_id, 'StudentClass' => $StudentClass, 'StudentStatus' => 'Active'])->get();
                 $data['counttype'] = 0;
             }
         } elseif ($veiwtype == 'edit') {
-            $result = Attendance::where(['school_id' => $school_id, 'date' => $dateormonth, 'year' => date("Y", strtotime($dateormonth))])->get();
+            $result = Attendance::where(['school_id' => $school_id,'student_class' => $StudentClass, 'date' => $dateormonth, 'year' => date("Y", strtotime($dateormonth))])->get();
             $result = json_decode($result[0]->attendance);
             $data  = array_filter($result, function ($var) use ($id) {
                 return $var->id == $id;
@@ -406,6 +411,98 @@ public function usercreate($school_id,$name,$email,$password,$id,$class,$type)
         }
         return response()->json($data);
     }
+
+
+
+
+
+
+    public function student_attendance_count(Request $request)
+    {
+        $month = $request->month;
+        $year = $request->year;
+        $monthNumber =  month_to_number($month);
+
+     $monthCount = cal_days_in_month(CAL_GREGORIAN,$monthNumber,$year);
+
+$attendance = [];
+
+
+
+$datearray = [];
+        for ($i=1; $i <=$monthCount ; $i++) {
+            $present = 0;
+            $absent = 0;
+        $date = $year.'-'.sprintf('%02d', $monthNumber).'-'.sprintf('%02d', $i);
+        array_push($datearray,$date);
+        $datas =  Attendance::where(['date'=>$date])->get();
+     foreach ($datas as $key => $value) {
+
+         foreach (json_decode($value->attendance) as $key => $value) {
+             if($value->attendence=='Present'){
+                 $present +=1;
+             }else{
+                 $absent +=1;
+             }
+         }
+     }
+        array_push($attendance,[
+            'date'=>$date,
+            'present'=>$present,
+            'absent'=>$absent,
+        ]);
+        }
+
+        $presuntcount = [];
+        $absentcount = [];
+
+        foreach ($attendance as $key => $value) {
+
+        array_push($presuntcount,$value['present']);
+        array_push($absentcount,$value['absent']);
+
+        }
+
+
+        $presuntArray = [
+            'label' => 'Present',
+            'backgroundColor' => 'green',
+            'data' => $presuntcount,
+            'borderColor' => 'green',
+            'borderWidth' => 1
+        ];
+        $absentArray = [
+            'label' => 'Absent',
+            'backgroundColor' => 'red',
+            'data' => $absentcount,
+            'borderColor' => 'red',
+            'borderWidth' => 1
+        ];
+
+        // return $presuntArray;
+
+
+// die();
+
+
+
+
+
+
+
+
+
+        return response()->json(['dates'=>$datearray,'present'=>$presuntArray,'absent'=>$absentArray]);
+    }
+
+
+
+
+
+
+
+
+
     public function student_attendance_submit(Request $request)
     {
         $id = $request->id;

@@ -178,7 +178,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <pagination :data="students" v-bind:showDisabled="true" :limit="3" v-on:change-page="allstudents">
+                    <pagination :data="students" v-bind:showDisabled="true" icon="fa-solid fa-angle-left" icon2="fa-solid fa-angle-right" :limit="3" v-on:change-page="allstudents">
                     </pagination>
                 </div>
             </div>

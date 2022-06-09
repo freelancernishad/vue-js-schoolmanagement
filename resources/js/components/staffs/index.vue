@@ -180,7 +180,7 @@
 
                         </tbody>
                     </table>
-                    <pagination :data="staffs" v-bind:showDisabled="true" :limit="3" v-on:change-page="allstaffs">
+                    <pagination :data="staffs" v-bind:showDisabled="true" icon="fa-solid fa-angle-left" icon2="fa-solid fa-angle-right"  :limit="3" v-on:change-page="allstaffs">
                     </pagination>
                 </div>
 

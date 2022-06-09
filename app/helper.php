@@ -187,6 +187,13 @@ function month_en_to_bn($month)
     return str_replace($en_month, $bn_month, $month);
 }
 
+function month_to_number($month)
+{
+    $monthName = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+    $monthNumber = array(1,2,3,4,5,6,7,8,9,10,11,12);
+    return str_replace($monthName, $monthNumber, $month);
+}
+
 function day_en_to_bn($day)
 {
 

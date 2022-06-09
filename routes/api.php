@@ -81,6 +81,7 @@ Route::post('/students/form/submit',[studentsController::class , 'student_submit
 Route::post('/student/{action}',[studentsController::class , 'student_action']);
 Route::get('/student/check',[studentsController::class , 'student_check']);
 Route::get('/student/attendance',[studentsController::class , 'student_attendance']);
+Route::get('/student/attendance/count',[studentsController::class , 'student_attendance_count']);
 Route::post('/student/attendance/submit',[studentsController::class , 'student_attendance_submit']);
 
 Route::get('/student/attendance/row',[studentsController::class , 'student_attendance_row']);

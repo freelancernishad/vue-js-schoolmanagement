@@ -271,25 +271,7 @@ th, th label {
 
 
                     <ul  class="nav nav-sidebar-menu sidebar-toggle-view navBar" v-show="$localStorage.getItem('role')=='admin' || $localStorage.getItem('role')=='teacher' ? true : false " style="display:none" >
-                        <li class="nav-item sidebar-nav-item">
-                            <a href="#" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></a>
-                            <ul class="nav sub-group-menu">
-                                <li class="nav-item">
-                                    <router-link  onclick="navhide()"  to="/school/" class="nav-link"><i class="fas fa-angle-right"></i> Admin</router-link>
-                                </li>
-                                <li class="nav-item" >
-                                    <a href="index3.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i> Students</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index4.html" class="nav-link"><i class="fas fa-angle-right"></i> Parents</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index5.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i> Teachers</a>
-                                </li>
-                            </ul>
-                        </li>
+                        <li class="nav-item"><router-link to="/school" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></router-link></li>
 
                         <li class="nav-item sidebar-nav-item" >
                             <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Students</span></a>
@@ -455,25 +437,7 @@ th, th label {
 
 
                     <ul class="nav nav-sidebar-menu sidebar-toggle-view navBar" v-show="$localStorage.getItem('role')=='student' || $localStorage.getItem('role')=='parent' ? true : false " style="display:none" >
-                        <li class="nav-item sidebar-nav-item">
-                            <a href="#" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></a>
-                            <ul class="nav sub-group-menu">
-                                <li class="nav-item">
-                                    <router-link  onclick="navhide()"  to="/school/" class="nav-link"><i class="fas fa-angle-right"></i> Admin</router-link>
-                                </li>
-                                <li class="nav-item" >
-                                    <a href="index3.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i> Students</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index4.html" class="nav-link"><i class="fas fa-angle-right"></i> Parents</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index5.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i> Teachers</a>
-                                </li>
-                            </ul>
-                        </li>
+                        <li class="nav-item"><router-link to="/school" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></router-link></li>
 
 
 
@@ -516,7 +480,7 @@ th, th label {
 
    <!-- Footer Area Start Here -->
    <footer class="footer-wrap-layout1" v-show="$route.path === '/login' || $route.path === '/register' || $route.path === 'forget' ? false : true " >
-    <div class="copyright">© Copyrights <a href="#">School name</a> 2019. All rights reserved. Designed by <a
+    <div class="copyright">© Copyrights <a href="#">{{ sitedetails()->SCHOLL_NAME }}</a> {{ date('Y') }}. All rights reserved. Designed & Developed by <a
             href="https://api.whatsapp.com/send?phone=8801909756552&text=I'm%20interested%20in%20your%20services">Freelancer Nishad</a></div>
 </footer>
 <!-- Footer Area End Here -->
@@ -606,8 +570,8 @@ function autoResizeDiv()
                 index= 0
             }
                 var clientHeight = document.getElementsByClassName('navBar')[index].clientHeight;
-                        console.log('menu height:',clientHeight)
-                        console.log('window height:',window.innerHeight )
+                        // console.log('menu height:',clientHeight)
+                        // console.log('window height:',window.innerHeight )
             var menuheight = 0
             if(clientHeight<window.innerHeight){
                 menuheight= window.innerHeight
