@@ -37,7 +37,7 @@
 
 
 
-                    <div class="form-input">
+                    <div class="form-input" style="width: 100%;">
                         <div class="preview">
                         <img :src="form.StudentPicture" id="file-ip-1-preview">
                         </div>
