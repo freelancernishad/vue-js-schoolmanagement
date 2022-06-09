@@ -199,9 +199,10 @@ class studentsController extends Controller
     }
 
 
-public function usercreate($name,$email,$password,$id,$class,$type)
+public function usercreate($school_id,$name,$email,$password,$id,$class,$type)
 {
     $studentuserdata =[
+        'school_id'=>$school_id,
         'name'=>$name,
         'email'=>$email,
         'password'=>hash::make($password),
