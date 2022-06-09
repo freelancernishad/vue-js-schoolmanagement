@@ -608,8 +608,8 @@ function autoResizeDiv()
                 index = 1;
             }
                 var clientHeight = document.getElementsByClassName('navBar')[index].clientHeight;
-                        // console.log('menu height:',clientHeight)
-                        // console.log('window height:',window.innerHeight )
+                        console.log('menu height:',clientHeight)
+                        console.log('window height:',window.innerHeight )
             var menuheight = 0
             if(clientHeight<window.innerHeight){
                 menuheight= window.innerHeight
