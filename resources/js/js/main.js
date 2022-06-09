@@ -135,17 +135,14 @@
       -------------------------------------*/
     var counterContainer = $(".counter");
     if (counterContainer.length) {
-        setTimeout(() => {
-                  counterContainer.counterUp({
+      counterContainer.counterUp({
         delay: 50,
         time: 1000
       });
-        }, 500);
-
     }
 
     /*-------------------------------------
-          Vector Map
+          Vector Map 
       -------------------------------------*/
     if ($.fn.vectorMap !== undefined) {
       $('#world-map').vectorMap({
@@ -178,7 +175,7 @@
     }
 
     /*-------------------------------------
-          Line Chart
+          Line Chart 
       -------------------------------------*/
     if ($("#earning-line-chart").length) {
 
@@ -302,7 +299,7 @@
     }
 
     /*-------------------------------------
-          Bar Chart
+          Bar Chart 
       -------------------------------------*/
     if ($("#expense-bar-chart").length) {
 
@@ -394,7 +391,7 @@
     }
 
     /*-------------------------------------
-          Doughnut Chart
+          Doughnut Chart 
       -------------------------------------*/
     if ($("#student-doughnut-chart").length) {
 
@@ -430,7 +427,7 @@
     }
 
     /*-------------------------------------
-          Calender initiate
+          Calender initiate 
       -------------------------------------*/
     if ($.fn.fullCalendar !== undefined) {
       $('#fc-calender').fullCalendar({

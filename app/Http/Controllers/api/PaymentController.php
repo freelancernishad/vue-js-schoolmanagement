@@ -16,7 +16,8 @@ class PaymentController extends Controller
 
     public function payments(Request $request)
     {
-        $result = QueryBuilder::for(payment::class)
+        $datatype = $request->datatype;
+        $datas = QueryBuilder::for(payment::class)
         ->allowedFilters([
             AllowedFilter::exact('id'),
             AllowedFilter::exact('school_id'),
@@ -34,8 +35,15 @@ class PaymentController extends Controller
             'amount',
             'bokeya',
 
-        ])
-        ->get();
+        ]);
+
+
+
+        if($datatype=='count'){
+            $result= $datas->sum('amount');
+        }else{
+            $result= $datas ->get();
+        }
     return response()->json($result);
     }
 

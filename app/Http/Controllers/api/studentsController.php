@@ -19,8 +19,9 @@ class studentsController extends Controller
 {
     public function list(Request $r)
     {
+        $datatype = $r->datatype;
         $data['class'] = "All";
-        $result = QueryBuilder::for(student::class)
+        $datas = QueryBuilder::for(student::class)
             ->allowedFilters([
                 'StudentName',
                 'StudentRoll',
@@ -79,8 +80,23 @@ class studentsController extends Controller
                 'AplicationStatus',
                 'ThisMonthPaymentStatus', 'id'
             ])
-            ->orderBy('StudentRoll', 'ASC')
-            ->paginate(20);
+            ->orderBy('StudentRoll', 'ASC');
+
+
+
+            if($datatype=='count'){
+                $result= $datas->count();
+            }else{
+                $result= $datas->paginate(20);
+            }
+
+
+
+
+
+
+
+
         return response()->json($result);
     }
     public function student_action(Request $request, $action)

@@ -516,8 +516,8 @@ th, th label {
 
    <!-- Footer Area Start Here -->
    <footer class="footer-wrap-layout1" v-show="$route.path === '/login' || $route.path === '/register' || $route.path === 'forget' ? false : true " >
-    <div class="copyright">© Copyrights <a href="#">akkhor</a> 2019. All rights reserved. Designed by <a
-            href="#">PsdBosS</a></div>
+    <div class="copyright">© Copyrights <a href="#">School name</a> 2019. All rights reserved. Designed by <a
+            href="https://api.whatsapp.com/send?phone=8801909756552&text=I'm%20interested%20in%20your%20services">Freelancer Nishad</a></div>
 </footer>
 <!-- Footer Area End Here -->
 </div>
@@ -538,11 +538,11 @@ th, th label {
 <!-- Bootstrap js -->
 <script src="{{ asset('dashboard_asset/js/bootstrap.min.js') }}"></script>
 <!-- Counterup Js -->
-{{-- <script src="{{ asset('dashboard_asset/js/jquery.counterup.min.js') }}"></script> --}}
+<script src="{{ asset('dashboard_asset/js/jquery.counterup.min.js') }}"></script>
 <!-- Moment Js -->
-{{-- <script src="{{ asset('dashboard_asset/js/moment.min.js') }}"></script> --}}
+<script src="{{ asset('dashboard_asset/js/moment.min.js') }}"></script>
 <!-- Waypoints Js -->
-{{-- <script src="{{ asset('dashboard_asset/js/jquery.waypoints.min.js') }}"></script> --}}
+<script src="{{ asset('dashboard_asset/js/jquery.waypoints.min.js') }}"></script>
 <!-- Scroll Up Js -->
 <script src="{{ asset('dashboard_asset/js/jquery.scrollUp.min.js') }}"></script>
 <!-- Full Calender Js -->

@@ -23,9 +23,9 @@ class staffsController extends Controller
 
         $data['class'] = "All";
 
+        $datatype = $r->datatype;
 
-
-        $result = QueryBuilder::for(staff::class)
+        $datas = QueryBuilder::for(staff::class)
 
             ->allowedFilters([
                 AllowedFilter::exact('school_id'),
@@ -70,8 +70,16 @@ class staffsController extends Controller
                 'TeacherStatus',
 
 
-            ])
-            ->paginate(20);
+            ]);
+
+            if($datatype=='count'){
+                $result= $datas->count();
+            }else{
+                $result= $datas->paginate(20);
+            }
+
+
+
         return response()->json($result);
     }
 
