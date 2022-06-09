@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-<flip-countdown :deadline="countdowndate"></flip-countdown>
+
     <div class="row">
 
 
@@ -31,20 +31,24 @@
 
 
 
-            <b>Questions : </b> <br>
+            <h3>SCORE :  {{ form.currectans }}/{{ form.totalmark }} </h3> 
 
-    <br/>
+
              <br/>
         <div class="row" v-for="(question,index) in onlineexams.questions">
             <div class="col-md-12">
               <b> {{ index+1 }}. {{ question.question }}</b>
             </div>
             <div class="col-md-6" v-for="(ans,key) in JSON.parse(question.answers)">
-               <input type="radio" class="Present" :id="index+key" v-model="form.answeres[question.id]" :value="ans" :disabled="disabled"> <label style="padding: 10px;" class="Present" :for="index+key">{{ ans }}</label>
+               <input type="radio" :class="{ 'Present': question.currect_ans==form.answeres[question.id] }"  :id="index+key" v-model="form.answeres[question.id]" :value="ans" :disabled="disabled"> <label style="padding: 10px;" class="Present" :for="index+key">{{ ans }}</label>
             </div>
+      <div class="col-md-12" v-if="question.currect_ans!=form.answeres[question.id]">
+             <b>Currect Answere : </b> {{ question.currect_ans }}
+            </div>
+             <br/>
+             <br/>
 
-             <br/>
-             <br/>
+
         </div>
 
 
@@ -56,7 +60,7 @@
 
     </div>
 
-<button class="btn btn-info" @click="examStart('finalsubmit')">Submit</button>
+
 
 
             </div>
@@ -67,12 +71,12 @@
 export default {
     created() {
 this.ASSETURL = ASSETURL
-this.homeid = this.$route.params.id;
+this.homeid = this.$route.params.exam_id;
   this.school_id = getschoolid
   this.form.school_id = getschoolid
    this.form.student_id = this.$localStorage.getItem('teacherOrstudent');
-  this.onlineexam_id = this.$route.params.id;
-  this.form.exam_id = this.$route.params.id;
+  this.onlineexam_id = this.$route.params.exam_id;
+  this.form.exam_id = this.$route.params.exam_id;
        this.onlineexamfun();
 
 
@@ -121,13 +125,14 @@ this.homeid = this.$route.params.id;
         dataformater(date){
            return  User.dateformat(date)[7];
         },
+
         onlineexamfun(page) {
             if (typeof page === 'undefined') {
                 page = 1;
             }
 
  this.timeout = setTimeout( ()=> {
-            axios.get(`/api/onlineexam/view?page=${page}&filter[id]=${this.$route.params.id}`)
+            axios.get(`/api/onlineexam/view?page=${page}&filter[id]=${this.$route.params.exam_id}`)
                 .then(({ data }) => {
 
                     this.onlineexams = data;
@@ -139,89 +144,23 @@ this.homeid = this.$route.params.id;
 
 
 
-    checkexamtime(){
-
-
-                    var datedefarent = this.countdowndate>this.dataformater(new Date())
-
-                    if(datedefarent==false){
-
-                        this.disabled = true
-                        if(this.formsumited==''){
-                            Notification.validation('Exam Time Over!')
-
-                            this.examStart('finalsubmit')
-                        }else{
-
-                        }
-
-
-
-                    }else{
-                        this.disabled = false
-
-                    }
-    },
-
        examcheck(){
 
 
             axios.get(`/api/answeres?filter[school_id]=${this.form.school_id}&filter[student_id]=${this.form.student_id}&filter[exam_id]=${this.form.exam_id}`)
                 .then(({ data }) => {
                     this.count= data.count;
-                    // console.log(data.end)
-                   if(data.count>0){
+console.log(data)
                        this.form = data
 
 
-                    this.countdowndate = this.dataformater(data.end)
-    var datedefarent = data.end>this.dataformater(new Date())
-
-                    if(datedefarent==false){
-                        this.disabled = true
-                    }else{
-                        this.disabled = false
-
-                    }
-
-
-                   }else{
-                       this.examStart('')
-
-                    var minutesToAdd=this.onlineexams.duration;
-                    var currentDate = new Date();
-                    var futureDate = new Date(currentDate.getTime() + minutesToAdd*60000);
-                    this.countdowndate = this.dataformater(futureDate)
-                   }
-
-
-
                 })
                 .catch()
 
         },
 
 
-        examStart(text){
 
-            this.form.final = text;
-            if(text=='finalsubmit'){
-                this.formsumited = 'submited'
-            }
-
-            axios.post(`/api/onlineexam/start`,this.form)
-                .then(({ data }) => {
-                    // console.log(data.action=='submited')
-                    if(data.action=='submited'){
-                    this.$router.push({name: 'onlineexamView',params:{id:this.onlineexam_id}})
-                    Notification.success();
-                    }else{
-
-                    }
-                })
-                .catch()
-
-        },
 
 
 
@@ -235,9 +174,7 @@ this.homeid = this.$route.params.id;
        this.examcheck();
   }, 3000);
 
-setInterval(() => {
-    this.checkexamtime()
-}, 1000);
+
 
 //   setTimeout(() => {
 //       if(this.count==0){this.examStart('');}

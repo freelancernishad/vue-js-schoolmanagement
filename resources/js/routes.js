@@ -109,6 +109,7 @@ let questionbanknew = require('./components/questionbank/form.vue').default;
 
 let onlineexam = require('./components/onlineexam/index.vue').default;
 let onlineexamstart = require('./components/onlineexam/start.vue').default;
+let onlineexamresult = require('./components/onlineexam/result.vue').default;
 let onlineexamView = require('./components/onlineexam/view.vue').default;
 let onlineexamnew = require('./components/onlineexam/form.vue').default;
 
@@ -248,6 +249,7 @@ export const routes = [
 
   { path: '/school/onlineexam', component: onlineexam, name:'onlineexam' },
   { path: '/school/onlineexam/start/:id', component: onlineexamstart, name:'onlineexamstart' },
+  { path: '/school/onlineexam/result/:school_id/:student_id/:exam_id', component: onlineexamresult, name:'onlineexamresult' },
   { path: '/school/onlineexam/view/:id', component: onlineexamView, name:'onlineexamView' },
   { path: '/school/onlineexam/edit/:id', component: onlineexamnew, name:'onlineexamEdit' },
   { path: '/school/onlineexam/new', component: onlineexamnew, name:'onlineexamnew' },

@@ -18,25 +18,23 @@
                 <div class="card-body">
                     <form class="user" v-on:submit.prevent="login" >
                         <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            </div>
+
                             <input type="email" class="form-control" name="email" v-model="form.email"  />
 
                             <small class="text-danger" v-if="errors.email">{{
                                     errors.email[0]
                             }}</small>
                         </div>
+                        <br>
                         <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            </div>
+
 
                             <input type="password" class="form-control" v-model="form.password" />
                             <small class="text-danger" v-if="errors.password">{{
                                     errors.password[0]
                             }}</small>
                         </div>
+                        <br>
                         <div class="d-flex align-items-center remember"></div>
                         <div class="form-group">
                             <button type="submit" class="btn float-right login_btn" style="background-color: #ffc312;font-size: 24px;

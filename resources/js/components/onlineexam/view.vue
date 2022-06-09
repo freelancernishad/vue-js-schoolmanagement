@@ -21,9 +21,22 @@
                     </div>
                     <div class="dropdown">
 
-                        <router-link  class="btn-fill-md text-light bg-dark-pastel-green mt-3 float-right" v-show="$localStorage.getItem('role')=='student' || $localStorage.getItem('role')=='parent' ? true : false " style="display:none" :to="{ name: 'onlineexamstart',params:{id:onlineexam_id} }">
+                        <router-link  class="btn-fill-md text-light bg-dark-pastel-green mt-3 float-right" v-show="($localStorage.getItem('role')=='student' || $localStorage.getItem('role')=='parent') && count==0 && examtime==true ? true : false " style="display:none" :to="{ name: 'onlineexamstart',params:{id:onlineexam_id} }">
                             Start Exam
                         </router-link>
+
+
+                        <span  class="btn-fill-md radius-4 text-light bg-orange-red mb-3" v-show="($localStorage.getItem('role')=='student' || $localStorage.getItem('role')=='parent') && count==0 && examtime==false ? true : false " style="display:none" >
+                            Exam date is expired!
+                        </span>
+
+
+                        <router-link  class="btn-fill-md text-light bg-dark-pastel-green mt-3 float-right" v-show="($localStorage.getItem('role')=='student' || $localStorage.getItem('role')=='parent') && count>0 ? true : false " style="display:none" :to="{ name: 'onlineexamresult',params:{school_id:school_id,student_id:student_id,exam_id:onlineexam_id} }">
+                            View Result
+                        </router-link>
+
+
+
                     </div>
                 </div>
 
@@ -118,6 +131,8 @@ this.homeid = this.$route.params.id;
             school_id:'',
             student_id:'',
             onlineexam_id:'',
+            count:0,
+            examtime:true,
             onlineexamstatus:'',
             onlineexamTimestatus:'',
 
@@ -127,6 +142,9 @@ this.homeid = this.$route.params.id;
         dataformater(date){
            return  User.dateformat(date)[6];
         },
+        dataformater2(date){
+           return  User.dateformat(date)[7];
+        },
         onlineexamfun(page) {
             if (typeof page === 'undefined') {
                 page = 1;
@@ -135,6 +153,20 @@ this.homeid = this.$route.params.id;
  this.timeout = setTimeout( ()=> {
             axios.get(`/api/onlineexam/view?page=${page}&filter[id]=${this.$route.params.id}`)
                 .then(({ data }) => {
+
+// console.log(data.end_date)
+
+
+                    var datedefarent = this.countdowndate>this.dataformater2(new Date())
+                    if(datedefarent==false){
+                        this.examtime = false
+                    }else{
+                        this.examtime = true
+                    }
+
+
+
+
                     this.onlineexams = data;
                     this.preloader = false;
                 })
@@ -147,6 +179,17 @@ this.homeid = this.$route.params.id;
 
 
 
+     examcheck(){
+
+
+            axios.get(`/api/answeres?filter[school_id]=${this.school_id}&filter[student_id]=${this.student_id}&filter[exam_id]=${this.onlineexam_id}`)
+                .then(({ data }) => {
+                    this.count= data.count;
+                    // console.log(data)
+                })
+                .catch()
+
+        },
 
 
 
@@ -154,6 +197,7 @@ this.homeid = this.$route.params.id;
     },
     mounted() {
             this.onlineexamfun();
+            this.examcheck();
 
 
 
