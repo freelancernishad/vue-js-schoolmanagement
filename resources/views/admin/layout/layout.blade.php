@@ -95,6 +95,7 @@ a.item.active {background: #ffac01;}
     left: 42%;
 }
 
+
     @media(max-width:767px){
         .btn-fill-md, .btn-fill-lg, .fw-btn-fill, .btn-fill-lmd {
     font-size: 13px;
@@ -254,7 +255,7 @@ th, th label {
         </div>
         <!-- Header Menu Area End Here -->
         <!-- Page Area Start Here -->
-        <div class="dashboard-page-one">
+        <div class="dashboard-page-one" id="dashboardheight">
             <!-- Sidebar Area Start Here -->
             <div class="sidebar-main sidebar-menu-one sidebar-expand-md sidebar-color" v-show="$route.path === '/login' || $route.path === '/register' || $route.path === 'forget' ? false : true " id='leftnavbar'>
                <div class="mobile-sidebar-header d-md-none">
@@ -269,7 +270,7 @@ th, th label {
 
 
 
-                    <ul class="nav nav-sidebar-menu sidebar-toggle-view" v-show="$localStorage.getItem('role')=='admin' || $localStorage.getItem('role')=='teacher' ? true : false " style="display:none" >
+                    <ul  class="nav nav-sidebar-menu sidebar-toggle-view navBar" v-show="$localStorage.getItem('role')=='admin' || $localStorage.getItem('role')=='teacher' ? true : false " style="display:none" >
                         <li class="nav-item sidebar-nav-item">
                             <a href="#" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></a>
                             <ul class="nav sub-group-menu">
@@ -453,7 +454,7 @@ th, th label {
                     </ul>
 
 
-                    <ul class="nav nav-sidebar-menu sidebar-toggle-view" v-show="$localStorage.getItem('role')=='student' || $localStorage.getItem('role')=='parent' ? true : false " style="display:none" >
+                    <ul class="nav nav-sidebar-menu sidebar-toggle-view navBar" v-show="$localStorage.getItem('role')=='student' || $localStorage.getItem('role')=='parent' ? true : false " style="display:none" >
                         <li class="nav-item sidebar-nav-item">
                             <a href="#" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></a>
                             <ul class="nav sub-group-menu">
@@ -586,7 +587,44 @@ function myFunction() {
 
 
 
-console.log(localStorage.getItem('role'));
+// console.log(localStorage.getItem('role'));
+
+
+
+// div#wrapper {
+//     height: 100% !important;
+// }
+// .dashboard-page-one {
+//     height: 100% !important;
+// }
+
+
+function autoResizeDiv()
+        {
+            var index = 1
+            if(localStorage.getItem('role')=='admin' || localStorage.getItem('role')=='teacher'){
+                index= 0
+            }else{
+                index = 1;
+            }
+                var clientHeight = document.getElementsByClassName('navBar')[index].clientHeight;
+                        // console.log('menu height:',clientHeight)
+                        // console.log('window height:',window.innerHeight )
+            var menuheight = 0
+            if(clientHeight<window.innerHeight){
+                menuheight= window.innerHeight
+            }else{
+                menuheight= clientHeight
+            }
+            document.getElementById('wrapper').style.height = menuheight +'px';
+            // document.getElementById('dashboardheight').style.height = menuheight +'px';
+        }
+        window.onresize = autoResizeDiv;
+        autoResizeDiv();
+
+
+// alert(clientHeight);
+
 
 
 

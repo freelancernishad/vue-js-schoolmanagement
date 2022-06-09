@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Models\User;
 use App\Models\staff;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\staff_attendance;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
-use Illuminate\Support\Facades\File;
+
 class staffsController extends Controller
 {
 
@@ -177,6 +180,25 @@ class staffsController extends Controller
 
     }
 
+
+
+    public function usercreate($school_id,$name,$email,$password,$id,$class,$type)
+    {
+        $studentuserdata =[
+            'school_id'=>$school_id,
+            'name'=>$name,
+            'email'=>$email,
+            'password'=>hash::make($password),
+            'teacherOrstudent'=>$id,
+            'role'=>$type,
+            'class'=>$class,
+        ];
+        $user =   User::create($studentuserdata);
+    }
+
+
+
+
     public function staff_submit(Request $r)
     {
         $id = $r->id;
@@ -193,6 +215,11 @@ class staffsController extends Controller
             $result =   staff::create($data);
             $results['result'] = $result;
             $results['status'] = 'Created';
+
+
+            $this->usercreate($result->school_id,$result->TeacherName,$result->TeacherEmail,$result->teacherPassword,$result->id,null,'teacher');
+
+
 
         } else {
             $staff = staff::find($r->id);

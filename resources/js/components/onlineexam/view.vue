@@ -163,10 +163,6 @@ this.homeid = this.$route.params.id;
                     }else{
                         this.examtime = true
                     }
-
-
-
-
                     this.onlineexams = data;
                     this.preloader = false;
                 })

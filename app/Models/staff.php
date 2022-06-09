@@ -16,6 +16,7 @@ class staff extends Model
         'TeacherDateOfBirth',
         'TeacherId',
         'TeacherEmail',
+        'teacherPassword',
         'TeacherPhoneNumber',
         'TeacherPosition',
         'TeacherQualification',

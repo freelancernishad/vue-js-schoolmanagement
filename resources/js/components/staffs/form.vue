@@ -81,6 +81,8 @@
 
 
         </div>
+
+
         <div class="col-md-4">
             <div class="form-group">
                 <label>Teacher Email:</label>
@@ -91,6 +93,22 @@
 
             </div>
         </div>
+
+
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Teacher Password:</label>
+
+
+                    <input class="form-control" type="password"  v-model="form.teacherPassword" required />
+
+
+            </div>
+        </div>
+
+
+
         <div class="col-md-4">
             <div class="form-group">
 
@@ -248,6 +266,7 @@ export default {
             TeacherDateOfBirth:null,
             TeacherId:null,
             TeacherEmail:null,
+            teacherPassword:null,
             TeacherPhoneNumber:null,
             TeacherPosition:null,
             TeacherQualification:null,

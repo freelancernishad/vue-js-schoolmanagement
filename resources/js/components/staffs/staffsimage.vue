@@ -142,12 +142,6 @@ this.form.image = data
 </script>
 <style>
 
-
-   body {
-  margin:0px;
-  height:100vh;
-  background: #1283da;
-}
 .center {
   height:100%;
   display:flex;
