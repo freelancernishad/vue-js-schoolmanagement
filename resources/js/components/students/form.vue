@@ -401,7 +401,7 @@ if(this.form.StudentClass!='Nine' || this.form.StudentClass!='Ten') this.form.St
                 axios.post(`/api/students/form/submit`,this.form)
                 .then(({data}) => {
                     //  console.log(data)
-                        // this.$router.push({name: 'students'})
+                        this.$router.push({name: 'students'})
                         Notification.success();
                                   this.preloader = false;
                 })
