@@ -71,7 +71,6 @@
                                 <td>{{ onlineexam.class }}</td>
                                 <td>{{ onlineexam.group }}</td>
                                 <td>{{ onlineexam.subject }}</td>
-                                <td>{{ onlineexam.question }}</td>
                                 <td>{{ dataformater(onlineexam.start_date) }}</td>
                                 <td>{{ dataformater(onlineexam.end_date) }}</td>
                                 <td>{{ onlineexam.duration }} Min</td>
