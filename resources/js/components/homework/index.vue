@@ -138,8 +138,17 @@ export default {
             if (typeof page === 'undefined') {
                 page = 1;
             }
+
+var studentclassname = this.studentclass
+
+    if(this.studentclass=='null'){
+        studentclassname="";
+    }
+
+
+
             this.timeout = setTimeout(() => {
-                axios.get(`/api/homework?page=${page}&filter[school_id]=${this.school_id}&filter[class]=${this.studentclass}&filter[status]=${this.status}&filter[title]=${this.title}`)
+                axios.get(`/api/homework?page=${page}&filter[school_id]=${this.school_id}&filter[class]=${studentclassname}&filter[status]=${this.status}&filter[title]=${this.title}`)
                     .then(({ data }) => {
                         this.homeworks = data;
                         if (data.data.length < 3) {
@@ -183,9 +192,9 @@ export default {
     },
     mounted() {
         this.category = this.$route.params.category;
-        setTimeout(() => {
+
             this.homeworkfun();
-        }, 3000);
+
         console.log(this.$localStorage.getItem('teacherOrstudent'))
     }
 }

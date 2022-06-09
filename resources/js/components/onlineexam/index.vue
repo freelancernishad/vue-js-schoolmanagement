@@ -153,7 +153,7 @@ var studentclassname = this.studentclass
         studentclassname="";
     }
 
-    console.log(studentclassname)
+
 
             this.timeout = setTimeout(() => {
                 axios.get(`/api/onlineexam?page=${page}&filter[school_id]=${this.school_id}&filter[class]=${studentclassname}&filter[group]=${this.group}&filter[subject]=${this.subject}`)
