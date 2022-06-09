@@ -157,7 +157,7 @@ this.homeid = this.$route.params.id;
 // console.log(data.end_date)
 
 
-                    var datedefarent = this.countdowndate>this.dataformater2(new Date())
+                    var datedefarent = data.end_date>this.dataformater2(new Date())
                     if(datedefarent==false){
                         this.examtime = false
                     }else{
