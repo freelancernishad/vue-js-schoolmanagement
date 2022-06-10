@@ -419,31 +419,73 @@ public function usercreate($school_id,$name,$email,$password,$id,$class,$type)
 
     public function student_attendance_count(Request $request)
     {
+        $school_id = $request->school_id;
+        $student_id = $request->student_id;
+        $type = $request->type;
         $month = $request->month;
         $year = $request->year;
         $monthNumber =  month_to_number($month);
+        $StudentRoll = '';
+        $StudentClass = '';
+        if($student_id){
+            $students = student::find($student_id);
+            $StudentRoll = $students->StudentRoll;
+            $StudentClass = $students->StudentClass;
+        }
 
-     $monthCount = cal_days_in_month(CAL_GREGORIAN,$monthNumber,$year);
+// return $students;
 
-$attendance = [];
-
-
-
-$datearray = [];
+    $monthCount = cal_days_in_month(CAL_GREGORIAN,$monthNumber,$year);
+    $attendance = [];
+    $datearray = [];
         for ($i=1; $i <=$monthCount ; $i++) {
             $present = 0;
             $absent = 0;
         $date = $year.'-'.sprintf('%02d', $monthNumber).'-'.sprintf('%02d', $i);
         array_push($datearray,$date);
-        $datas =  Attendance::where(['date'=>$date])->get();
+
+            if($type=='student'){
+                $filterdata = [
+                    'school_id'=>$school_id,
+                    'date'=>$date,
+                    'student_class'=>$StudentClass,
+                ];
+            }else{
+                $filterdata = [
+                    'school_id'=>$school_id,
+                    'date'=>$date
+                ];
+            }
+        $datas =  Attendance::where($filterdata)->get();
+
+
      foreach ($datas as $key => $value) {
 
          foreach (json_decode($value->attendance) as $key => $value) {
-             if($value->attendence=='Present'){
-                 $present +=1;
-             }else{
-                 $absent +=1;
-             }
+
+
+            if($type=='student'){
+                if($value->stu_roll==$StudentRoll){
+
+                    if($value->attendence=='Present'){
+                        $present +=1;
+                    }else{
+                        $absent +=1;
+                    }
+                }
+            }else{
+                if($value->attendence=='Present'){
+                    $present +=1;
+                }else{
+                    $absent +=1;
+                }
+            }
+
+
+
+
+
+
          }
      }
         array_push($attendance,[
@@ -506,6 +548,7 @@ $datearray = [];
     public function student_attendance_submit(Request $request)
     {
         $id = $request->id;
+        $school_id = $request->school_id;
         $date = $request->date;
         $student_class = $request->student_class;
         $data = [];
@@ -563,6 +606,7 @@ $datearray = [];
         $attendances = json_encode($attendance);
         $data = [
             'date' => $request->date,
+            'school_id' => $school_id,
             'month' =>  date("F", strtotime($request->date)),
             'year' => date("Y", strtotime($request->date)),
             'student_class' => $student_class,

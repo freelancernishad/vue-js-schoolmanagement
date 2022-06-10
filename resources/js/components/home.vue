@@ -12,7 +12,7 @@
                 </div>
                 <!-- Breadcubs Area End Here -->
                 <!-- Dashboard summery Start Here -->
-                <div class="row gutters-20">
+                <div class="row gutters-20"  v-show="$localStorage.getItem('role')=='admin' || $localStorage.getItem('role')=='teacher' ? true : false " style="display:none">
                     <div class="col-xl-3 col-sm-6 col-12">
                         <div class="dashboard-summery-one mg-b-20">
                             <div class="row align-items-center">
@@ -86,9 +86,53 @@
 
 
                 </div>
-                <!-- Dashboard summery End Here -->
 
-    <div class="form-group">
+
+                <!-- Dashboard summery Start Here -->
+                <div class="row gutters-20"  v-show="$localStorage.getItem('role')=='student' || $localStorage.getItem('role')=='parent' ? true : false " style="display:none">
+                    <div class="col-xl-6 col-sm-6 col-12">
+                        <div class="dashboard-summery-one mg-b-20">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <div class="item-icon bg-light-green ">
+                                        <i class="flaticon-classmates text-green"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="item-content">
+                                        <div class="item-title">Total Present</div>
+                                        <div class="item-number"><span  >{{ totalpresent }}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-sm-6 col-12">
+                        <div class="dashboard-summery-one mg-b-20">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <div class="item-icon bg-light-blue">
+                                        <i class="flaticon-multiple-users-silhouette text-blue"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="item-content">
+                                        <div class="item-title">Total Absent</div>
+                                        <div class="item-number"><span  >{{totalabsent}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <!-- Dashboard summery End Here -->
+<div class="row" v-show="$localStorage.getItem('role')=='admin' || $localStorage.getItem('role')=='teacher' ? true : false " style="display:none">
+    <div class="col-md-12">
+    <div class="form-group" >
 
                         <select class="form-control" v-model="month" id="month" @change="filteratten" required>
                             <option value="">
@@ -103,6 +147,9 @@
  <Bar :chart-options="chartOptions" :chart-data="chartData" :chart-id="chartId"
                     :dataset-id-key="datasetIdKey" :plugins="plugins" :css-classes="cssClasses" :styles="styles"
                     :width="width" :height="height" />
+    </div>
+</div>
+
 
 
 
@@ -191,6 +238,8 @@ export default {
             totalstudents:0,
             totalteachers:0,
             totalearns:0,
+            totalpresent:0,
+            totalabsent:0,
             month:'',
             year:new Date().getFullYear(),
              months: [],
@@ -243,12 +292,28 @@ export default {
         },
 
         attendacereport() {
+var url;
+            if(this.$localStorage.getItem('role')=='admin' || this.$localStorage.getItem('role')=='teacher'){
+url =`api/student/attendance/count?month=${this.month}&year=${this.year}&school_id=${this.school_id}`;
+            }else{
+url =`api/student/attendance/count?month=${this.month}&year=${this.year}&student_id=${this.$localStorage.getItem('teacherOrstudent')}&school_id=${this.school_id}&type=student`;
+
+            }
+
+
             axios
-                .get(`api/student/attendance/count?month=${this.month}&year=${this.year}`)
+                .get(url)
                 .then(({ data }) => {
 
                     this.chartData.labels = data.dates
                     this.chartData.datasets = [data.present,data.absent]
+
+this.totalpresent = data.present.data.reduce((a, b) => a + b, 0);
+this.totalabsent = data.absent.data.reduce((a, b) => a + b, 0);
+
+
+
+
 
                 })
                 .catch();

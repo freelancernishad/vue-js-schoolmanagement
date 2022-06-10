@@ -581,8 +581,20 @@ function autoResizeDiv()
             document.getElementById('wrapper').style.height = menuheight +'px';
             document.getElementById('dashboardheight').style.height = menuheight +'px';
         }
-        window.onresize = autoResizeDiv;
-        autoResizeDiv();
+
+        var windowWidth = 0;
+function windowWidthget() {
+    windowWidth = window.innerWidth;
+    
+}
+window.onresize = windowWidthget
+windowWidthget()
+
+        if(windowWidth<767){
+            window.onresize = autoResizeDiv;
+            autoResizeDiv();
+        }
+
 
 
 // alert(clientHeight);

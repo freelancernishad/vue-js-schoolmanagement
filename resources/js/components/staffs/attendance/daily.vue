@@ -151,12 +151,14 @@ export default {
 			this.$router.push({name: '/'})
 		}
              this.school_id = getschoolid
+             this.form.school_id = getschoolid
 	},
 
 	data () {
 		return {
             form:{
                 id:'',
+                school_id:'',
                 date:'',
                 attendence:[],
                 data:[],

@@ -285,6 +285,7 @@ public function staff_attendance(Request $request)
 public function staff_attendance_submit(Request $request)
 {
     $id = $request->id;
+    $school_id = $request->school_id;
     $date = $request->date;
     $data = [];
     $staffs = [];
@@ -351,6 +352,7 @@ $attendancedata = json_decode($value->attendance);
 
 
      $data = [
+        'school_id' => $school_id,
         'date' => $request->date,
         'month' =>  date("F", strtotime($request->date)),
         'year' => date("Y", strtotime($request->date)),
