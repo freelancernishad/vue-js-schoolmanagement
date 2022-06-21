@@ -86,7 +86,7 @@ $sslUrl = explode('//', $arrUrl[0]);
 // echo $fullURL;
 
     $count = DB::table('school_details')->where('school_domain', $fullURL)->count();
-die();
+
     if ($count > 0) {
 
 
