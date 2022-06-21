@@ -69,7 +69,7 @@ $sslUrl = explode('//', $arrUrl[0]);
        if($arrUrl[2]=='localhost:8000'){
            $fullURL = 'http://' . $arrUrl[1]. '.'.$arrUrl[2];
        }else{
-           $fullURL = $arrUrl[0] .'.'. $arrUrl[1]. '.'.$arrUrl[2];
+           $fullURL = $sslUrl[0] .'//'. $arrUrl[1]. '.'.$arrUrl[2];
        }
 
 
