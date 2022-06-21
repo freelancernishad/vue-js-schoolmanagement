@@ -31,13 +31,13 @@ function sitedetails()
 
     // local server
 
-    $fullURL = 'http://' . $_SERVER['HTTP_HOST'];
+    $fullURL = 'https://' . $_SERVER['HTTP_HOST'];
 
 
     $arrUrl = explode('.', $fullURL);
 
     // print_r($arrUrl);
-   $count = count($arrUrl);
+    $count = count($arrUrl);
 
 $sslUrl = explode('//', $arrUrl[0]);
 
@@ -55,7 +55,7 @@ $sslUrl = explode('//', $arrUrl[0]);
        if($arrUrl[1]=='localhost:8000'){
            $fullURL = 'http://' . $arrUrl[1];
        }else{
-           $fullURL = $sslUrl[0].'//' .  $arrUrl[1];
+           $fullURL = $arrUrl[0].'.' .  $arrUrl[1];
        }
 
 
@@ -83,10 +83,10 @@ $sslUrl = explode('//', $arrUrl[0]);
        $fullURL = 'http://' . $arrUrl[1];
    }
 
-
+// echo $fullURL;
 
     $count = DB::table('school_details')->where('school_domain', $fullURL)->count();
-
+die();
     if ($count > 0) {
 
 
