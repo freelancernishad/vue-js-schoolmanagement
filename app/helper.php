@@ -31,8 +31,13 @@ function sitedetails()
 
     // local server
 
-    $fullURL = 'https://' . $_SERVER['HTTP_HOST'];
+    $fullURL = 'http://' . $_SERVER['HTTP_HOST'];
+        if($fullURL=='http://localhost:8000'){
+            $fullURL = 'http://' . $_SERVER['HTTP_HOST'];
+        }else{
+            $fullURL = 'https://' . $_SERVER['HTTP_HOST'];
 
+        }
 
     $arrUrl = explode('.', $fullURL);
 
