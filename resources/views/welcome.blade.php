@@ -29,8 +29,8 @@
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-10 text-center school_deails">
                             <h1 class="text-light">{{ sitedetails()->SCHOLL_NAME }}</h1>
-                            <h4>{{ sitedetails()->SCHOLL_ADDRESS }}</h4>
-                            <h4>স্থাপিতঃ {{ sitedetails()->SCHOLL_BUILD }} কোড নংঃ {{ sitedetails()->SCHOLL_CODE }}</h4>
+                            <h4 class="text-light">{{ sitedetails()->SCHOLL_ADDRESS }}</h4>
+                            <h4 class="text-light">স্থাপিতঃ {{ sitedetails()->SCHOLL_BUILD }} কোড নংঃ {{ sitedetails()->SCHOLL_CODE }}</h4>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2  logo gov_logo">
                             <img class="img-fluid" src="https://iconape.com/wp-content/files/wf/258445/svg/258445.svg" alt="">
