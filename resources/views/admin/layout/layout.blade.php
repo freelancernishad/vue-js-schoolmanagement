@@ -19,6 +19,27 @@
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="{{ asset('dashboard_asset/css/all.min.css') }}">
     <!-- Flaticon CSS -->
+    <style>
+@font-face {
+  font-family: "Flaticon";
+  src: url("{{ asset('dashboard_asset/fonts/Flaticon.eot') }}");
+  src: url("{{ asset('dashboard_asset/fonts/Flaticon.eot?#iefix') }}") format("embedded-opentype"),
+       url("{{ asset('dashboard_asset/fonts/Flaticon.woff2') }}") format("woff2"),
+       url("{{ asset('dashboard_asset/fonts/Flaticon.woff') }}") format("woff"),
+       url("{{ asset('dashboard_asset/fonts/Flaticon.ttf') }}") format("truetype"),
+       url("{{ asset('dashboard_asset/fonts/Flaticon.svg#Flaticon') }}") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("{{ asset('dashboard_asset/fonts/Flaticon.svg#Flaticon') }}") format("svg");
+  }
+}
+
+    </style>
     <link rel="stylesheet" href="{{ asset('dashboard_asset/fonts/flaticon.css') }}">
     <!-- Full Calender CSS -->
     {{-- <link rel="stylesheet" href="{{ asset('dashboard_asset/css/fullcalendar.min.css') }}"> --}}
@@ -585,7 +606,7 @@ function autoResizeDiv()
         var windowWidth = 0;
 function windowWidthget() {
     windowWidth = window.innerWidth;
-    
+
 }
 window.onresize = windowWidthget
 windowWidthget()
