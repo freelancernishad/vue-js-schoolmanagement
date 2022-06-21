@@ -53,6 +53,7 @@ Route::group([
 
 
 
+
 Route::get('/users/get',[MessageController::class ,'usersget']);
 Route::get('/conversion/get',[MessageController::class ,'conversionget']);
 Route::get('/messages/get',[MessageController::class ,'messagesget']);
@@ -64,6 +65,7 @@ Route::get('/student_at_a_glance',[frontendController::class ,'student_at_a_glan
 
 
 
+Route::post('/users/checks',[SchoolDetailController::class ,'userscheck']);
 Route::get('/school_id',[SchoolDetailController::class , 'school_id']);
 Route::get('/classes',[SchoolDetailController::class , 'class_list']);
 Route::get('/years/list', [SchoolDetailController::class,'yearslist']);
@@ -80,6 +82,9 @@ Route::get('/students/single',[studentsController::class , 'singlestudent']);
 Route::post('/students/form/submit',[studentsController::class , 'student_submit']);
 Route::post('/student/{action}',[studentsController::class , 'student_action']);
 Route::get('/student/check',[studentsController::class , 'student_check']);
+
+Route::get('/student/admissionid/genarate',[studentsController::class , 'AdmissionIdgenarate']);
+
 Route::get('/student/attendance',[studentsController::class , 'student_attendance']);
 Route::get('/student/attendance/count',[studentsController::class , 'student_attendance_count']);
 Route::post('/student/attendance/submit',[studentsController::class , 'student_attendance_submit']);

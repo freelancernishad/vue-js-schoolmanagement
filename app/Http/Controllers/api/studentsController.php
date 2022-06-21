@@ -118,13 +118,36 @@ class studentsController extends Controller
         }
         return response()->json($data);
     }
+
+    public function AdmissionIdgenarate(Request $request)
+    {
+        $school_id = $request->school_id;
+        $student =  student::where(['school_id'=>$school_id])->latest()->first();
+        $admition_id = $student->AdmissionID;
+        $mutiple = (rand(1, 9));
+if($admition_id=='' || $admition_id==null){
+            $one = "0001";
+        $year = date("dmy");
+         $admition_ID = $school_id . $year . $one;
+         return $admition_ID += $mutiple;
+}
+
+
+
+        $admition_ID =  $admition_id;
+        return $admition_ID += $mutiple;
+    }
+
+
     public function StudentAdmissionId($admition_id,$school_id)
     {
 
         $mutiple = (rand(1, 9));
-        $admition_ID = $school_id . $admition_id;
+        $admition_ID = $admition_id;
         return $admition_ID += $mutiple;
     }
+
+
     public function word_digit($word)
     {
         $warr = explode(';', $word);

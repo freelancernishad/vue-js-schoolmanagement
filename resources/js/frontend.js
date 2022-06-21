@@ -13,6 +13,9 @@ window.User = User
 import Rightsidebar from './components/themes/default/sidebar';
 Vue.component('rightsidebar', Rightsidebar);
 
+import Input from './components/themes/default/form/input';
+Vue.component('vueInput', Input);
+
 window.RootUrl = window.location.origin;
 window.ASSETURL = '/public/';
 // window.ASSETURL = '/';

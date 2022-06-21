@@ -9,6 +9,8 @@ use App\Http\Controllers\api\RoutineController;
 use App\Http\Controllers\api\studentsController;
 
 
+use NahidulHasan\Html2pdf\Pdf;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +56,11 @@ use App\Http\Controllers\api\studentsController;
 // Route::get('/events',[frontendController::class ,'events']);
 // Route::get('/contact-us',[frontendController::class ,'contact_us']);
 // Route::post('/contact-us',[frontendController::class ,'contact_us_post']);
+Route::get('pdfgen', function () {
+
+return view('pdftest');
+});
+
 Route::get('/pdf/{school_id}/{class}/{roll}/{year}/{exam}',[frontendController::class ,'view_result_pdf']);
 
 Route::get('/routines/{school_id}/{class}/{year}/download',[RoutineController::class , 'routine_download'])->name('routines.routine_download');

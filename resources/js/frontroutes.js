@@ -12,6 +12,7 @@ let login = require('./components/auth/login.vue').default;
   let frontblogs = require('./components/themes/default/blogs.vue').default;
   let frontblogsingle = require('./components/themes/default/blogsingle.vue').default;
   let frontcontact_us = require('./components/themes/default/contact_us.vue').default;
+  let student_register = require('./components/themes/default/register.vue').default;
 
 
 ///////////////////////////////////////////////////////////////
@@ -39,6 +40,7 @@ export const routes = [
     { path: '/blogs', component: frontblogs, name:'frontblogs' },
     { path: '/blogs/:slug', component: frontblogsingle, name:'frontblogsingle' },
     { path: '/contact-us', component: frontcontact_us, name:'frontcontact_us' },
+    { path: '/student/register', component: student_register, name:'student_register' },
 
 
 

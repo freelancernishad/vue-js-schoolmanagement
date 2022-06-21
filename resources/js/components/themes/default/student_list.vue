@@ -108,7 +108,7 @@ export default {
             sorttype:'',
             student_class:'',
             status:'Active',
-            preloader: true,
+            preloader: false,
 
 		}
 	},
@@ -117,6 +117,7 @@ export default {
 
 
 search(){
+     this.preloader = true;
     this.allstudents();
 },
 

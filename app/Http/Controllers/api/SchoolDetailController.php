@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\school_detail;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
+use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
+use Illuminate\Support\Facades\Validator;
+
+
 
 class SchoolDetailController extends Controller
 {
@@ -241,6 +247,46 @@ class SchoolDetailController extends Controller
     }
 
 
+
+
+
+
+
+    public function userscheck(Request $request)
+    {
+
+        $validator = Validator::make($request->all(),
+    [
+        'email' => 'required|unique:users',
+    ]
+
+    );
+        if ($validator->fails()) {
+            return sent_error('validation error', $validator->errors(), 200);
+        }
+        $errors= [
+            'email'=>[''],
+        ];
+        return sent_error('validation error', $errors, 200);
+        // $validatedData = $request->validate([
+        //     'email' => 'required|unique:users',
+        // ]);
+
+    //     $result = QueryBuilder::for(User::class)
+    //     ->allowedFilters([
+    //         'name',
+    //         'role',
+    //         AllowedFilter::exact('school_id'),
+    //         AllowedFilter::exact('email'),
+    //         AllowedFilter::exact('teacherOrstudent'),
+    //         AllowedFilter::exact('id')
+    //     ])
+    //     ->orderBy('id', 'desc')
+    //     ->count();
+    // return response()->json($result);
+
+
+    }
 
 
 

@@ -101,6 +101,11 @@
                                 <router-link class="text-light px-3 nav-link " aria-current="page" to="/contact-us">যোগাযোগ</router-link>
                             </li>
 
+
+                            <li class="nav-item">
+                                <router-link class="text-light px-3 nav-link " aria-current="page" to="/student/register">আবেদন</router-link>
+                            </li>
+
                             <li class="nav-item">
                                 <a class="text-light px-3 nav-link " aria-current="page" href="{{ url('login') }}">লগইন</a>
                             </li>
@@ -160,7 +165,7 @@
         </div>
          <h1 class="hhead">Welcome!</h1>
 
-        <p class='popu_p'>Thanks For Visiting Our application First Time</p>
+        <p class='popu_p' style="line-height: 40px !important;">Thanks For Visiting Our application First Time</p>
         <div class="bottom-popup">
             <a class="start" href="">GET START</a>
 
@@ -177,7 +182,18 @@
         crossorigin="anonymous"></script>
 
 
+<script>
 
+var welcomepopup = document.getElementById('fullwidth');
+if (localStorage.getItem('getschoolid') !== null) {
+    // console.log(`Email address exists`);
+    // console.log(localStorage.getItem("getschoolid"))
+} else {
+    // console.log(`Email address not found`);
+    welcomepopup.style.display="block"
+
+}
+</script>
 
 
 

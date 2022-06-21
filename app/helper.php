@@ -677,9 +677,12 @@ function class_list()
 
 
 
+// echo     $apiKey  = sitedetails()->SMS_TOKEN;
 
 define("SERVER", "https://bulksms.brotherit.net");
-define("API_KEY", "2668e548a3250c3e4126e2e2c830d2797084f918");
+// // define("API_KEY", "2668e548a3250c3e4126e2e2c830d2797084f918");
+//  define("API_KEY", "$apiKey");
+
 
 define("USE_SPECIFIED", 0);
 define("USE_ALL_DEVICES", 1);
@@ -704,7 +707,7 @@ function sendSingleMessage($number, $message, $device = 0, $schedule = null, $is
         'number' => $number,
         'message' => $message,
         'schedule' => $schedule,
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'devices' => $device,
         'type' => $isMMS ? "mms" : "sms",
         'attachments' => $attachments,
@@ -748,7 +751,7 @@ function sendMessages($messages, $option = USE_SPECIFIED, $devices = [], $schedu
     $postData = [
         'messages' => json_encode($messages),
         'schedule' => $schedule,
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'devices' => json_encode($devices),
         'option' => $option,
         'useRandomDevice' => $useRandomDevice
@@ -777,7 +780,7 @@ function sendMessageToContactsList($listID, $message, $option = USE_SPECIFIED, $
         'listID' => $listID,
         'message' => $message,
         'schedule' => $schedule,
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'devices' => json_encode($devices),
         'option' => $option,
         'type' => $isMMS ? "mms" : "sms",
@@ -796,7 +799,7 @@ function getMessageByID($id)
 {
     $url = SERVER . "/services/read-messages.php";
     $postData = [
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'id' => $id
     ];
     return sendRequest($url, $postData)["messages"][0];
@@ -812,7 +815,7 @@ function getMessagesByGroupID($groupID)
 {
     $url = SERVER . "/services/read-messages.php";
     $postData = [
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'groupId' => $groupID
     ];
     return sendRequest($url, $postData)["messages"];
@@ -832,7 +835,7 @@ function getMessagesByStatus($status, $deviceID = null, $simSlot = null, $startT
 {
     $url = SERVER . "/services/read-messages.php";
     $postData = [
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'status' => $status,
         'deviceID' => $deviceID,
         'simSlot' => $simSlot,
@@ -852,7 +855,7 @@ function resendMessageByID($id)
 {
     $url = SERVER . "/services/resend.php";
     $postData = [
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'id' => $id
     ];
     return sendRequest($url, $postData)["messages"][0];
@@ -869,7 +872,7 @@ function resendMessagesByGroupID($groupID, $status = null)
 {
     $url = SERVER . "/services/resend.php";
     $postData = [
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'groupId' => $groupID,
         'status' => $status
     ];
@@ -890,7 +893,7 @@ function resendMessagesByStatus($status, $deviceID = null, $simSlot = null, $sta
 {
     $url = SERVER . "/services/resend.php";
     $postData = [
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'status' => $status,
         'deviceID' => $deviceID,
         'simSlot' => $simSlot,
@@ -913,7 +916,7 @@ function addContact($listID, $number, $name = null, $resubscribe = false)
 {
     $url = SERVER . "/services/manage-contacts.php";
     $postData = [
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'listID' => $listID,
         'number' => $number,
         'name' => $name,
@@ -933,7 +936,7 @@ function unsubscribeContact($listID, $number)
 {
     $url = SERVER . "/services/manage-contacts.php";
     $postData = [
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'listID' => $listID,
         'number' => $number,
         'unsubscribe' => true
@@ -949,7 +952,7 @@ function getBalance()
 {
     $url = SERVER . "/services/send.php";
     $postData = [
-        'key' => API_KEY
+        'key' => sitedetails()->SMS_TOKEN
     ];
     $credits = sendRequest($url, $postData)["credits"];
     return is_null($credits) ? "Unlimited" : $credits;
@@ -967,7 +970,7 @@ function sendUssdRequest($request, $device, $simSlot = null)
 {
     $url = SERVER . "/services/send-ussd-request.php";
     $postData = [
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'request' => $request,
         'device' => $device,
         'sim' => $simSlot
@@ -985,7 +988,7 @@ function getUssdRequestByID($id)
 {
     $url = SERVER . "/services/read-ussd-requests.php";
     $postData = [
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'id' => $id
     ];
     return sendRequest($url, $postData)["requests"][0];
@@ -1005,7 +1008,7 @@ function getUssdRequests($request, $deviceID = null, $simSlot = null, $startTime
 {
     $url = SERVER . "/services/read-ussd-requests.php";
     $postData = [
-        'key' => API_KEY,
+        'key' => sitedetails()->SMS_TOKEN,
         'request' => $request,
         'deviceID' => $deviceID,
         'simSlot' => $simSlot,

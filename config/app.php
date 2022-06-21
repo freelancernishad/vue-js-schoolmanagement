@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        NahidulHasan\Html2pdf\Html2pdfServiceProvider::class,
 
     ],
 
@@ -233,6 +234,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class,
+        'HTMLPDF'  => NahidulHasan\Html2pdf\Facades\Pdf::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Image' => Intervention\Image\Facades\Image::class
     ],
