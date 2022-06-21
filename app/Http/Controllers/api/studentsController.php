@@ -458,7 +458,8 @@ public function usercreate($school_id,$name,$email,$password,$id,$class,$type)
 
 // return $students;
 
-    $monthCount = cal_days_in_month(CAL_GREGORIAN,$monthNumber,$year);
+    // $monthCount = cal_days_in_month(CAL_GREGORIAN,$monthNumber,$year);
+    $monthCount = date('t', mktime(0, 0, 0, $monthNumber, 1, $year));
     $attendance = [];
     $datearray = [];
         for ($i=1; $i <=$monthCount ; $i++) {
@@ -652,7 +653,9 @@ public function usercreate($school_id,$name,$email,$password,$id,$class,$type)
         $class = $request->class;
         $school_id = $request->school_id;
         $monthYear = explode('-', $date_month);
-        $cal = cal_days_in_month(CAL_GREGORIAN, $monthYear[1], $monthYear[0]);
+        //$cal = cal_days_in_month(CAL_GREGORIAN, $monthYear[1], $monthYear[0]);
+		$cal = date('t', mktime(0, 0, 0, $monthYear[1], 1, $monthYear[0]));
+		
         $months = date('F', strtotime($date_month));
         $year = date('Y', strtotime($date_month));
         $students = student::where(['school_id' => $school_id, 'StudentClass' => $class, 'Year' => $year, 'StudentStatus' => 'Active'])->get();
