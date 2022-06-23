@@ -422,7 +422,7 @@ public function usercreate($school_id,$name,$email,$password,$id,$class,$type)
                 $data['data'] = Attendance::where(['school_id' => $school_id,'student_class' => $StudentClass, 'date' => $dateormonth, 'year' => date("Y", strtotime($dateormonth))])->get();
                 $data['counttype'] = 1;
             } else {
-                $data['data'] = student::where(['school_id' => $school_id, 'StudentClass' => $StudentClass, 'StudentStatus' => 'Active'])->get();
+                $data['data'] = student::where(['school_id' => $school_id, 'StudentClass' => $StudentClass, 'StudentStatus' => 'Active'])->orderBy('StudentRoll','asc')->get();
                 $data['counttype'] = 0;
             }
         } elseif ($veiwtype == 'edit') {
@@ -655,7 +655,7 @@ public function usercreate($school_id,$name,$email,$password,$id,$class,$type)
         $monthYear = explode('-', $date_month);
         //$cal = cal_days_in_month(CAL_GREGORIAN, $monthYear[1], $monthYear[0]);
 		$cal = date('t', mktime(0, 0, 0, $monthYear[1], 1, $monthYear[0]));
-		
+
         $months = date('F', strtotime($date_month));
         $year = date('Y', strtotime($date_month));
         $students = student::where(['school_id' => $school_id, 'StudentClass' => $class, 'Year' => $year, 'StudentStatus' => 'Active'])->get();
