@@ -79,8 +79,42 @@ $id = $r->id;
                 'year' => $r->year,
                 'status' => $r->status,
             ];
+
+
+            $wh = [
+
+                'StudentID'=>$r->StudentID,
+            ];
+
+     $StudentPhoneNumber = DB::table('students')->where($wh)->get()[0]->StudentPhoneNumber;
+
+
+            $messages = array();
+            $responsemessege = [];
+            $message = "আপনার সন্তানের ".month_en_to_bn($r->month)." মাসের বেতন ".int_en_to_bn($r->amount)." টাকা বিদ্যালয়ে জমা হয়েছে";
+
+            array_push(
+                $messages,
+                [
+                    "number" => '88' . int_bn_to_en($StudentPhoneNumber),
+                    "message" => "$message"
+                ]
+            );
 if($formtype=='create'){
     $data = payment::create($data);
+
+
+    try {
+        $msgs = sendMessages($messages);
+        foreach ($msgs as $value) {
+array_push($responsemessege,'Sms Successfully Sent To : ' . $value["number"]);
+     }
+    } catch (Exception $e) {
+        array_push($responsemessege,$e->getMessage());
+    }
+
+
+
 }else{
   $payment = payment::find($id);
   $data = $payment->update($data);
