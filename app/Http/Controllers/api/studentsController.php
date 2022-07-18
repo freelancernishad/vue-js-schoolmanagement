@@ -813,11 +813,11 @@ public function usercreate($school_id,$name,$email,$password,$id,$class,$type)
         // frontend/schoolLogo.png
 
         //in Controller
-        $pathgovlogo = 'frontend/schoolLogo.png';
-        $typegovlogo = pathinfo($pathgovlogo, PATHINFO_EXTENSION);
-        $dataigovlogo = file_get_contents($pathgovlogo);
-        $govlogo = 'data:image/' . $typegovlogo . ';base64,' . base64_encode($dataigovlogo);
-        $data['logo'] = $govlogo;
+        // $pathgovlogo = 'frontend/schoolLogo.png';
+        // $typegovlogo = pathinfo($pathgovlogo, PATHINFO_EXTENSION);
+        // $dataigovlogo = file_get_contents($pathgovlogo);
+        // $govlogo = 'data:image/' . $typegovlogo . ';base64,' . base64_encode($dataigovlogo);
+        // $data['logo'] = $govlogo;
 
         $fileName = 'students-'.date('Y-m-d H:m:s');
 
