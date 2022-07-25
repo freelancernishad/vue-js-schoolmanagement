@@ -12,9 +12,25 @@
 
 
     <link rel="stylesheet" href="{{ asset('css/frontend.css') }}">
+<style>
+    .bg-primary {
+    background: #3352c7 !important;
+}
+.router-link-exact-active {
+    background: #79050b;
+    border-radius: 5px;
+    color:white !important;
+}
+a.dropdown-item:hover, button.dropdown-item:hover {
+    background-color: hsl(0deg, 0%, 96%);
+    color: hsl(0deg, 0%, 4%) !important;
+}
 
+</style>
 </head>
 <body>
+    <div id="fb-root"></div>
+
     <div id="wrapper">
         <x-visitors />
 
@@ -126,7 +142,7 @@
         <div class="container-fluid">
             <div class="row text-light text-center">
                 <div class="col-lg-4">
-                    <p>&copy; All Rights Reserved Softlab Inc.</p>
+                    {{-- <p>&copy; All Rights Reserved Softlab Inc.</p> --}}
                 </div>
                 <div class="col-lg-4 social_icon">
                     {{-- <a class="text-light p-2" href=""><i class="fab fa-facebook-f"></i></a>
